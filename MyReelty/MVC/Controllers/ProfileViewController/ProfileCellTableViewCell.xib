@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCellTableViewCell" rowHeight="177" id="KGk-i7-Jjw" customClass="ProfileCellTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="179"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="500" height="178"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xsm-MH-q3A">
+                        <rect key="frame" x="15" y="15" width="75" height="75"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="EvR-M8-tdO"/>
+                            <constraint firstAttribute="height" constant="75" id="QeI-Cs-IgG"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameUser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="ZN5-VJ-W2s">
+                        <rect key="frame" x="105" y="15" width="366" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="bBy-oN-dk0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timeRegistration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="NIN-3Z-12B">
+                        <rect key="frame" x="105" y="41" width="315" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="6eO-UA-1mE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emailUser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="meb-X6-7hd">
+                        <rect key="frame" x="105" y="57" width="315" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="xOK-ii-I6l"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoneNumberUser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="7KF-83-RZ3">
+                        <rect key="frame" x="105" y="75" width="315" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="2ra-5a-RYI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GRt-SI-tPk">
+                        <rect key="frame" x="15" y="111" width="470" height="47"/>
+                        <string key="text">Steven Paul "Steve" Jobs (/ˈdʒɒbz/; February 24, 1955 – October 5, 2011) was an American information technology entrepreneur and inventor. He was the co-founder, chairman, and chief executive officer (CEO) of Apple Inc.; CEO and largest shareholder of Pixar Animation Studios;[3] a member of The Walt Disney Company's board of directors following its acquisition of Pixar; and founder, chairman, and CEO of NeXT Inc. Jobs is widely recognized as a pioneer of the microcomputer revolution of the 1970s, along with Apple co-founder Steve Wozniak.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="meb-X6-7hd" firstAttribute="leading" secondItem="xsm-MH-q3A" secondAttribute="trailing" constant="15" id="2Od-Iy-S2M"/>
+                    <constraint firstAttribute="trailing" secondItem="GRt-SI-tPk" secondAttribute="trailing" constant="15" id="4v0-Qc-G9G"/>
+                    <constraint firstItem="GRt-SI-tPk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="AKX-tW-drG"/>
+                    <constraint firstItem="NIN-3Z-12B" firstAttribute="leading" secondItem="xsm-MH-q3A" secondAttribute="trailing" constant="15" id="D1g-aU-AGK"/>
+                    <constraint firstItem="NIN-3Z-12B" firstAttribute="top" secondItem="ZN5-VJ-W2s" secondAttribute="bottom" constant="6" id="F3I-a4-sLR"/>
+                    <constraint firstItem="xsm-MH-q3A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="FZP-F3-MoX"/>
+                    <constraint firstItem="7KF-83-RZ3" firstAttribute="top" secondItem="meb-X6-7hd" secondAttribute="bottom" constant="3" id="M0Z-rb-7mj"/>
+                    <constraint firstItem="7KF-83-RZ3" firstAttribute="leading" secondItem="xsm-MH-q3A" secondAttribute="trailing" constant="15" id="Obu-6B-kE9"/>
+                    <constraint firstAttribute="trailing" secondItem="NIN-3Z-12B" secondAttribute="trailing" constant="80" id="OzR-hG-hxw"/>
+                    <constraint firstAttribute="trailing" secondItem="ZN5-VJ-W2s" secondAttribute="trailing" constant="29" id="PKn-C4-yiP"/>
+                    <constraint firstAttribute="trailing" secondItem="meb-X6-7hd" secondAttribute="trailing" constant="80" id="RBJ-hd-Pch"/>
+                    <constraint firstAttribute="bottom" secondItem="GRt-SI-tPk" secondAttribute="bottom" constant="20" id="SYK-6Q-xTZ"/>
+                    <constraint firstItem="xsm-MH-q3A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="U2Y-Rb-tgd"/>
+                    <constraint firstItem="GRt-SI-tPk" firstAttribute="top" secondItem="7KF-83-RZ3" secondAttribute="bottom" constant="21" id="VHK-h2-WOZ"/>
+                    <constraint firstItem="meb-X6-7hd" firstAttribute="top" secondItem="NIN-3Z-12B" secondAttribute="bottom" constant="1" id="ZN8-W4-KKq"/>
+                    <constraint firstItem="ZN5-VJ-W2s" firstAttribute="leading" secondItem="xsm-MH-q3A" secondAttribute="trailing" constant="15" id="b7E-nv-xg7"/>
+                    <constraint firstItem="ZN5-VJ-W2s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="p8c-wH-Tf6"/>
+                    <constraint firstAttribute="trailing" secondItem="7KF-83-RZ3" secondAttribute="trailing" constant="80" id="rF1-5l-iST"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarUser" destination="xsm-MH-q3A" id="9gQ-0i-NTU"/>
+                <outlet property="emailUser" destination="meb-X6-7hd" id="kqa-bC-63r"/>
+                <outlet property="infoUser" destination="GRt-SI-tPk" id="Lu8-xA-Scu"/>
+                <outlet property="nameUser" destination="ZN5-VJ-W2s" id="0k1-3V-sl5"/>
+                <outlet property="phoneNumberUser" destination="7KF-83-RZ3" id="O3k-f7-hbv"/>
+                <outlet property="timeRegistration" destination="NIN-3Z-12B" id="fA6-VT-8nz"/>
+            </connections>
+            <point key="canvasLocation" x="241" y="260.5"/>
+        </tableViewCell>
+    </objects>
+</document>

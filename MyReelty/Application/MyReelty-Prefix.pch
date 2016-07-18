@@ -1,0 +1,29 @@
+//
+//  MyReelty-Prefix.pch
+//  MyReelty
+//
+//  Created by Ihor on 2/17/16.
+//  Copyright © 2016 Admin. All rights reserved.
+//
+
+#ifndef MyReelty_Prefix_pch
+#define MyReelty_Prefix_pch
+
+#import "Global.h"
+#import "UIImageView+AFNetworking.h"
+#import "NSString+EncodeString.h"
+
+//notifications
+#define LIKE_DID_CHANGE_NOTIFICATION @"like_did_change_notification"
+#define BOOKMARK_DID_CHANGE_NOTIFICATION @"bookmark_did_change_notification"
+#define LIKE_PRESSED_ON_REVIEW_CONTROLLER @"like_pressed_on_review_controller"
+#define BOOKMARK_PRESSED_ON_REVIEW_CONTROLLER @"bookmark_pressed_on_review_controller"
+#define LOG_OUT_BUTTON_PRESSED @"logout_button_pressed"
+#define USER_DID_LOG_IN @"user_did_log_in"
+#define PROFILE_AVATAR_DID_LOADED @"profile_avatar_did_loaded"
+//notification keys
+#define CLASS_NAME @"class_name"
+
+//#define FACEBOOK_APP_ID @"1696381047287232"
+
+#endif /* MyReelty_Prefix_pch */

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MRDoubleSlider">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxY-S4-pGg" userLabel="RangeView">
+                    <rect key="frame" x="14" y="35" width="472" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="qAT-BB-rkb"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zKX-es-SfV" userLabel="SelectedView">
+                    <rect key="frame" x="14" y="35" width="472" height="1"/>
+                    <color key="backgroundColor" red="1" green="0.3529411764705882" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFE-wy-TAh" userLabel="LeftHolderView">
+                    <rect key="frame" x="0.0" y="22" width="28" height="28"/>
+                    <color key="backgroundColor" red="1" green="0.35294117650000001" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAl-Od-FrF" userLabel="RightHolderView">
+                    <rect key="frame" x="472" y="22" width="28" height="28"/>
+                    <color key="backgroundColor" red="1" green="0.35294117650000001" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Us-RQ-c7o">
+                    <rect key="frame" x="-7" y="0.0" width="42" height="13"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2q-VA-L4e">
+                    <rect key="frame" x="465" y="0.0" width="42" height="13"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="jxY-S4-pGg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="d73-zB-QNc"/>
+                <constraint firstAttribute="bottom" secondItem="jxY-S4-pGg" secondAttribute="bottom" constant="14" id="eEO-ff-C2h"/>
+                <constraint firstAttribute="trailing" secondItem="jxY-S4-pGg" secondAttribute="trailing" constant="14" id="mGJ-2W-nIR"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="leftHolderView" destination="tFE-wy-TAh" id="Xv7-ek-9YR"/>
+                <outlet property="leftLabel" destination="2Us-RQ-c7o" id="ONl-5A-orj"/>
+                <outlet property="rangeView" destination="jxY-S4-pGg" id="yjH-00-O9U"/>
+                <outlet property="rightHolderView" destination="fAl-Od-FrF" id="y13-6B-fSG"/>
+                <outlet property="rightLabel" destination="K2q-VA-L4e" id="7b0-jz-xY9"/>
+                <outlet property="selectedRangeView" destination="zKX-es-SfV" id="Zn3-r8-Fg9"/>
+            </connections>
+            <point key="canvasLocation" x="240" y="220"/>
+        </view>
+    </objects>
+</document>
