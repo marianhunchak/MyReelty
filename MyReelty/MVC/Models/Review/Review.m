@@ -36,6 +36,7 @@
     lReview.user = [dict objectForKey:@"user"];
     lReview.bookmarked = [dict boolForKey:@"bookmarked"];
     lReview.liked = [dict boolForKey:@"liked"];
+    lReview.complained = [dict boolForKey:@"complained"];
     lReview.visits_count = [dict stringForKey:@"visits_count"];
     if(![[dict objectForKey:@"files"] isKindOfClass:[NSNull class]]) {
         lReview.files = [dict objectForKey:@"files"];

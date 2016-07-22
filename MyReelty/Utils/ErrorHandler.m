@@ -69,4 +69,28 @@
     return msg;
 }
 
++ (void)handleFlaggingError:(NSError *) error {
+    
+    NSHTTPURLResponse  *response = [error.userInfo objectForKey:@"com.alamofire.serialization.response.error.response"];
+    
+    NSString *msg = nil;
+    
+    if ([response statusCode] == 403) {
+        msg = @"Please register or log in!";
+    } else if ([response statusCode] == 0) {
+        msg = @"No Internet connection!";
+    }
+    
+    
+    [ErrorHandler showAlertWithTitle:nil message:msg];
+}
+
+
++ (void)showAlertWithTitle:(NSString *) title message:(NSString *) message {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+}
+
 @end

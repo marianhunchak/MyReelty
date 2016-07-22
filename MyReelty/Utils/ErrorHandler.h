@@ -14,4 +14,7 @@
 +(NSString *)handleCommentError:(NSError *) error;
 +(NSString *)handleSignError:(NSError *) error;
 +(NSString *)handleResetPassError:(NSError *) error;
++ (void)handleFlaggingError:(NSError *) error;
++ (void)showAlertWithTitle:(NSString *) title message:(NSString *) message;
+
 @end

@@ -156,8 +156,16 @@
          } else if (result.isCancelled) {
              NSLog(@"Cancelled");
          } else {
+             
+             SAMHUDView *hd = [[SAMHUDView alloc] initWithTitle:@"Authorization..." loading:YES];
+             
+             [hd show];
+             
              [Network signInWhithFacebookToken:result.token.tokenString WithCompletion:^(NSDictionary *array, NSError *error) {
-                 if (!error) {  
+                 if (!error) {
+                     
+                     [hd completeAndDismissWithTitle:@"Authorized"];
+                     
                      NSDictionary *dict = [array objectForKey:@"authentication_token"];
                      [[NSUserDefaults standardUserDefaults] setObject:dict[@"content"] forKey:ACCESS_TOKEN_DICT_KEY];
                      [[NSUserDefaults standardUserDefaults] synchronize];
@@ -173,6 +181,8 @@
                      [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
                      
                      [[NSNotificationCenter defaultCenter] postNotificationName:USER_DID_LOG_IN object:nil];
+                 } else {
+                     [hd failQuicklyWithTitle:[error localizedDescription]];
                  }
              }];
              

@@ -208,6 +208,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
     [self updateReviewInfo:[sender object]];
 }
 - (void)updateReviewInfo:(Review *)lReview {
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id_==%@",lReview.id_];
     
     NSArray *lArray = [self.reviews filteredArrayUsingPredicate:predicate];

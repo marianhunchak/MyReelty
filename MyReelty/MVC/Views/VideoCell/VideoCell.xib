@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -28,54 +29,64 @@
                         <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Klg-R1-Gwl">
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Klg-R1-Gwl">
                         <rect key="frame" x="0.0" y="0.0" width="458" height="180"/>
                     </imageView>
                     <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8a-oo-JSH">
                         <rect key="frame" x="398" y="0.0" width="60" height="180"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaH-76-2hG">
-                                <rect key="frame" x="0.0" y="8" width="60" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaH-76-2hG">
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="45"/>
                                 <state key="normal" image="likeButton"/>
                                 <state key="selected" image="likeButton(Active)"/>
                                 <connections>
                                     <action selector="likeBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="QPk-7u-rHw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7w-gz-JcI">
-                                <rect key="frame" x="0.0" y="122" width="60" height="57"/>
-                                <state key="normal" image="shareButton"/>
-                                <state key="selected" image="shareButton(Active)"/>
-                                <connections>
-                                    <action selector="shareBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IYE-SQ-6cR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgh-0N-t6Y">
-                                <rect key="frame" x="0.0" y="65" width="60" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgh-0N-t6Y">
+                                <rect key="frame" x="0.0" y="45" width="60" height="45"/>
                                 <state key="normal" image="bookmarkButton"/>
                                 <state key="selected" image="bookmarkButton(Active)"/>
                                 <connections>
                                     <action selector="bookmarkBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6jG-ry-sZv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7w-gz-JcI">
+                                <rect key="frame" x="0.0" y="90" width="60" height="45"/>
+                                <state key="normal" image="shareButton"/>
+                                <state key="selected" image="shareButton(Active)"/>
+                                <connections>
+                                    <action selector="shareBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IYE-SQ-6cR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1P-rt-FMS">
+                                <rect key="frame" x="0.0" y="135" width="60" height="45"/>
+                                <state key="normal" image="flag"/>
+                                <state key="selected" image="flag(Active)"/>
+                                <connections>
+                                    <action selector="flagVideoBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Zaj-C9-v2v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="XaH-76-2hG" firstAttribute="height" secondItem="Wgh-0N-t6Y" secondAttribute="height" id="6We-VI-VOK"/>
-                            <constraint firstAttribute="trailing" secondItem="XaH-76-2hG" secondAttribute="trailing" id="Gg2-AO-VtG"/>
-                            <constraint firstItem="Wgh-0N-t6Y" firstAttribute="leading" secondItem="s8a-oo-JSH" secondAttribute="leading" id="J6S-6k-WPO"/>
+                            <constraint firstItem="XaH-76-2hG" firstAttribute="height" secondItem="Wgh-0N-t6Y" secondAttribute="height" id="9Ls-U9-GIk"/>
+                            <constraint firstItem="R1P-rt-FMS" firstAttribute="top" secondItem="C7w-gz-JcI" secondAttribute="bottom" id="9MI-m8-tWY"/>
+                            <constraint firstItem="Wgh-0N-t6Y" firstAttribute="leading" secondItem="s8a-oo-JSH" secondAttribute="leading" id="ErX-2A-Qog"/>
+                            <constraint firstItem="XaH-76-2hG" firstAttribute="height" secondItem="s8a-oo-JSH" secondAttribute="height" multiplier="0.25" id="I7m-5d-OHO"/>
                             <constraint firstAttribute="width" constant="60" id="L7E-ph-EsD"/>
-                            <constraint firstAttribute="trailing" secondItem="C7w-gz-JcI" secondAttribute="trailing" id="SFo-go-ngx"/>
-                            <constraint firstItem="XaH-76-2hG" firstAttribute="leading" secondItem="s8a-oo-JSH" secondAttribute="leading" id="VzW-eg-bWF"/>
-                            <constraint firstItem="XaH-76-2hG" firstAttribute="top" secondItem="s8a-oo-JSH" secondAttribute="top" id="bMN-xI-Ned"/>
-                            <constraint firstItem="C7w-gz-JcI" firstAttribute="top" secondItem="Wgh-0N-t6Y" secondAttribute="bottom" id="eFa-mE-Veu"/>
-                            <constraint firstAttribute="trailing" secondItem="Wgh-0N-t6Y" secondAttribute="trailing" id="hH9-G0-a3P"/>
-                            <constraint firstItem="Wgh-0N-t6Y" firstAttribute="top" secondItem="XaH-76-2hG" secondAttribute="bottom" id="iUN-3i-wuC"/>
-                            <constraint firstItem="Wgh-0N-t6Y" firstAttribute="top" secondItem="XaH-76-2hG" secondAttribute="bottom" id="jj5-0o-46o"/>
-                            <constraint firstAttribute="bottom" secondItem="C7w-gz-JcI" secondAttribute="bottom" constant="1" id="q8G-yi-2x4"/>
-                            <constraint firstItem="C7w-gz-JcI" firstAttribute="leading" secondItem="s8a-oo-JSH" secondAttribute="leading" id="s9o-qA-4El"/>
-                            <constraint firstItem="C7w-gz-JcI" firstAttribute="top" secondItem="Wgh-0N-t6Y" secondAttribute="bottom" id="t0W-w5-xGO"/>
-                            <constraint firstItem="Wgh-0N-t6Y" firstAttribute="height" secondItem="C7w-gz-JcI" secondAttribute="height" id="yyg-uZ-7ZZ"/>
+                            <constraint firstAttribute="trailing" secondItem="R1P-rt-FMS" secondAttribute="trailing" id="OSv-XN-tKP"/>
+                            <constraint firstItem="Wgh-0N-t6Y" firstAttribute="top" secondItem="XaH-76-2hG" secondAttribute="bottom" id="P70-zJ-pi2"/>
+                            <constraint firstItem="C7w-gz-JcI" firstAttribute="height" secondItem="R1P-rt-FMS" secondAttribute="height" id="WAL-cY-6X9"/>
+                            <constraint firstItem="C7w-gz-JcI" firstAttribute="leading" secondItem="s8a-oo-JSH" secondAttribute="leading" id="bin-TQ-qgN"/>
+                            <constraint firstItem="XaH-76-2hG" firstAttribute="leading" secondItem="s8a-oo-JSH" secondAttribute="leading" id="cJM-JF-6Nj"/>
+                            <constraint firstItem="C7w-gz-JcI" firstAttribute="top" secondItem="Wgh-0N-t6Y" secondAttribute="bottom" id="cgc-Xe-MKV"/>
+                            <constraint firstItem="Wgh-0N-t6Y" firstAttribute="height" secondItem="C7w-gz-JcI" secondAttribute="height" id="cn9-dG-RaW"/>
+                            <constraint firstItem="R1P-rt-FMS" firstAttribute="leading" secondItem="s8a-oo-JSH" secondAttribute="leading" id="eFb-3V-ofT"/>
+                            <constraint firstItem="XaH-76-2hG" firstAttribute="top" secondItem="s8a-oo-JSH" secondAttribute="top" id="eQT-Ub-T51"/>
+                            <constraint firstAttribute="trailing" secondItem="Wgh-0N-t6Y" secondAttribute="trailing" id="myK-4O-RlS"/>
+                            <constraint firstAttribute="trailing" secondItem="XaH-76-2hG" secondAttribute="trailing" id="otr-c8-hs6"/>
+                            <constraint firstAttribute="trailing" secondItem="C7w-gz-JcI" secondAttribute="trailing" id="ywa-I0-Jem"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYf-qa-xcM">
@@ -143,6 +154,7 @@
             <connections>
                 <outlet property="addressLabel" destination="gwO-Ig-Gy8" id="kHW-My-pyX"/>
                 <outlet property="bookmarkButton" destination="Wgh-0N-t6Y" id="97V-IC-fu7"/>
+                <outlet property="flagVideoButton" destination="R1P-rt-FMS" id="icb-mL-Q4Y"/>
                 <outlet property="likeButton" destination="XaH-76-2hG" id="UDw-8j-a08"/>
                 <outlet property="poupMenu" destination="s8a-oo-JSH" id="nFw-sx-x3E"/>
                 <outlet property="priceLabel" destination="l6S-Pn-tYD" id="aVz-Te-9As"/>
@@ -157,6 +169,8 @@
     <resources>
         <image name="bookmarkButton" width="12" height="20"/>
         <image name="bookmarkButton(Active)" width="25" height="25"/>
+        <image name="flag" width="22" height="22"/>
+        <image name="flag(Active)" width="23" height="23"/>
         <image name="likeButton" width="23" height="20"/>
         <image name="likeButton(Active)" width="25" height="25"/>
         <image name="poupMenu" width="32" height="32"/>

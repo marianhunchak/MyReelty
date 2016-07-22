@@ -19,6 +19,7 @@
 #import "AddCommentViewController.h"
 #import "NSDictionary+Accessors.h"
 #import "NSString+ValidateValue.h"
+#import "FlaggingVideo.h"
 
 static NSString *CellIdentifier = @"likeCell";
 static NSString *footerIdentifier = @"customFooter";
@@ -49,6 +50,8 @@ static NSString *footerIdentifier = @"customFooter";
 @property (assign, nonatomic) BOOL isLoadingMoreLikes;
 @property (assign, nonatomic) BOOL isLoadingMoreComments;
 
+@property (strong, nonatomic) UIBarButtonItem *flagVideoButton;
+
 @property (strong, nonatomic) AVPlayerViewController *playerVC;
 
 - (IBAction)tabLikeBtnPressed:(UIButton *)sender;
@@ -71,16 +74,29 @@ static NSString *footerIdentifier = @"customFooter";
     if (self.reiew.liked) {
         [likeBtn setImage:[UIImage imageNamed:@"likeButton(Active)"]];
     }
-    UIBarButtonItem *bookmarkBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"bookmarkButton"] style:UIBarButtonItemStylePlain target:self action:@selector(bookmarkBtnPressed:)];
+    UIBarButtonItem *bookmarkBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"bookmarkButton"]
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(bookmarkBtnPressed:)];
     if (self.reiew.bookmarked) {
         [bookmarkBtn setImage:[UIImage imageNamed:@"bookmarkButton(Active)"]];
     }
-    UIBarButtonItem *shareBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"shareButton"] style:UIBarButtonItemStylePlain target:self action:@selector(shareBtnPressed:)];
     
-    self.navigationItem.rightBarButtonItems = @[shareBtn, bookmarkBtn, likeBtn];
+    UIBarButtonItem *shareBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"shareButton"]
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(shareBtnPressed:)];
     
-//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(showPopViewController)];
-//    self.navigationItem.leftBarButtonItem = backButton;
+    
+    NSString *imageName = self.reiew.complained ? @"flag(Active)" : @"flag";
+    
+    _flagVideoButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageName]
+                                                                        style:UIBarButtonItemStylePlain
+                                                                       target:self
+                                                                       action:@selector(flagVideoBtnPressed:)];
+    
+    self.navigationItem.rightBarButtonItems = @[_flagVideoButton, shareBtn, bookmarkBtn, likeBtn];
+    
     self.likesList = [NSMutableArray array];
     self.commentsList = [NSMutableArray array];
     
@@ -98,11 +114,17 @@ static NSString *footerIdentifier = @"customFooter";
     
     _allowLoadMoreLikes = YES;
     _allowLoadMoreComments = YES;
+   
     
-
-//     AppDelegate *app = [[ AppDelegate alloc] init];
-//                app = [UIApplication sharedApplication].delegate;
-//                app.enableAllOrientation = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hanledFlaginVideo:) name:USER_DID_FLAG_VIDEO object:nil];
+    
+    [Network getReviewForId:_reiew.id_ WithCompletion:^(id object, NSError *error) {
+        if (object) {
+            self.reiew = object;
+            _footer.review = object;
+            [self.tableView reloadData];
+        }
+    }];
 
 }
 
@@ -267,6 +289,23 @@ static NSString *footerIdentifier = @"customFooter";
         [self showAlertWithMessage:@"No Internet connection!" handler:nil];
     }
     
+}
+
+- (void) flagVideoBtnPressed:(UIBarButtonItem *) sender {
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN_DICT_KEY]) {
+        
+        [ErrorHandler showAlertWithTitle:@"Warning" message:@"Please register or login"];
+        
+    } else  if (_reiew.complained) {
+        
+        [ErrorHandler showAlertWithTitle:@"Warning" message:@"Can report only once per review"];
+        
+    } else {
+        
+        [[FlaggingVideo sharedInstance] flagVideoWithReviewID:[_reiew.id_ integerValue]];
+        
+    }
 }
 
 - (void) handleTapGesture:(UITapGestureRecognizer *) sender {
@@ -738,4 +777,12 @@ static NSString *footerIdentifier = @"customFooter";
 
        }
     }
+
+#pragma mark - Notifications 
+
+- (void)hanledFlaginVideo:(NSNotification *) notification {
+    
+    _flagVideoButton.image = [UIImage imageNamed:@"flag(Active)"];
+}
+
 @end

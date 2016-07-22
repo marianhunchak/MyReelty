@@ -135,76 +135,11 @@
         pageNumber = 1;
     }
     
-    if (filter) {
-        
-        NSString *propertyType = @"";
-        switch (filter.typeOfProperty) {
-            case 0:
-                propertyType  = [NSString stringWithFormat:@"&property_type=%@", @"House"];
-                break;
-            case 1:
-                propertyType  = [NSString stringWithFormat:@"&property_type=%@",@"Condo"];
-                break;
-            case 2:
-                propertyType  = [NSString stringWithFormat:@"&property_type=%@",@"Townhouse"];
-                break;
-            case 3:
-                propertyType  = [NSString stringWithFormat:@"&property_type=%@",@"Other"];
-                break;
-                
-            default:
-                break;
-        }
-        
-        NSString *beds = @"";
-        
-        if (filter.beds != 0 && filter.beds!=5) {
-            beds = [NSString stringWithFormat:@"&beds=%lu", filter.beds];
-        } else {
-            beds = [NSString stringWithFormat:@"&beds_from=%lu", filter.beds];
-        }
-        
-        NSString *baths = @"";
-        
-        if (filter.baths != 0 && filter.baths!=5) {
-            baths = [NSString stringWithFormat:@"&baths=%lu", filter.baths];
-        } else {
-            baths = [NSString stringWithFormat:@"&baths_from=%lu", filter.baths];
-        }
-        
-        NSString *availability = @"";
-        if (filter.onTheMarket || filter.offTheMarket) {
-            availability = [NSString stringWithFormat:@"&availability=%@", filter.onTheMarket ? @"true" : @"false"];
-        }
-        
-        NSString *price_from = @"";
-        if (!(filter.priceMin <= 50000)) {
-            price_from = [NSString stringWithFormat:@"&price_from=%lu", filter.priceMin];
-        } else {
-             price_from = [NSString stringWithFormat:@"&price_from=%i", 0];
-        }
-        
-        NSString *price_to = @"";
-        if (filter.priceMax != 10000000) {
-            price_to = [NSString stringWithFormat:@"&price_to=%lu", filter.priceMax];
-        }
-        
-        NSString *size_from = @"";
-        if (filter.sizeMin != 500) {
-            size_from = [NSString stringWithFormat:@"&square_from=%lu", filter.sizeMin];
-        }
-        
-        NSString *size_to = @"";
-        if (filter.sizeMax != 3000) {
-            size_to = [NSString stringWithFormat:@"&square_to=%lu", filter.sizeMax];
-        }
-        
-        requestType = [requestType stringByAppendingString:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@",propertyType, beds, baths, availability, price_from, price_to, size_from, size_to]];
+    if (!address) {
+        return;
     }
     
-    
-    NSString *range = [NSString stringWithFormat:@"&range=50"];
-    NSString *requestString = [NSString stringWithFormat:@"api/reviews/nearest?address=%@%@%@", address,range, requestType];
+    NSString *requestString = [NSString stringWithFormat:@"api/reviews/nearest?address=%@%@", address, [Network getUrlParametersWhithFilters:filter]];
     
     [[Network manager] GET:requestString parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
@@ -598,5 +533,31 @@
             return nil;
         }
     }
+
+#pragma mark - Flag Video
+
++ (void)reportVideoWithRevievID:(NSInteger) reviewID reasonString:(NSString *) reason WithCompletion: (DictCompletionBlock)completionBlock {
+    
+    NSDictionary *params = @{
+                             @"inappropriate":
+                                 @{
+                                     @"reason": reason,
+                                     @"comment": @""
+                                     }
+                             };
+    
+    NSString *requestString = [NSString stringWithFormat:@"/api/reviews/%lu/inappropriates", (long) reviewID];
+    
+    [[Network manager] POST:requestString parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        completionBlock(responseObject, nil);
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completionBlock(nil, error);
+        
+        NSLog(@"err: %@", [[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
+    }];
+    
+}
 
 @end

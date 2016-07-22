@@ -89,6 +89,7 @@
 		58FA8C991C73E90A00591F5A /* HCMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA8C801C73E90A00591F5A /* HCMapAnnotation.m */; };
 		58FA8CA01C73E90A00591F5A /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA8C921C73E90A00591F5A /* VideoCell.m */; };
 		58FA8CA11C73E90A00591F5A /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58FA8C931C73E90A00591F5A /* VideoCell.xib */; };
+		8438C78A1D42209800FBB97F /* FlaggingVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438C7891D42209800FBB97F /* FlaggingVideo.m */; };
 		844E659E1C7F193600CFD186 /* ProfileCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E659C1C7F193600CFD186 /* ProfileCellTableViewCell.m */; };
 		844E659F1C7F193600CFD186 /* ProfileCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844E659D1C7F193600CFD186 /* ProfileCellTableViewCell.xib */; };
 		844E65A21C7F323900CFD186 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E65A11C7F323900CFD186 /* Profile.m */; };
@@ -253,6 +254,8 @@
 		58FA8C921C73E90A00591F5A /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
 		58FA8C931C73E90A00591F5A /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
 		7B1D3B9F3BF1CDBD0AA2CEB8 /* Pods-MyReelty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyReelty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyReelty/Pods-MyReelty.debug.xcconfig"; sourceTree = "<group>"; };
+		8438C7881D42209800FBB97F /* FlaggingVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlaggingVideo.h; sourceTree = "<group>"; };
+		8438C7891D42209800FBB97F /* FlaggingVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlaggingVideo.m; sourceTree = "<group>"; };
 		844E659B1C7F193600CFD186 /* ProfileCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileCellTableViewCell.h; path = ../Controllers/ProfileViewController/ProfileCellTableViewCell.h; sourceTree = "<group>"; };
 		844E659C1C7F193600CFD186 /* ProfileCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileCellTableViewCell.m; path = ../Controllers/ProfileViewController/ProfileCellTableViewCell.m; sourceTree = "<group>"; };
 		844E659D1C7F193600CFD186 /* ProfileCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileCellTableViewCell.xib; path = ../Controllers/ProfileViewController/ProfileCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -720,6 +723,8 @@
 				58FA8C421C73E56D00591F5A /* Accessors */,
 				58FA8C451C73E56D00591F5A /* Dynamic search */,
 				58FA8C521C73E56D00591F5A /* Reveal View Controller */,
+				8438C7881D42209800FBB97F /* FlaggingVideo.h */,
+				8438C7891D42209800FBB97F /* FlaggingVideo.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1083,7 +1088,7 @@
 				TargetAttributes = {
 					84A755761C5A09D5000DD719 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = UYNA956A2N;
+						DevelopmentTeam = 327RWWLVED;
 					};
 				};
 			};
@@ -1236,6 +1241,7 @@
 				560757131C84C4A80017EBC9 /* SignInViewController.m in Sources */,
 				58FA8C951C73E90A00591F5A /* DiscoveryViewController.m in Sources */,
 				58FA8C971C73E90A00591F5A /* MapViewController.m in Sources */,
+				8438C78A1D42209800FBB97F /* FlaggingVideo.m in Sources */,
 				58FA8C991C73E90A00591F5A /* HCMapAnnotation.m in Sources */,
 				56BBD9481CA14472000961E0 /* FBQuadTreeNode.m in Sources */,
 				56E52EA61CAD2475000530C1 /* NSString+EncodeString.m in Sources */,
@@ -1315,7 +1321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
@@ -1355,7 +1361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1378,7 +1384,7 @@
 				INFOPLIST_FILE = MyReelty/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myreelty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midgets.myreelty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1398,7 +1404,7 @@
 				INFOPLIST_FILE = MyReelty/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.myreelty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midgets.myreelty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

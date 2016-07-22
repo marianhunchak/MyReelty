@@ -435,6 +435,16 @@ BOOL needToHide = YES;
             createLabel = YES;
         } else {
             label = getLable(annotationView);
+            FBAnnotationCluster *cluster = (FBAnnotationCluster *)annotation;
+            if ([cluster.annotations count] >= 100 ) {
+                
+                label.frame = CGRectMake(label.frame.origin.x,
+                                         label.frame.origin.y,
+                                         27.f, 27.f);
+                
+            } else {
+                 label.frame = CGRectMake(0, 0, 25.f, 25.f);
+            }
             label.hidden = NO;
             createLabel = label == nil;
         }
@@ -459,6 +469,12 @@ BOOL needToHide = YES;
         }
         FBAnnotationCluster *cluster = (FBAnnotationCluster *)annotation;
         label.text = [NSString stringWithFormat:@"%lu", [cluster.annotations count]];
+        if ([cluster.annotations count] >= 100 ) {
+            
+            label.frame = CGRectMake(0, 0, 27.f, 27.f);
+            
+        }
+        
         annotationView.frame = label.frame;
         annotationView.image = nil;
         

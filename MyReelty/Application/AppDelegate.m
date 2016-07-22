@@ -11,6 +11,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import <MagicalRecord/MagicalRecord+ShorthandMethods.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 @interface AppDelegate ()
 
 @end

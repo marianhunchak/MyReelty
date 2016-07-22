@@ -11,8 +11,8 @@
 //#ifdef DEBUG
 //static NSString *mainURL = @"http://test.myreelty.com";
 //#else 
-static NSString *mainURL = @"http://myreelty.com";
+static NSString *mainURL = @"http://162.243.77.207";
 //#endif
-static CGFloat koeficientForCellHeight = 248.f / 375.f;
+static CGFloat koeficientForCellHeight = 3.f / 4.f;
 
 #endif

@@ -31,6 +31,7 @@
 @property (nonatomic, copy) NSDictionary *user;
 @property (nonatomic, assign) BOOL bookmarked;
 @property (nonatomic, assign) BOOL liked;
+@property (nonatomic, assign) BOOL complained;
 @property (nonatomic, copy) NSString *visits_count;
 @property (nonatomic, copy) NSString *thumb_url;
 

@@ -13,7 +13,7 @@
 #import "Review.h"
 #import "DBProfile.h"
 
-#define REVIEWS_PAGE_SIZE 25
+#define REVIEWS_PAGE_SIZE 10
 
 @class SearchFilter;
 @interface Network : NSObject
@@ -53,4 +53,7 @@
 
 
 + (void) updateUserProfile:(NSDictionary *) pDictionary;
+
++ (void)reportVideoWithRevievID:(NSInteger) reviewID reasonString:(NSString *) reason WithCompletion: (DictCompletionBlock)completionBlock; 
+
 @end

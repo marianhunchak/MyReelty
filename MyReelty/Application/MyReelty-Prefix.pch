@@ -21,6 +21,7 @@
 #define LOG_OUT_BUTTON_PRESSED @"logout_button_pressed"
 #define USER_DID_LOG_IN @"user_did_log_in"
 #define PROFILE_AVATAR_DID_LOADED @"profile_avatar_did_loaded"
+#define USER_DID_FLAG_VIDEO @"user_did_flag_video"
 //notification keys
 #define CLASS_NAME @"class_name"
 
