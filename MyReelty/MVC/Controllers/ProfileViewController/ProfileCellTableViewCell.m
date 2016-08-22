@@ -12,7 +12,7 @@
 #import "Network+Processing.h"
 #import "NSString+ValidateValue.h"
 
-#define BASE_CELL_HEIGHT 130.f
+#define BASE_CELL_HEIGHT 100.f
 
 @interface ProfileCellTableViewCell ()
 

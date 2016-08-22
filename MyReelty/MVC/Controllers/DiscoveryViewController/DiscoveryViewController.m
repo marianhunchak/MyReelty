@@ -229,24 +229,4 @@ static NSString * const reuseIdentifier = @"reviewCell";
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    if (self.isLoadingData || !self.allowLoadData || !self.allowLoadMore) {
-        return;
-    }
-    
-    CGFloat height = scrollView.frame.size.height;
-    CGFloat contentYoffset = scrollView.contentOffset.y;
-    
-    CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
-    
-    if(distanceFromBottom <= 2 * height) {
-        self.isLoadingMore = YES;
-        self.isLoadingData = YES;
-        
-        [self showLoadMoreProgress:YES];
-        [self loadDataMore:YES];
-    }
-}
-
 @end

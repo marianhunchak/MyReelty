@@ -583,7 +583,6 @@
                     <connections>
                         <segue destination="bGj-jq-TRN" kind="relationship" relationship="viewControllers" id="TTn-5z-1Ky"/>
                         <segue destination="ldu-rC-djC" kind="relationship" relationship="viewControllers" id="VUd-JK-bNQ"/>
-                        <segue destination="1sM-jS-e3k" kind="relationship" relationship="viewControllers" id="zjB-it-V93"/>
                         <segue destination="Fxp-KP-8Tt" kind="relationship" relationship="viewControllers" id="KuH-PC-aMN"/>
                     </connections>
                 </tabBarController>
@@ -820,7 +819,7 @@ They will be saved here.</string>
         <!--Options Table Controller-->
         <scene sceneID="t6p-Nv-6du">
             <objects>
-                <tableViewController id="P9W-UW-S3n" customClass="OptionsTableController" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="P9W-UW-S3n" customClass="OptionsTableController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="qLV-16-AJz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1241,7 +1240,7 @@ MODIFICATION: This Agreement may not be modified except by a revised Terms of Se
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6fB-Oy-HTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2324" y="5858"/>
+            <point key="canvasLocation" x="2332" y="5949"/>
         </scene>
         <!--Profile-->
         <scene sceneID="xaj-y2-9VK">
@@ -1263,27 +1262,6 @@ MODIFICATION: This Agreement may not be modified except by a revised Terms of Se
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzV-dd-BMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-72" y="5119"/>
-        </scene>
-        <!--Bookmarks-->
-        <scene sceneID="Ch1-LD-ybl">
-            <objects>
-                <navigationController storyboardIdentifier="BookmarksNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1sM-jS-e3k" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="Bookmarks" image="bookmarks" selectedImage="bookmarks(Active)" id="bg4-Gs-wC7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="52O-4N-rxh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="v0c-2P-lpZ" kind="relationship" relationship="rootViewController" id="RPb-ny-AQa"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0eL-0S-U62" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-72" y="4238"/>
         </scene>
         <!--Sign View Controller-->
         <scene sceneID="leT-5L-ce6">
@@ -1788,8 +1766,6 @@ to upload and comment videos</string>
     </scenes>
     <resources>
         <image name="Search(Active)" width="24" height="24"/>
-        <image name="bookmarks" width="14" height="24"/>
-        <image name="bookmarks(Active)" width="14" height="24"/>
         <image name="bookmarksEmpty" width="110" height="120"/>
         <image name="check_mark_off" width="24" height="24"/>
         <image name="check_mark_on" width="24" height="24"/>
@@ -1809,6 +1785,5 @@ to upload and comment videos</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZIj-zs-cHy"/>
-        <segue reference="RPb-ny-AQa"/>
     </inferredMetricsTieBreakers>
 </document>

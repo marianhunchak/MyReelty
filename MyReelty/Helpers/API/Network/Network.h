@@ -29,7 +29,7 @@
 
 + (void)createBookmarkForReviewID: (NSString *)Id WithCompletion:(ObjectCompletionBlock)complitionBlock;
 + (void)deleteBookmarkForReviewID: (NSString *)Id WithCompletion:(ObjectCompletionBlock)complitionBlock;
-+ (void)listBookmarkedReviewsLoadMore:(BOOL)loadMore WithCompletion:(ArrayCompletionBlock)completionBlock;
++ (void)listBookmarkedReviewsLoadMore:(BOOL)loadMore WithCompletion:(DictCompletionBlock)completionBlock;
 
 + (void)signIn:(DBProfile *)profile WithCompletion: (DictCompletionBlock)completionBlock;
 + (void)signUp:(DBProfile *)profile WhithCompletion: (ObjectCompletionBlock)completionBlock;
@@ -52,7 +52,7 @@
 + (void)sendMessageWithEmail:(NSString *) email WithCompletion: (DictCompletionBlock)completionBlock;
 
 
-+ (void) updateUserProfile:(NSDictionary *) pDictionary;
++ (void)updateUserProfile:(NSDictionary *) pDictionary;
 
 + (void)reportVideoWithRevievID:(NSInteger) reviewID reasonString:(NSString *) reason WithCompletion: (DictCompletionBlock)completionBlock; 
 

@@ -21,13 +21,20 @@
 
 #define SBSI_GO_TO_OPTIONS @"showOptions"
 
+
+typedef NS_ENUM(NSInteger, ListType) {
+    ListTypeUploads = 0,
+    ListTypeBookmarks = 1
+};
+
 @interface ProfileViewController () <UITabBarDelegate, TableCellDelegate> {
     CellFabric *_cellFabric;
 }
 @property (strong, nonatomic) NSMutableArray *accountReviews;
 @property (strong, nonatomic) DBProfile *profile;
 @property (strong, nonatomic) Page *page;
-
+@property (strong, nonatomic) UISegmentedControl *segmentControl;
+@property (assign, nonatomic) ListType listType;
 @end
 
 @implementation ProfileViewController
@@ -38,24 +45,37 @@
     _cellFabric = [[CellFabric alloc] initWithTV:self.tableView reuseID:@"ProfileCellTableViewCell"];
     [self.tableView registerNib: [UINib nibWithNibName:@"VideoCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     self.navigationController.navigationBar.barTintColor = navigationBarColor;
-    if (self.showCurrentUserProfile) {
-
-    __weak typeof(self)weakSelf = self;
     
-    [Network profileWithCompletion:^(id object, NSError *error) {
-        if (!error) {
-            weakSelf.profile = object;
-            [weakSelf.tableView reloadData];
-        }
-    }];
-    }
-}
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self action:@selector(reloadTableData) forControlEvents:UIControlEventValueChanged];
+    
+//    [self.refreshControl beginRefreshing];
+    
+    if (self.showCurrentUserProfile) {
+        
+        
+        _listType = ListTypeUploads;
+        _segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Uploads", @"Videobooks"]];
+        _segmentControl.tintColor = [UIColor redColor];
+        _segmentControl.selectedSegmentIndex = 0;
+        [_segmentControl addTarget:self action:@selector(segmentControlValueChanged:) forControlEvents:UIControlEventValueChanged];
 
-- (void)viewWillAppear:(BOOL)animated {
+        __weak typeof(self)weakSelf = self;
+        
+        [Network profileWithCompletion:^(id object, NSError *error) {
+            if (!error) {
+                weakSelf.profile = object;
+                [weakSelf.tableView reloadData];
+            }
+        }];
+    }
     
     self.allowLoadData = YES;
     [self reloadTableData];
     self.allowLoadMore = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     
     if (self.showCurrentUserProfile) {
         
@@ -73,16 +93,15 @@
                                                                    style:(UIBarButtonItemStylePlain)
                                                                   target:self
                                                                   action:@selector(showOptions)];
-        self.navigationItem.leftBarButtonItem = optionsBtn;
+        self.navigationItem.rightBarButtonItem = optionsBtn;
     } else {
         
         __weak typeof(self) weakSelf = self;
+        
         [Network profileForUserID:weakSelf.userID WithCompletion:^(id object, NSError *error) {
             if (!error) {
-                
                 weakSelf.profile = object;
                 [weakSelf.tableView reloadData];
-                
             }
         }];
         
@@ -117,7 +136,8 @@
     __weak typeof(self)weakSelf = self;
     
     void (^getReviews)(NSDictionary *, NSError *) = ^(NSDictionary *array, NSError *error) {
-        if (error == nil){
+        
+        if (error == nil) {
             
             NSArray *lArray = [array objectForKey:@"reviews"];
             if(weakSelf.isLoadingMore) {
@@ -139,6 +159,7 @@
             }
             weakSelf.allowLoadMore = [weakSelf.accountReviews count] < ((Page *)[array objectForKey:@"page"]).total_entries;
         }
+        [weakSelf.tableView reloadData];
         [weakSelf.refreshControl endRefreshing];
         
         weakSelf.isLoadingData = NO;
@@ -147,10 +168,20 @@
     };
     
     if (self.showCurrentUserProfile) {
-        [Network accountReviewsLoadMore:more WithCompletion:^(NSDictionary *array, NSError *error) {
+        
+        
+        if (_listType == ListTypeUploads) {
+            [Network accountReviewsLoadMore:more WithCompletion:^(NSDictionary *array, NSError *error) {
                 weakSelf.page = [array objectForKey:@"page"];
                 getReviews(array, error);
-        }];
+            }];
+        } else {
+            [Network listBookmarkedReviewsLoadMore:more WithCompletion:^(NSDictionary *array, NSError *error) {
+                weakSelf.page = [array objectForKey:@"page"];
+                getReviews(array, error);
+            }];
+        }
+        
     } else {
         [Network userReviewsForUserID:weakSelf.userID loadMore:more WithCompletion:^(NSDictionary *array, NSError *error) {
                weakSelf.page = [array objectForKey:@"page"];
@@ -164,27 +195,37 @@
 
 #pragma mark - Actions
 
-- (void) showOptions {
+- (void)showOptions {
     [self performSegueWithIdentifier:SBSI_GO_TO_OPTIONS sender:self];
 }
+
+- (void)segmentControlValueChanged:(UISegmentedControl *)sender {
+    
+    _listType = sender.selectedSegmentIndex;
+    
+    [self reloadTableData];
+    
+}
+
 #pragma mark - Table view data source
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;                                              //number of section in table
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
         return 1;
     else
         return _accountReviews.count;
 }
 
--(NSString* )tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0)
-        return nil;
+- (NSString* )tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if (section == 1 && !_showCurrentUserProfile)
+        return [NSString stringWithFormat:@"Uploads (%i)", (integer_t)_page.total_entries];
     else
-        return [NSString stringWithFormat:@"MY VIDEOS (%i)", (integer_t)_page.total_entries];
+        return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -199,7 +240,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-    ProfileCellTableViewCell *cell = [_cellFabric createCell:tableView idexPath:indexPath reuseID:@"ProfileCellTableViewCell" model:self.profile];
+        ProfileCellTableViewCell *cell = [_cellFabric createCell:tableView idexPath:indexPath reuseID:@"ProfileCellTableViewCell" model:self.profile];
         return cell;
     }
     
@@ -220,7 +261,7 @@
         VideoCell *cell = [tableView cellForRowAtIndexPath:self.previousIndexPath];
         cell.poupMenu.hidden = YES;
         self.previousIndexPath = nil;
-    }else {
+    } else {
         
         ReviewViewController *videoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ReviewViewController"];
         Review *review = [self.accountReviews objectAtIndex:indexPath.row];
@@ -228,6 +269,33 @@
         
         [self.navigationController pushViewController:videoVC animated:YES];
     }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+
+    if (section == 1 && _showCurrentUserProfile) {
+        
+        UIView *lBackView = [[UIView alloc] initWithFrame:CGRectMake(5.f, 0.f, tableView.frame.size.width - 10.f, 40.f)];
+        lBackView.backgroundColor = [UIColor whiteColor];
+        _segmentControl.frame = CGRectMake(lBackView.frame.origin.x,
+                                           lBackView.frame.origin.y,
+                                           lBackView.frame.size.width,
+                                           30.f);
+        _segmentControl.center = lBackView.center;
+        [lBackView addSubview:_segmentControl];
+        
+        return  lBackView;
+    }
+    
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 1 ) {
+        return 40.f;
+    }
+    
+    return 0.f;
 }
 
 #pragma mark - Notifications

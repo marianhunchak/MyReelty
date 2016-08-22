@@ -96,7 +96,7 @@
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         completionBlock(nil, error);
-        NSLog(@"err: %@", error);
+        NSLog(@"err: %@", [error localizedDescription]);
     }];
 }
 
@@ -154,7 +154,7 @@
     
 }
 
-+ (void)listBookmarkedReviewsLoadMore:(BOOL)loadMore WithCompletion:(ArrayCompletionBlock)completionBlock {
++ (void)listBookmarkedReviewsLoadMore:(BOOL)loadMore WithCompletion:(DictCompletionBlock)completionBlock {
     
     static int pageNumber = 1;
     

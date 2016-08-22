@@ -110,7 +110,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
--(BOOL) isInternetConnection
+- (BOOL) isInternetConnection
 {
     return [AFNetworkReachabilityManager sharedManager].reachable;
 }
@@ -245,7 +245,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (_isLoadingData || !_allowLoadData || !_allowLoadMore) {
+    if (_isLoadingData || !_allowLoadData || !_allowLoadMore || ![self isInternetConnection]) {
         return;
     }
     
@@ -254,7 +254,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
     
     CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
     
-    if(distanceFromBottom <= 2 * height) {
+    if(distanceFromBottom <= 2 * height && scrollView.contentSize.height >= self.view.frame.size.height) {
         _isLoadingMore = YES;
         _isLoadingData = YES;
         

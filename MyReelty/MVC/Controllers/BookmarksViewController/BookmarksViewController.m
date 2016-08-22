@@ -91,7 +91,7 @@ static NSString *CellIdentifier = @"Cell";
     
     [self.refreshControl beginRefreshing];
     __weak typeof(self)weakSelf = self;
-    [Network listBookmarkedReviewsLoadMore:loadMore WithCompletion:^(NSArray *array, NSError *error) {
+    [Network listBookmarkedReviewsLoadMore:loadMore WithCompletion:^(NSDictionary *array, NSError *error) {
         if (error == nil) {
             
             if ([array count] > 0) {
@@ -253,7 +253,7 @@ static NSString *CellIdentifier = @"Cell";
     [self.tableView endUpdates];
 }
 
--(void)reloadAllData:(NSNotification *) sender {
+- (void)reloadAllData:(NSNotification *) sender {
     if ([sender.name isEqualToString:LOG_OUT_BUTTON_PRESSED]) {
         
         self.bookmarkedReviews = nil;

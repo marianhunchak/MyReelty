@@ -25,14 +25,17 @@
     }
     return [NSArray arrayWithArray:lMutableReviews];
 }
-+ (NSArray *)parseBookmarkedReviews:(NSDictionary *)dict {
++ (NSDictionary *)parseBookmarkedReviews:(NSDictionary *)dict {
     NSMutableArray *lMutableReviews = [NSMutableArray new];
     NSArray *lReviews = [dict arrayForKey:@"bookmarks"];
     for (NSDictionary *reviewDict in lReviews) {
         Review *lReview = [Review reviewWithDict:[reviewDict objectForKey:@"review"]];
         [lMutableReviews addObject:lReview];
     }
-    return [NSArray arrayWithArray:lMutableReviews];
+    Page *lPage = [Page pagewWithDict:[dict dictionaryForKey:@"pagination"]];
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithArray:lMutableReviews], @"reviews",
+                                                                                         lPage, @"page",nil];
 }
 
 + (void)parseProfile:(NSDictionary *)dict {
