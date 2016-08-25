@@ -54,6 +54,8 @@
 
 + (void)updateUserProfile:(NSDictionary *) pDictionary;
 
-+ (void)reportVideoWithRevievID:(NSInteger) reviewID reasonString:(NSString *) reason WithCompletion: (DictCompletionBlock)completionBlock; 
++ (void)reportVideoWithRevievID:(NSInteger) reviewID reasonString:(NSString *) reason WithCompletion: (DictCompletionBlock)completionBlock;
+
++ (void)getPremiumReviewsWithConletion:(ArrayCompletionBlock)completionBlock;
 
 @end

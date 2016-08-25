@@ -925,6 +925,37 @@ They will be saved here.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="ZtX-kw-0gl">
+                            <rect key="frame" x="0.0" y="72" width="600" height="215"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-Ak-b5N">
+                                    <rect key="frame" x="206" y="160" width="188" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="188" id="j8z-wV-IT3"/>
+                                        <constraint firstAttribute="height" constant="44" id="kvn-u6-UbG"/>
+                                    </constraints>
+                                    <string key="text">You have no bookmarks.
+They will be saved here.</string>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmarksEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="iBc-wE-FFG">
+                                    <rect key="frame" x="245" y="26" width="110" height="120"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="120" id="6J0-fv-oc6"/>
+                                        <constraint firstAttribute="width" constant="110" id="Bf5-mW-bs2"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="d3s-Ak-b5N" firstAttribute="centerY" secondItem="ZtX-kw-0gl" secondAttribute="centerY" constant="74.5" id="2Tc-Oh-rym"/>
+                                <constraint firstItem="d3s-Ak-b5N" firstAttribute="centerX" secondItem="ZtX-kw-0gl" secondAttribute="centerX" id="GLy-zO-a63"/>
+                                <constraint firstItem="d3s-Ak-b5N" firstAttribute="top" secondItem="iBc-wE-FFG" secondAttribute="bottom" constant="14" id="PT2-GE-I9T"/>
+                                <constraint firstItem="iBc-wE-FFG" firstAttribute="centerX" secondItem="ZtX-kw-0gl" secondAttribute="centerX" id="UxR-zT-AHa"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="r4c-c0-Ry3">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
@@ -942,6 +973,7 @@ They will be saved here.</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Profile" id="zmW-3p-5bo"/>
                     <connections>
+                        <outlet property="noBookmarksView" destination="ZtX-kw-0gl" id="nBI-f2-JYE"/>
                         <outlet property="view" destination="ZQw-Nr-k8G" id="ksi-Vc-tOc"/>
                         <segue destination="P9W-UW-S3n" kind="show" identifier="showOptions" id="MIp-xv-dM5"/>
                     </connections>

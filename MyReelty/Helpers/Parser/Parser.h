@@ -15,5 +15,6 @@
 + (NSArray *)parsePins:(NSDictionary *)dict;
 + (void)parseProfile:(NSDictionary *)dict;
 + (NSDictionary *)parseReviewsWhithPagination:(NSDictionary *)dict;
++ (NSArray *)parseReviews:(NSDictionary *)dict withKey:(NSString *)key;
 
 @end

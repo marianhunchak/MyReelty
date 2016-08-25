@@ -195,6 +195,22 @@
 
 }
 
++ (void)getPremiumReviewsWithConletion:(ArrayCompletionBlock)completionBlock {
+    
+    [[Network manager] GET:@"/api/reviews/premium" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        NSArray *lNearestReviews = [Parser parseReviews:responseObject withKey:@"premiums"];
+        completionBlock(lNearestReviews, nil);
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completionBlock(nil, error);
+        
+        NSLog(@"err: %@", [[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
+        
+    }];
+    
+}
+
 #pragma mark - Bookmarks
 
 + (void)createBookmarkForReviewID: (NSString *)Id WithCompletion:(ObjectCompletionBlock)complitionBlock {

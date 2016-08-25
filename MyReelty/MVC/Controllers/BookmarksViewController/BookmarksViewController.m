@@ -168,6 +168,7 @@ static NSString *CellIdentifier = @"Cell";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (self.previousIndexPath) {
         VideoCell *cell = [tableView cellForRowAtIndexPath:self.previousIndexPath];
         cell.poupMenu.hidden = YES;
@@ -254,6 +255,7 @@ static NSString *CellIdentifier = @"Cell";
 }
 
 - (void)reloadAllData:(NSNotification *) sender {
+    
     if ([sender.name isEqualToString:LOG_OUT_BUTTON_PRESSED]) {
         
         self.bookmarkedReviews = nil;

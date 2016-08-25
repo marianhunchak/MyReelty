@@ -94,6 +94,13 @@
 		844E659F1C7F193600CFD186 /* ProfileCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844E659D1C7F193600CFD186 /* ProfileCellTableViewCell.xib */; };
 		844E65A21C7F323900CFD186 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E65A11C7F323900CFD186 /* Profile.m */; };
 		844E65A61C7F381A00CFD186 /* CellFabric.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E65A51C7F381A00CFD186 /* CellFabric.m */; };
+		8473E6DD1D6EF38F00DDF60C /* PremiumReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473E6DC1D6EF38F00DDF60C /* PremiumReview.m */; };
+		8473E6E61D6F15DE00DDF60C /* PremiumVideoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473E6E51D6F15DE00DDF60C /* PremiumVideoCollectionView.m */; };
+		8473E6E91D6F161B00DDF60C /* PremiumVideoCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8473E6E81D6F161B00DDF60C /* PremiumVideoCollectionView.xib */; };
+		8473E6EE1D6F16C000DDF60C /* PremiumVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473E6EC1D6F16C000DDF60C /* PremiumVideoCell.m */; };
+		8473E6EF1D6F16C000DDF60C /* PremiumVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8473E6ED1D6F16C000DDF60C /* PremiumVideoCell.xib */; };
+		8473E6F21D6F467300DDF60C /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8473E6F01D6F467300DDF60C /* play_button.png */; };
+		8473E6F31D6F467300DDF60C /* main_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8473E6F11D6F467300DDF60C /* main_logo.png */; };
 		8494ED8C1C83D53200106069 /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8494ED8B1C83D53200106069 /* FiltersViewController.m */; };
 		84B8DB6B1C8450D100626575 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8DB6A1C8450D100626575 /* SearchViewController.m */; };
 		84E75AB61C60EF050082B01E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E75AB51C60EF050082B01E /* MapKit.framework */; };
@@ -263,6 +270,16 @@
 		844E65A11C7F323900CFD186 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Profile.m; path = Profile/Profile.m; sourceTree = "<group>"; };
 		844E65A41C7F381A00CFD186 /* CellFabric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellFabric.h; sourceTree = "<group>"; };
 		844E65A51C7F381A00CFD186 /* CellFabric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellFabric.m; sourceTree = "<group>"; };
+		8473E6DB1D6EF38F00DDF60C /* PremiumReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PremiumReview.h; sourceTree = "<group>"; };
+		8473E6DC1D6EF38F00DDF60C /* PremiumReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PremiumReview.m; sourceTree = "<group>"; };
+		8473E6E41D6F15DE00DDF60C /* PremiumVideoCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PremiumVideoCollectionView.h; sourceTree = "<group>"; };
+		8473E6E51D6F15DE00DDF60C /* PremiumVideoCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PremiumVideoCollectionView.m; sourceTree = "<group>"; };
+		8473E6E81D6F161B00DDF60C /* PremiumVideoCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PremiumVideoCollectionView.xib; sourceTree = "<group>"; };
+		8473E6EB1D6F16C000DDF60C /* PremiumVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PremiumVideoCell.h; sourceTree = "<group>"; };
+		8473E6EC1D6F16C000DDF60C /* PremiumVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PremiumVideoCell.m; sourceTree = "<group>"; };
+		8473E6ED1D6F16C000DDF60C /* PremiumVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PremiumVideoCell.xib; sourceTree = "<group>"; };
+		8473E6F01D6F467300DDF60C /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
+		8473E6F11D6F467300DDF60C /* main_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_logo.png; sourceTree = "<group>"; };
 		8494ED8A1C83D53200106069 /* FiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FiltersViewController.h; path = FiltersViewController/FiltersViewController.h; sourceTree = "<group>"; };
 		8494ED8B1C83D53200106069 /* FiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FiltersViewController.m; path = FiltersViewController/FiltersViewController.m; sourceTree = "<group>"; };
 		84A755771C5A09D5000DD719 /* MyReelty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyReelty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -629,6 +646,8 @@
 		58FA8B9B1C73D76900591F5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8473E6F01D6F467300DDF60C /* play_button.png */,
+				8473E6F11D6F467300DDF60C /* main_logo.png */,
 				564912A51CDB9CD50094B4D0 /* avatar.jpg */,
 				58FA8BE31C73DA6100591F5A /* Assets.xcassets */,
 				58FA8B9C1C73D76900591F5A /* images */,
@@ -895,6 +914,7 @@
 		58FA8C7D1C73E90A00591F5A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8473E6DE1D6F0E9C00DDF60C /* PremiumReview */,
 				56564A551CBD42A300598A66 /* Page */,
 				566605381CB29255001F9AFB /* Pin */,
 				586751631C8466B500747269 /* DB */,
@@ -922,6 +942,8 @@
 		58FA8C811C73E90A00591F5A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8473E6E71D6F15EA00DDF60C /* PremiumCollectionView */,
+				8473E6EA1D6F169400DDF60C /* PremiumVideoCell */,
 				56564A2E1CBC690800598A66 /* PinInfoCollectionCell */,
 				560A0C1C1C8F06450080E3C8 /* PinReviewInfoView */,
 				56627D7C1C8AE0A700BED139 /* CustomFooterView */,
@@ -949,6 +971,35 @@
 				844E65A11C7F323900CFD186 /* Profile.m */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		8473E6DE1D6F0E9C00DDF60C /* PremiumReview */ = {
+			isa = PBXGroup;
+			children = (
+				8473E6DB1D6EF38F00DDF60C /* PremiumReview.h */,
+				8473E6DC1D6EF38F00DDF60C /* PremiumReview.m */,
+			);
+			name = PremiumReview;
+			sourceTree = "<group>";
+		};
+		8473E6E71D6F15EA00DDF60C /* PremiumCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				8473E6E41D6F15DE00DDF60C /* PremiumVideoCollectionView.h */,
+				8473E6E51D6F15DE00DDF60C /* PremiumVideoCollectionView.m */,
+				8473E6E81D6F161B00DDF60C /* PremiumVideoCollectionView.xib */,
+			);
+			name = PremiumCollectionView;
+			sourceTree = "<group>";
+		};
+		8473E6EA1D6F169400DDF60C /* PremiumVideoCell */ = {
+			isa = PBXGroup;
+			children = (
+				8473E6EB1D6F16C000DDF60C /* PremiumVideoCell.h */,
+				8473E6EC1D6F16C000DDF60C /* PremiumVideoCell.m */,
+				8473E6ED1D6F16C000DDF60C /* PremiumVideoCell.xib */,
+			);
+			name = PremiumVideoCell;
 			sourceTree = "<group>";
 		};
 		8494ED8F1C83D5DE00106069 /* FiltersViewController */ = {
@@ -1117,6 +1168,7 @@
 			files = (
 				58FA8BDB1C73D86C00591F5A /* Info.plist in Resources */,
 				5645C4201C9AF92D000840E4 /* kr-video-player-play@3x.png in Resources */,
+				8473E6E91D6F161B00DDF60C /* PremiumVideoCollectionView.xib in Resources */,
 				5645C41B1C9AF92D000840E4 /* kr-video-player-fullscreen@2x.png in Resources */,
 				56BBD9441CA14472000961E0 /* .gitkeep in Resources */,
 				564B64791C887086008060AC /* LikeTableCell.xib in Resources */,
@@ -1125,6 +1177,7 @@
 				58FA8BE21C73DA5400591F5A /* Main.storyboard in Resources */,
 				564912A61CDB9CD50094B4D0 /* avatar.jpg in Resources */,
 				C32E0AC91C89ABA5001E4203 /* MRDoubleSlider.xib in Resources */,
+				8473E6EF1D6F16C000DDF60C /* PremiumVideoCell.xib in Resources */,
 				58FA8BE11C73DA5400591F5A /* LaunchScreen.storyboard in Resources */,
 				5645C4191C9AF92D000840E4 /* kr-video-player-close@2x.png in Resources */,
 				5645C4211C9AF92D000840E4 /* kr-video-player-point@2x.png in Resources */,
@@ -1134,11 +1187,13 @@
 				5645C4221C9AF92D000840E4 /* kr-video-player-point@3x.png in Resources */,
 				560A0C1E1C8F06610080E3C8 /* PinReviewInfoView.xib in Resources */,
 				5645C4231C9AF92D000840E4 /* kr-video-player-shrinkscreen@2x.png in Resources */,
+				8473E6F31D6F467300DDF60C /* main_logo.png in Resources */,
 				C32E0AC31C897AF3001E4203 /* MRDropMenu.xib in Resources */,
 				56BBD9491CA14472000961E0 /* Info.plist in Resources */,
 				56C32D731C89B6B900F2D45B /* CustomFooterView.xib in Resources */,
 				5645C41A1C9AF92D000840E4 /* kr-video-player-close@3x.png in Resources */,
 				56586B031CBBB5BC00230BEA /* PinInfoCollectionCell.xib in Resources */,
+				8473E6F21D6F467300DDF60C /* play_button.png in Resources */,
 				C32E0ACF1C89ECF6001E4203 /* MRSetSelection.xib in Resources */,
 				5645C4241C9AF92D000840E4 /* kr-video-player-shrinkscreen@3x.png in Resources */,
 				5645C41C1C9AF92D000840E4 /* kr-video-player-fullscreen@3x.png in Resources */,
@@ -1213,6 +1268,7 @@
 				58FA8C941C73E90A00591F5A /* BookmarksViewController.m in Sources */,
 				C32E0ABB1C8881E1001E4203 /* SearchFilter.m in Sources */,
 				8494ED8C1C83D53200106069 /* FiltersViewController.m in Sources */,
+				8473E6DD1D6EF38F00DDF60C /* PremiumReview.m in Sources */,
 				564B5B181C8594D40013E8B1 /* MyReelty.xcdatamodeld in Sources */,
 				844E65A61C7F381A00CFD186 /* CellFabric.m in Sources */,
 				C32E0ACD1C89ECE9001E4203 /* MRSetSelection.m in Sources */,
@@ -1241,6 +1297,7 @@
 				560757131C84C4A80017EBC9 /* SignInViewController.m in Sources */,
 				58FA8C951C73E90A00591F5A /* DiscoveryViewController.m in Sources */,
 				58FA8C971C73E90A00591F5A /* MapViewController.m in Sources */,
+				8473E6E61D6F15DE00DDF60C /* PremiumVideoCollectionView.m in Sources */,
 				8438C78A1D42209800FBB97F /* FlaggingVideo.m in Sources */,
 				58FA8C991C73E90A00591F5A /* HCMapAnnotation.m in Sources */,
 				56BBD9481CA14472000961E0 /* FBQuadTreeNode.m in Sources */,
@@ -1256,6 +1313,7 @@
 				586751711C8466B500747269 /* DBManager.m in Sources */,
 				56586B061CBBBBE100230BEA /* PinInfoCollectionView.m in Sources */,
 				56586B021CBBB5BC00230BEA /* PinInfoCollectionCell.m in Sources */,
+				8473E6EE1D6F16C000DDF60C /* PremiumVideoCell.m in Sources */,
 				844E659E1C7F193600CFD186 /* ProfileCellTableViewCell.m in Sources */,
 				586751741C8466B500747269 /* DBReview+CoreDataProperties.m in Sources */,
 				564912A31CDB77740094B4D0 /* OptionsTableController.m in Sources */,

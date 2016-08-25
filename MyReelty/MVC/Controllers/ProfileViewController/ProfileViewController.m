@@ -35,6 +35,7 @@ typedef NS_ENUM(NSInteger, ListType) {
 @property (strong, nonatomic) Page *page;
 @property (strong, nonatomic) UISegmentedControl *segmentControl;
 @property (assign, nonatomic) ListType listType;
+@property (strong, nonatomic) IBOutlet UIView *noBookmarksView;
 @end
 
 @implementation ProfileViewController
@@ -55,7 +56,7 @@ typedef NS_ENUM(NSInteger, ListType) {
         
         
         _listType = ListTypeUploads;
-        _segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Uploads", @"Videobooks"]];
+        _segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Uploads", @"My Videobook"]];
         _segmentControl.tintColor = [UIColor redColor];
         _segmentControl.selectedSegmentIndex = 0;
         [_segmentControl addTarget:self action:@selector(segmentControlValueChanged:) forControlEvents:UIControlEventValueChanged];
@@ -69,6 +70,8 @@ typedef NS_ENUM(NSInteger, ListType) {
             }
         }];
     }
+    
+    self.tableView.tableFooterView = nil;
     
     self.allowLoadData = YES;
     [self reloadTableData];
@@ -129,6 +132,7 @@ typedef NS_ENUM(NSInteger, ListType) {
     
     self.isLoadingData = YES;
     [self loadDataMore:NO];
+    [self showLoadMoreProgress:YES];
 }
 
 - (void)loadDataMore:(BOOL)more {
@@ -154,8 +158,22 @@ typedef NS_ENUM(NSInteger, ListType) {
                 [weakSelf.tableView insertRowsAtIndexPaths:newRowsPaths withRowAnimation:UITableViewRowAnimationFade];
                 [weakSelf.tableView endUpdates];
             } else {
+                
+                UITableViewCell *cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                
+                
+                
                 weakSelf.accountReviews = [lArray mutableCopy];
+                //[weakSelf.accountReviews count] > 0 ? weakSelf.noBookmarksView : nil;
                 [weakSelf.tableView reloadData];
+                
+                
+                if (weakSelf.tableView.contentOffset.y > cell.frame.size.height) {
+                    
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+                    [weakSelf.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                }
+
             }
             weakSelf.allowLoadMore = [weakSelf.accountReviews count] < ((Page *)[array objectForKey:@"page"]).total_entries;
         }
@@ -164,7 +182,12 @@ typedef NS_ENUM(NSInteger, ListType) {
         
         weakSelf.isLoadingData = NO;
         weakSelf.isLoadingMore = NO;
-        [weakSelf showLoadMoreProgress:NO];
+        
+        if ([weakSelf.accountReviews count] == 0 && !error) {
+            weakSelf.tableView.tableFooterView = self.noBookmarksView;
+        } else {
+            [weakSelf showLoadMoreProgress:NO];
+        }
     };
     
     if (self.showCurrentUserProfile) {
@@ -205,6 +228,8 @@ typedef NS_ENUM(NSInteger, ListType) {
     
     [self reloadTableData];
     
+    
+    
 }
 
 #pragma mark - Table view data source
@@ -237,7 +262,7 @@ typedef NS_ENUM(NSInteger, ListType) {
     
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
         ProfileCellTableViewCell *cell = [_cellFabric createCell:tableView idexPath:indexPath reuseID:@"ProfileCellTableViewCell" model:self.profile];
@@ -313,6 +338,82 @@ typedef NS_ENUM(NSInteger, ListType) {
                 [weakSelf.tableView reloadData];
             }
         }];
+    }
+}
+
+#pragma mark - Notifications
+
+- (void)likeBtnPressedOnReviewController:(NSNotification *)sender {
+    
+    [self updateReviewInfo:[sender object]];
+}
+
+- (void)likeDidChange:(NSNotification *)sender {
+    if ([[sender.userInfo objectForKey:CLASS_NAME] isEqualToString:NSStringFromClass([self class])]) {
+        return;
+    }
+    [self updateReviewInfo:[sender object]];
+}
+
+- (void)bookmarkBtnPressedOnReviewController:(NSNotification *)sender {
+    
+    if (_listType == ListTypeBookmarks) {
+        [self deleteCellWhithReview:[sender object]];
+    }
+    
+}
+- (void)bookmarkDidChange:(NSNotification *)sender {
+    
+    if (_listType == ListTypeBookmarks) {
+        [self deleteCellWhithReview:[sender object]];
+    }
+}
+
+- (void)updateReviewInfo:(Review *)lReview {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id_==%@",lReview.id_];
+    
+    NSArray *lArray = [self.accountReviews filteredArrayUsingPredicate:predicate];
+    
+    if ([lArray count] != 1) {
+        return;
+    }
+    
+    NSInteger row = [self.accountReviews indexOfObject:[lArray firstObject]];
+    
+    NSIndexPath *indx = [NSIndexPath indexPathForRow:row inSection:1];
+    
+    ((Review *)[self.accountReviews objectAtIndex:row]).liked = lReview.liked;
+    ((Review *)[self.accountReviews objectAtIndex:row]).bookmarked = lReview.bookmarked;
+    
+    [self.tableView reloadRowsAtIndexPaths:@[indx] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)deleteCellWhithReview:(Review *)lReview {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id_==%@",lReview.id_];
+    
+    NSArray *lArray = [self.accountReviews filteredArrayUsingPredicate:predicate];
+    
+    if ([lArray count] != 1) {
+        return;
+    }
+    
+    NSInteger row = [self.accountReviews indexOfObject:[lArray firstObject]];
+    
+    NSIndexPath *indx = [NSIndexPath indexPathForRow:row inSection:1];
+    
+    [self.accountReviews removeObjectAtIndex:row];
+    self.previousIndexPath = nil;
+    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[indx] withRowAnimation:UITableViewRowAnimationLeft];
+    
+    [self.tableView endUpdates];
+    
+    if (![self.accountReviews count]) {
+        
+        self.tableView.tableFooterView = self.noBookmarksView;
     }
 }
 

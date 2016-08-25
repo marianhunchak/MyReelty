@@ -9,7 +9,7 @@
 #define Constants_consts_h
 
 #ifdef DEBUG
-static NSString *mainURL = @"http://test.myreelty.com";
+static NSString *mainURL = @"http://staging.myreelty.com";
 #else 
 static NSString *mainURL = @"http://myreelty.com";
 #endif

@@ -8,6 +8,7 @@
 
 #import "Parser.h"
 #import "Review.h"
+#import "PremiumReview.h"
 #import "NSDictionary+Accessors.h"
 #import "DBProfile.h"
 #import "Pin.h"
@@ -25,6 +26,17 @@
     }
     return [NSArray arrayWithArray:lMutableReviews];
 }
+
++ (NSArray *)parseReviews:(NSDictionary *)dict withKey:(NSString *)key {
+    NSMutableArray *lMutableReviews = [NSMutableArray new];
+    NSArray *lReviews = [dict arrayForKey:key];
+    for (NSDictionary *reviewDict in lReviews) {
+        PremiumReview *lReview = [PremiumReview premiumReviewWithDict:reviewDict];
+        [lMutableReviews addObject:lReview];
+    }
+    return [NSArray arrayWithArray:lMutableReviews];
+}
+
 + (NSDictionary *)parseBookmarkedReviews:(NSDictionary *)dict {
     NSMutableArray *lMutableReviews = [NSMutableArray new];
     NSArray *lReviews = [dict arrayForKey:@"bookmarks"];

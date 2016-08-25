@@ -21,16 +21,20 @@
     return self;
 }
 
-- (id)createCell:(UITableView *)tb idexPath:(NSIndexPath *)path reuseID:(NSString *)identifier model:(DBProfile*)profile{
+- (id)createCell:(UITableView *)tb idexPath:(NSIndexPath *)path reuseID:(NSString *)identifier model:(DBProfile*)profile {
+    
     if (path.section == 0) {
+        
         ProfileCellTableViewCell *lProfileCell = [tb dequeueReusableCellWithIdentifier:@"ProfileCellTableViewCell"];
         lProfileCell.profile = profile;
 
         return lProfileCell;
+        
     } else {
 
         static NSString *profileTableIdentifier = @"ProfileTable";
         UITableViewCell *cell = [tb dequeueReusableCellWithIdentifier:profileTableIdentifier];
+        
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: profileTableIdentifier];
         }
@@ -42,7 +46,6 @@
         
         return cell;
     }
-
 }
 
 @end
