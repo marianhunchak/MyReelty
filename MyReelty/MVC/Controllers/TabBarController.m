@@ -26,7 +26,7 @@ NSUInteger prevSelectedTag;
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
 
-    NSLog(@"Curennt view controller - %lu", [viewController.childViewControllers count]);
+    DLog(@"Curennt view controller - %ld", [viewController.childViewControllers count]);
         if (_previousTag == viewController.tabBarItem.tag) {
              return NO;
         }

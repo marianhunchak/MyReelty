@@ -14,6 +14,7 @@
 #import "Parser.h"
 #import "SearchFilter.h"
 #import "Profile.h"
+#import "Page.h"
 #import "NSDictionary+Accessors.h"
 
 @implementation Network
@@ -207,6 +208,52 @@
         
         NSLog(@"err: %@", [[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
         
+    }];
+    
+}
+
++ (void)getCategoriesWithCompletion:(ArrayCompletionBlock)completionBlock {
+    
+    [[Network manager] GET:@"/api/categories" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        NSArray *lNearestReviews = [Parser parseCategories:responseObject withKey:@"categories"];
+        completionBlock(lNearestReviews, nil);
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completionBlock(nil, error);
+        
+        DLog(@"err: %@", [[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
+        
+    }];
+}
+
++ (void)getSearchTilesWithCompletion:(ArrayCompletionBlock)completionBlock {
+    
+    [[Network manager] GET:@"/api/search_tiles" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        NSArray *lSearchTiles = [Parser parseSearchTiles:responseObject];
+        completionBlock(lSearchTiles, nil);
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completionBlock(nil, error);
+        
+        DLog(@"err: %@", [[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
+        
+    }];
+}
+
++ (void)getTotalReviesCountWithCompletion:(ObjectCompletionBlock)completionBlock {
+
+    
+    [[Network manager] GET:@"/api/reviews?page_size=1" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        if(completionBlock) {
+            completionBlock([Page pagewWithDict:responseObject[@"pagination"]], nil);
+        }
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        
+        completionBlock(nil, error);
     }];
     
 }

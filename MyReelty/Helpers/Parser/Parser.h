@@ -16,5 +16,7 @@
 + (void)parseProfile:(NSDictionary *)dict;
 + (NSDictionary *)parseReviewsWhithPagination:(NSDictionary *)dict;
 + (NSArray *)parseReviews:(NSDictionary *)dict withKey:(NSString *)key;
++ (NSArray *)parseCategories:(NSDictionary *)dict withKey:(NSString *)key;
++ (NSArray *)parseSearchTiles:(NSDictionary *)dict;
 
 @end

@@ -57,5 +57,8 @@
 + (void)reportVideoWithRevievID:(NSInteger) reviewID reasonString:(NSString *) reason WithCompletion: (DictCompletionBlock)completionBlock;
 
 + (void)getPremiumReviewsWithConletion:(ArrayCompletionBlock)completionBlock;
++ (void)getCategoriesWithCompletion:(ArrayCompletionBlock)completionBlock;
++ (void)getSearchTilesWithCompletion:(ArrayCompletionBlock)completionBlock;
++ (void)getTotalReviesCountWithCompletion:(ObjectCompletionBlock)completionBlock;
 
 @end

@@ -89,6 +89,8 @@ static NSString *premiunCellIdentifier = @"premiumCell";
 
 - (void)showNextCollectionItem {
     
+    if ([_premiumRevies count] == 0) return;
+    
     NSIndexPath *curentIndexPath = [self indexPathsForVisibleItems].firstObject;
     
     NSInteger nextItemIndex = curentIndexPath.item + 1;
@@ -102,7 +104,7 @@ static NSString *premiunCellIdentifier = @"premiumCell";
     [self scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     
 //    self.pageControl.currentPage = nextItemIndex;
-    
+        
 }
 
 @end

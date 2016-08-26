@@ -104,6 +104,10 @@
 		8494ED8C1C83D53200106069 /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8494ED8B1C83D53200106069 /* FiltersViewController.m */; };
 		84B8DB6B1C8450D100626575 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8DB6A1C8450D100626575 /* SearchViewController.m */; };
 		84E75AB61C60EF050082B01E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E75AB51C60EF050082B01E /* MapKit.framework */; };
+		84F4A6BE1D706182000B89BA /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4A6BD1D706182000B89BA /* Category.m */; };
+		84F4A6C21D707316000B89BA /* SearchTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4A6C11D707316000B89BA /* SearchTile.m */; };
+		84F4A6C71D708A5F000B89BA /* SearchTileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4A6C51D708A5F000B89BA /* SearchTileCell.m */; };
+		84F4A6C81D708A5F000B89BA /* SearchTileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F4A6C61D708A5F000B89BA /* SearchTileCell.xib */; };
 		C32E0ABB1C8881E1001E4203 /* SearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C32E0ABA1C8881E1001E4203 /* SearchFilter.m */; };
 		C32E0ABD1C889B51001E4203 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32E0ABC1C889B51001E4203 /* QuartzCore.framework */; };
 		C32E0AC11C8978F6001E4203 /* MRDropMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C32E0AC01C8978F6001E4203 /* MRDropMenu.m */; };
@@ -286,6 +290,13 @@
 		84B8DB691C8450D100626575 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		84B8DB6A1C8450D100626575 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		84E75AB51C60EF050082B01E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		84F4A6BC1D706182000B89BA /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		84F4A6BD1D706182000B89BA /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		84F4A6C01D707316000B89BA /* SearchTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTile.h; sourceTree = "<group>"; };
+		84F4A6C11D707316000B89BA /* SearchTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTile.m; sourceTree = "<group>"; };
+		84F4A6C41D708A5F000B89BA /* SearchTileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTileCell.h; sourceTree = "<group>"; };
+		84F4A6C51D708A5F000B89BA /* SearchTileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTileCell.m; sourceTree = "<group>"; };
+		84F4A6C61D708A5F000B89BA /* SearchTileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTileCell.xib; sourceTree = "<group>"; };
 		C32E0AB91C8881E1001E4203 /* SearchFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFilter.h; sourceTree = "<group>"; };
 		C32E0ABA1C8881E1001E4203 /* SearchFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFilter.m; sourceTree = "<group>"; };
 		C32E0ABC1C889B51001E4203 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -914,6 +925,8 @@
 		58FA8C7D1C73E90A00591F5A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84F4A6C31D70731A000B89BA /* SearchTile */,
+				84F4A6BF1D706377000B89BA /* Category */,
 				8473E6DE1D6F0E9C00DDF60C /* PremiumReview */,
 				56564A551CBD42A300598A66 /* Page */,
 				566605381CB29255001F9AFB /* Pin */,
@@ -942,6 +955,7 @@
 		58FA8C811C73E90A00591F5A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84F4A6C91D708A65000B89BA /* SearchTileCell */,
 				8473E6E71D6F15EA00DDF60C /* PremiumCollectionView */,
 				8473E6EA1D6F169400DDF60C /* PremiumVideoCell */,
 				56564A2E1CBC690800598A66 /* PinInfoCollectionCell */,
@@ -1042,6 +1056,34 @@
 				58FA8B9E1C73D76900591F5A /* Storyboards */,
 			);
 			path = MyReelty;
+			sourceTree = "<group>";
+		};
+		84F4A6BF1D706377000B89BA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				84F4A6BC1D706182000B89BA /* Category.h */,
+				84F4A6BD1D706182000B89BA /* Category.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		84F4A6C31D70731A000B89BA /* SearchTile */ = {
+			isa = PBXGroup;
+			children = (
+				84F4A6C01D707316000B89BA /* SearchTile.h */,
+				84F4A6C11D707316000B89BA /* SearchTile.m */,
+			);
+			name = SearchTile;
+			sourceTree = "<group>";
+		};
+		84F4A6C91D708A65000B89BA /* SearchTileCell */ = {
+			isa = PBXGroup;
+			children = (
+				84F4A6C41D708A5F000B89BA /* SearchTileCell.h */,
+				84F4A6C51D708A5F000B89BA /* SearchTileCell.m */,
+				84F4A6C61D708A5F000B89BA /* SearchTileCell.xib */,
+			);
+			name = SearchTileCell;
 			sourceTree = "<group>";
 		};
 		87E7D4A17313FDA2F99CC71B /* Pods */ = {
@@ -1189,6 +1231,7 @@
 				5645C4231C9AF92D000840E4 /* kr-video-player-shrinkscreen@2x.png in Resources */,
 				8473E6F31D6F467300DDF60C /* main_logo.png in Resources */,
 				C32E0AC31C897AF3001E4203 /* MRDropMenu.xib in Resources */,
+				84F4A6C81D708A5F000B89BA /* SearchTileCell.xib in Resources */,
 				56BBD9491CA14472000961E0 /* Info.plist in Resources */,
 				56C32D731C89B6B900F2D45B /* CustomFooterView.xib in Resources */,
 				5645C41A1C9AF92D000840E4 /* kr-video-player-close@3x.png in Resources */,
@@ -1263,6 +1306,7 @@
 				568906841CDA2C5E003A81A7 /* PrivacyPolicyController.m in Sources */,
 				58FA8C591C73E56D00591F5A /* UIViewController+NJKFullScreenSupport.m in Sources */,
 				566605371CB29175001F9AFB /* Pin.m in Sources */,
+				84F4A6BE1D706182000B89BA /* Category.m in Sources */,
 				58FA8CA01C73E90A00591F5A /* VideoCell.m in Sources */,
 				58FA8C571C73E56D00591F5A /* NSDictionary+Accessors.m in Sources */,
 				58FA8C941C73E90A00591F5A /* BookmarksViewController.m in Sources */,
@@ -1277,6 +1321,8 @@
 				C32E0AC71C89AB95001E4203 /* MRDoubleSlider.m in Sources */,
 				56BBD94C1CA16E46000961E0 /* AddCommentViewController.m in Sources */,
 				56BBD9471CA14472000961E0 /* FBQuadTree.m in Sources */,
+				84F4A6C21D707316000B89BA /* SearchTile.m in Sources */,
+				84F4A6C71D708A5F000B89BA /* SearchTileCell.m in Sources */,
 				5609D0051CD203D400DEF1BB /* UITabBarController+HideTabBar.m in Sources */,
 				5645C4261C9AF92D000840E4 /* KrVideoPlayerControlView.m in Sources */,
 				56BBD9451CA14472000961E0 /* FBAnnotationCluster.m in Sources */,

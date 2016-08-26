@@ -640,8 +640,65 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="DGd-ic-Oaa">
+                            <rect key="frame" x="0.0" y="72" width="600" height="168"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REAL TIME COUNTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHx-rc-NfY">
+                                    <rect key="frame" x="213" y="16" width="175" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="HGI-bX-dBO"/>
+                                        <constraint firstAttribute="width" constant="175" id="hc8-7e-YvV"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The world's largest real estate video library." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGO-Ju-zvs">
+                                    <rect key="frame" x="132" y="133" width="336" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="336" id="ato-fb-ttQ"/>
+                                        <constraint firstAttribute="height" constant="21" id="cdE-uv-bKE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24444" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf6-DD-Bd6">
+                                    <rect key="frame" x="186" y="63" width="116" height="41"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="41" id="CqH-2M-5Tg"/>
+                                        <constraint firstAttribute="width" constant="116" id="IEf-G7-pnE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                    <color key="textColor" red="1" green="0.3529411764705882" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y13-RT-fim">
+                                    <rect key="frame" x="310" y="63" width="104" height="41"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="104" id="ByE-Mi-dw1"/>
+                                        <constraint firstAttribute="height" constant="41" id="dqV-R1-Rth"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                    <color key="textColor" red="0.16078431372549018" green="0.1803921568627451" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="y13-RT-fim" firstAttribute="centerY" secondItem="DGd-ic-Oaa" secondAttribute="centerY" constant="-0.5" id="1px-Xq-nLn"/>
+                                <constraint firstItem="BGO-Ju-zvs" firstAttribute="centerX" secondItem="DGd-ic-Oaa" secondAttribute="centerX" id="2Fs-Tf-pG2"/>
+                                <constraint firstItem="AHx-rc-NfY" firstAttribute="centerX" secondItem="DGd-ic-Oaa" secondAttribute="centerX" id="EZu-w4-PkW"/>
+                                <constraint firstItem="BGO-Ju-zvs" firstAttribute="top" secondItem="y13-RT-fim" secondAttribute="bottom" constant="29" id="eKX-Xd-aef"/>
+                                <constraint firstItem="Wf6-DD-Bd6" firstAttribute="centerY" secondItem="DGd-ic-Oaa" secondAttribute="centerY" constant="-0.5" id="i43-7D-h0f"/>
+                                <constraint firstItem="Wf6-DD-Bd6" firstAttribute="centerX" secondItem="DGd-ic-Oaa" secondAttribute="centerX" constant="-56" id="kNe-8c-4Df"/>
+                                <constraint firstItem="y13-RT-fim" firstAttribute="centerX" secondItem="DGd-ic-Oaa" secondAttribute="centerX" constant="62" id="xOz-Ye-ZeI"/>
+                                <constraint firstItem="AHx-rc-NfY" firstAttribute="top" secondItem="DGd-ic-Oaa" secondAttribute="top" constant="16" id="ync-y9-Lrt"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iTs-Zq-M7f">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuse" id="iTs-Zq-M7f">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iTs-Zq-M7f" id="IS8-oM-qDn">
@@ -656,6 +713,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="MyReelty" id="hM4-Nj-FTt"/>
+                    <connections>
+                        <outlet property="totalVideoCountLabel" destination="Wf6-DD-Bd6" id="hLi-yf-EJ6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfS-zg-9te" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

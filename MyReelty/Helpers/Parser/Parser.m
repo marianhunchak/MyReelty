@@ -13,6 +13,8 @@
 #import "DBProfile.h"
 #import "Pin.h"
 #import "Page.h"
+#import "Category.h"
+#import "SearchTile.h"
 #import <MagicalRecord/MagicalRecord.h>
 
 @implementation Parser
@@ -33,6 +35,27 @@
     for (NSDictionary *reviewDict in lReviews) {
         PremiumReview *lReview = [PremiumReview premiumReviewWithDict:reviewDict];
         [lMutableReviews addObject:lReview];
+    }
+    return [NSArray arrayWithArray:lMutableReviews];
+}
+
++ (NSArray *)parseCategories:(NSDictionary *)dict withKey:(NSString *)key {
+    
+    NSMutableArray *lMutableReviews = [NSMutableArray new];
+    NSArray *lReviews = [dict arrayForKey:key];
+    for (NSDictionary *reviewDict in lReviews) {
+        Category *lCategory = [Category categoryWithDict:reviewDict];
+        [lMutableReviews addObject:lCategory];
+    }
+    return [NSArray arrayWithArray:lMutableReviews];
+}
+
++ (NSArray *)parseSearchTiles:(NSDictionary *)dict {
+    NSMutableArray *lMutableReviews = [NSMutableArray new];
+    NSArray *lReviews = [dict arrayForKey:@"search_tiles_page"];
+    for (NSDictionary *reviewDict in lReviews) {
+        SearchTile *lSearchTile = [SearchTile searchTileWithDict:reviewDict];
+        [lMutableReviews addObject:lSearchTile];
     }
     return [NSArray arrayWithArray:lMutableReviews];
 }
