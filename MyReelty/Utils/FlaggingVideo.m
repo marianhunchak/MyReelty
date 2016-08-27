@@ -72,6 +72,7 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:USER_DID_FLAG_VIDEO object:reviewIDString];
                 
             } else {
+                
                 [hd dismissAnimated:NO];
                 [ErrorHandler handleFlaggingError:error];
                 

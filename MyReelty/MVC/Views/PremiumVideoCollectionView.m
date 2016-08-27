@@ -14,10 +14,12 @@
 @interface PremiumVideoCollectionView() <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, retain) NSTimer *myTimer;
+@property (strong, nonatomic) UIPageControl *pageControl;
 
 @end
 
 static NSString *premiunCellIdentifier = @"premiumCell";
+static CGFloat pageControlHeight = 30.f;
 
 @implementation PremiumVideoCollectionView
 
@@ -43,6 +45,13 @@ static NSString *premiunCellIdentifier = @"premiumCell";
     _premiumRevies = premiumRevies;
     [self reloadData];
     
+
+    _pageControl.frame = CGRectMake(0,
+                                    CGRectGetMaxY(self.frame) - pageControlHeight,
+                                    self.superview.frame.size.width,
+                                    pageControlHeight);
+    [self.superview addSubview:_pageControl];
+     _pageControl.numberOfPages = [premiumRevies count];
 }
 
 - (void)awakeFromNib {
@@ -53,7 +62,11 @@ static NSString *premiunCellIdentifier = @"premiumCell";
                                                    selector:@selector(showNextCollectionItem)
                                                    userInfo:nil
                                                     repeats:YES];
-    
+  
+    _pageControl = [[UIPageControl alloc] init];
+    _pageControl.currentPageIndicatorTintColor = navigationBarColor;
+    _pageControl.userInteractionEnabled = NO;
+   
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -69,11 +82,13 @@ static NSString *premiunCellIdentifier = @"premiumCell";
     
     cell.premiumReview = _premiumRevies[indexPath.row];
     
-    cell.alpha = 0.1f;
-
-    [UIView animateWithDuration:1 animations:^{
-        cell.alpha = 1.f;
-    }];
+    [self bringSubviewToFront:_pageControl];
+    
+//    cell.alpha = 0.1f;
+//
+//    [UIView animateWithDuration:1 animations:^{
+//        cell.alpha = 1.f;
+//    }];
     
     return cell;
 }
@@ -101,10 +116,16 @@ static NSString *premiunCellIdentifier = @"premiumCell";
     
     NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItemIndex inSection:0];
     
-    [self scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    [self scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
-//    self.pageControl.currentPage = nextItemIndex;
-        
+    _pageControl.currentPage = nextItemIndex;
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    CGFloat pageWidth = scrollView.frame.size.width;
+    self.pageControl.currentPage = (floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
 }
 
 @end

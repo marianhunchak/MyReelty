@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "HCMapAnnotation.h"
 #import "NSString+DivideNumber.h"
+#import "NSString+ValidateValue.h"
 
 @interface CustomFooterView() <MKMapViewDelegate> {
     
@@ -42,7 +43,7 @@
     _review = review;
     
     self.addressLabel.text = [NSString stringWithFormat:@"%@, %@, %@, %@", review.address, review.city, review.state, review.zipcode];
-    self.descriptionLabel.text = review.description_;
+    self.descriptionLabel.text =  [NSString validateValue:review.description_];
     if (review.availability == YES) {
         self.availabilityLabel.layer.cornerRadius = 8.f;
         self.availabilityLabel.layer.masksToBounds = YES;

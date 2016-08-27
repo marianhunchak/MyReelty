@@ -77,7 +77,7 @@
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window {
     
-    if (_enableAllOrientation == true){
+    if (_enableAllOrientation == true) {
         return UIInterfaceOrientationMaskLandscape | UIInterfaceOrientationMaskPortrait;
     }
     return UIInterfaceOrientationMaskPortrait;

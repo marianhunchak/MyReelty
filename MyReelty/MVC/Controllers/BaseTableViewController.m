@@ -69,6 +69,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
 }
 
 - (void)dealloc {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:BOOKMARK_PRESSED_ON_REVIEW_CONTROLLER object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:LIKE_PRESSED_ON_REVIEW_CONTROLLER object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:LIKE_DID_CHANGE_NOTIFICATION object:nil];

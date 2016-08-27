@@ -10,7 +10,7 @@
 
 @implementation NSString (EncodeString)
 
--(NSString *)encodeUrlString {
+- (NSString *)encodeUrlString {
     return CFBridgingRelease(
                              CFURLCreateStringByAddingPercentEscapes(
                                                                      kCFAllocatorDefault,

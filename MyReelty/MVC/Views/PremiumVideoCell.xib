@@ -26,18 +26,6 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtB-7l-Xvf">
-                        <rect key="frame" x="19" y="149" width="323" height="41"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="41" id="AHJ-ym-PhU"/>
-                            <constraint firstAttribute="width" constant="323" id="aAr-n6-0Su"/>
-                        </constraints>
-                        <string key="text">Find your next home on the world's
-largest real estate video library</string>
-                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="V6p-Vf-qVq">
                         <rect key="frame" x="8" y="8" width="75" height="28"/>
                         <constraints>
@@ -56,6 +44,18 @@ largest real estate video library</string>
                             <action selector="playButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="jDY-6U-iQ1"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtB-7l-Xvf">
+                        <rect key="frame" x="19" y="139" width="323" height="41"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="41" id="AHJ-ym-PhU"/>
+                            <constraint firstAttribute="width" constant="323" id="aAr-n6-0Su"/>
+                        </constraints>
+                        <string key="text">Find your next home on the world's
+largest real estate video library</string>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -67,7 +67,7 @@ largest real estate video library</string>
                 <constraint firstItem="ZtB-7l-Xvf" firstAttribute="centerX" secondItem="Rdb-dh-NBY" secondAttribute="centerX" id="SO0-WD-QPV"/>
                 <constraint firstItem="V6p-Vf-qVq" firstAttribute="top" secondItem="Rdb-dh-NBY" secondAttribute="top" constant="8" id="fbF-SR-dc6"/>
                 <constraint firstItem="Rdb-dh-NBY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="p09-hw-i6x"/>
-                <constraint firstAttribute="bottom" secondItem="ZtB-7l-Xvf" secondAttribute="bottom" constant="14" id="qZh-c4-xda"/>
+                <constraint firstAttribute="bottom" secondItem="ZtB-7l-Xvf" secondAttribute="bottom" constant="24" id="qZh-c4-xda"/>
                 <constraint firstItem="iF7-2U-6l7" firstAttribute="centerX" secondItem="Rdb-dh-NBY" secondAttribute="centerX" id="qg6-wG-w50"/>
                 <constraint firstAttribute="bottom" secondItem="Rdb-dh-NBY" secondAttribute="bottom" id="scV-v2-Hos"/>
                 <constraint firstItem="iF7-2U-6l7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="18" id="u9c-eh-Wq9"/>

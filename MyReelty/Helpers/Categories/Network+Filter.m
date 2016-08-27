@@ -13,7 +13,7 @@
 
 + (NSString *)getUrlParametersWhithFilters:(SearchFilter *)filter {
     
-    NSString *requestType = nil;
+    NSString *requestType = @"";
     
     if (filter) {
         

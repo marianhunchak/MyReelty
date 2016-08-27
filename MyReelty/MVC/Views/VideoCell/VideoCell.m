@@ -79,7 +79,6 @@
     }
 }
 
-
 #pragma mark - Private methods
 
 
@@ -122,7 +121,7 @@
         
     } else  if (_review.complained) {
         
-        [ErrorHandler showAlertWithTitle:@"Warning" message:@"Can report only once per review"];
+        [ErrorHandler showAlertWithTitle:@"Warning" message:@"You have already reported this video"];
         
     } else {
     

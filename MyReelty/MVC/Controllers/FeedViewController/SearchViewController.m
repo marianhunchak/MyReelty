@@ -44,19 +44,11 @@ typedef void (^ObjectCompletionBlock)(id object, NSError *error);
     
     self.navigationController.navigationBar.barTintColor = navigationBarColor;
     self.navigationItem.titleView = self.searchBar;
-
-//    mapButton = [[ UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"map"]
-//                                                  style: UIBarButtonItemStylePlain
-//                                                 target:self
-//                                                 action:@selector(showMapController:)];
+    
     mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(showMapController:)];
     mapButton.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = mapButton;
     
-//    filterButton = [[ UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"filters"]
-//                                                   style: UIBarButtonItemStylePlain
-//                                                  target:self
-//                                                  action:@selector(filtersButtonPressed:)];
     filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStylePlain target:self action:@selector(filtersButtonPressed:)];
     filterButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = filterButton;
@@ -82,22 +74,21 @@ typedef void (^ObjectCompletionBlock)(id object, NSError *error);
     [super viewWillAppear:YES];
     
     [self.blurEffectView removeFromSuperview];
-//    UIButton *clearButton = [textField valueForKey:@"_clearButton"];
-//    [clearButton setImage:[UIImage imageNamed:@"map"] forState:UIControlStateNormal & UIControlStateHighlighted];
   
     [self recursivelySkinTextField:self.searchBar];
     self.mapViewController.searchResultChanged = NO;
     
     if(!_reviews || _searchFilter.isChanged || _searchResultChanged) {
-    self.allowLoadData = YES;
-    self.allowLoadMore = YES;
-    [self reloadSearchresult];
+        self.allowLoadData = YES;
+        self.allowLoadMore = YES;
+        [self reloadSearchresult];
     }
     
 }
 
 
 - (void)recursivelySkinTextField:(UIView *)view {
+    
     if (!view.subviews.count) return;
     
     for (UIView *subview in view.subviews) {
@@ -117,12 +108,6 @@ typedef void (^ObjectCompletionBlock)(id object, NSError *error);
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     _searchResultChanged = NO;
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc {
@@ -179,17 +164,7 @@ typedef void (^ObjectCompletionBlock)(id object, NSError *error);
     }
 
     [Network listAllNearestReviewsWhithAddress:lAdrress andFilter:_searchFilter loadMore:loadMore withCompletion:^(NSArray *array, NSError *error) {
-//        if (error) {
-//            NSString *msg = [ErrorHandler handleError:error];
-//            weakSelf.allowLoadMore = NO;
-//            weakSelf.infoLabel.text = msg;
-//            if (weakSelf.isLoadingMore) {
-//            weakSelf.tableView.tableFooterView = weakSelf.infoLabel;
-//            } else {
-//            weakSelf.tableView.tableHeaderView = weakSelf.infoLabel;
-//                [weakSelf.tableView reloadData];
-//            }
-//        }
+
         if (error == nil) {
             if (![array count] && !weakSelf.isLoadingMore) {
                 weakSelf.reviews = nil;
@@ -244,9 +219,6 @@ typedef void (^ObjectCompletionBlock)(id object, NSError *error);
         
         [self.view addSubview:_blurEffectView];
     }
-    //    else {
-    //        self.view.backgroundColor = [UIColor blackColor];
-    //    }
     
 }
 
@@ -306,7 +278,6 @@ typedef void (^ObjectCompletionBlock)(id object, NSError *error);
     cell.rowHeight = self.view.bounds.size.width * koeficientForCellHeight;
     cell.review = review;
     cell.delegate = self;
-//    cell.tag = indexPath.row;
     return cell;
 }
 
@@ -315,13 +286,11 @@ typedef void (^ObjectCompletionBlock)(id object, NSError *error);
         VideoCell *cell = [tableView cellForRowAtIndexPath:self.previousIndexPath];
         cell.poupMenu.hidden = YES;
         self.previousIndexPath = nil;
-    }else {
+    } else {
         
         ReviewViewController *videoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ReviewViewController"];
         Review *review = [self.reviews objectAtIndex:indexPath.row];
         videoVC.reiew = review;
-//        videoVC.cell = [tableView cellForRowAtIndexPath:_previousIndexPath];
-
         [self.navigationController pushViewController:videoVC animated:YES];
     }
 }

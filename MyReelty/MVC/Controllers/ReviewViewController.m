@@ -95,6 +95,7 @@ static NSString *footerIdentifier = @"customFooter";
                                                                        target:self
                                                                        action:@selector(flagVideoBtnPressed:)];
     
+    
     self.navigationItem.rightBarButtonItems = @[_flagVideoButton, shareBtn, bookmarkBtn, likeBtn];
     
     self.likesList = [NSMutableArray array];
@@ -299,7 +300,7 @@ static NSString *footerIdentifier = @"customFooter";
         
     } else  if (_reiew.complained) {
         
-        [ErrorHandler showAlertWithTitle:@"Warning" message:@"Can report only once per review"];
+        [ErrorHandler showAlertWithTitle:@"Warning" message:@"You have already reported this video"];
         
     } else {
         
@@ -783,6 +784,7 @@ static NSString *footerIdentifier = @"customFooter";
 - (void)hanledFlaginVideo:(NSNotification *) notification {
     
     _flagVideoButton.image = [UIImage imageNamed:@"flag(Active)"];
+    _reiew.complained = YES;
 }
 
 @end

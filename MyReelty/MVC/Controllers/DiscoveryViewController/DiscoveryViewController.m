@@ -21,12 +21,13 @@
 #import "SearchTile.h"
 #import "Page.h"
 #import "SearchTileCell.h"
+#import "MapViewController.h"
 
 static NSString *videoCellIdentifier = @"Cell";
 static NSString *premiumCellIdentifier = @"premiumCell";
 static NSString *searchTileCellIdentifier = @"searchTileCell";
 
-@interface DiscoveryViewController () <UITableViewDataSource, UITableViewDelegate, TableCellDelegate, UIScrollViewDelegate, TableCellDelegate> {
+@interface DiscoveryViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, TableCellDelegate> {
 }
 @property (strong, nonatomic) IBOutlet UILabel *totalVideoCountLabel;
 
@@ -126,7 +127,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
     
     [Network getTotalReviesCountWithCompletion:^(id object, NSError *error) {
        
-        weakSelf.totalVideoCountLabel.text = [NSString stringWithFormat:@"%ld", ((Page *)object).total_entries];
+        weakSelf.totalVideoCountLabel.text = [NSString stringWithFormat:@"%lu", ((Page *)object).total_entries];
         
     }];
 }
@@ -155,8 +156,8 @@ static NSString * const reuseIdentifier = @"reviewCell";
 
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"premium"];
         
-        _premiumVideoCollectionView.premiumRevies = _premiumReviews;
         [cell addSubview:_premiumVideoCollectionView];
+        _premiumVideoCollectionView.premiumRevies = _premiumReviews;
         
         return cell;
         
@@ -198,6 +199,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
         _premiumVideoCollectionView.frame = frameBefore;
         
         return fistCellHeight;
+        
     } else if (indexPath.section == 1) {
         
         return (int)(self.view.bounds.size.width * koeficientForCellHeight);
@@ -210,6 +212,28 @@ static NSString * const reuseIdentifier = @"reviewCell";
     
     
     if (indexPath.section == 0) {
+        return;
+    } else if (indexPath.section == 2) {
+        
+        if ([[[self.tabBarController viewControllers] objectAtIndex:1] isKindOfClass:[UINavigationController class]]) {
+            
+            UINavigationController *lNavigationController = [[self.tabBarController viewControllers] objectAtIndex:1];
+            
+            [self.tabBarController.delegate tabBarController:self.tabBarController shouldSelectViewController:lNavigationController];
+            [self.tabBarController setSelectedIndex:1];
+            
+            [lNavigationController popToRootViewControllerAnimated:NO];
+            
+            MapViewController *mapVC = (MapViewController *)lNavigationController.visibleViewController;
+            
+            SearchTile *lSearchTile = _searchTiles[indexPath.row];
+            
+            [mapVC reloadSearchResultWithAddress:lSearchTile.search_query];
+
+            mapVC.searchBar.text = lSearchTile.search_query;
+            
+        }
+    
         return;
     }
     

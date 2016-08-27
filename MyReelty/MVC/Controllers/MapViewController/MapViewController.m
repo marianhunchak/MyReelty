@@ -78,19 +78,11 @@ BOOL needToHide = YES;
     
     [self.locationManager startUpdatingLocation];
 
-//    _showGridButton = [[ UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list"]
-//                                                     style: UIBarButtonItemStylePlain
-//                                                    target:self
-//                                                    action:@selector(showFeedController:)];
     _showGridButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(showFeedController:)];
     
-    _showGridButton.enabled = NO;
+//    _showGridButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = _showGridButton;
-    
-//    _filterButton = [[ UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"filters"]
-//                                                     style: UIBarButtonItemStylePlain
-//                                                    target:self
-//                                                    action:@selector(showFilters)];
+
     _filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStylePlain target:self action:@selector(showFilters)];
     self.navigationItem.leftBarButtonItem = _filterButton;
     
@@ -173,7 +165,7 @@ BOOL needToHide = YES;
 
 #pragma mark - Actions
 
-- (void) showFeedController: (UIBarButtonItem *) sender {
+- (void)showFeedController: (UIBarButtonItem *) sender {
 
     if (self.searchViewController.searchResultChanged) {
         [self.searchViewController.tableView setContentOffset:CGPointZero];
@@ -203,12 +195,12 @@ BOOL needToHide = YES;
     if ([pAddress isEqualToString:@""]) {
         pAddress = self.userLocationString;
     }
-
-    pAddress = [pAddress encodeUrlString];
     
     __weak typeof(self)weakSelf = self;
     
-   [Network getPinsListWhithAddress:pAddress andFilter:weakSelf.searchFilter WithCompletion:^(NSArray *array, NSError *error) {
+    NSString *add = [pAddress encodeUrlString];
+    
+   [Network getPinsListWhithAddress:add andFilter:weakSelf.searchFilter WithCompletion:^(NSArray *array, NSError *error) {
 
        if (!error) {
            if ([array count] == 0) {
@@ -227,7 +219,8 @@ BOOL needToHide = YES;
            [weakSelf.clusteringManager removeAnnotations:self.clusteringManager.allAnnotations];
            [weakSelf.clusteringManager addAnnotations:annotations];
            [weakSelf mapView:weakSelf.mapView regionDidChangeAnimated:YES];
-           [weakSelf.mapView showAnnotations:weakSelf.clusteringManager.allAnnotations animated:NO];
+//           [weakSelf.mapView showAnnotations:weakSelf.clusteringManager.allAnnotations animated:NO];
+           [weakSelf didEnterZip:pAddress];
        }
    }];
 }
@@ -256,7 +249,7 @@ BOOL needToHide = YES;
                  if (!self.enteredAddressInSearchbar.locality) {
                      [self showEnteredInSearchBarLocationWhithDelta:3000000];
                  } else {
-                     [self showEnteredInSearchBarLocationWhithDelta:100000];
+                     [self showEnteredInSearchBarLocationWhithDelta:1000000];
                  }
                  
              } 
@@ -308,28 +301,31 @@ BOOL needToHide = YES;
     }
     [self.locationManager startUpdatingLocation];
     
-    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        __weak typeof(self) wealSelf = self;
-        
-        [self.geoCoder cancelGeocode];
-        [self.geoCoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-            if (!error && [placemarks count]) {
-                CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                wealSelf.enteredAddressInSearchbar = [[MKPlacemark alloc] initWithPlacemark:placemark];
-                [wealSelf showEnteredInSearchBarLocationWhithDelta:100000];
-                _allowReloadData = YES;
-                wealSelf.userLocationString = placemark.locality;
-                [wealSelf reloadSearchResult:NO whithAdrress:placemark.locality];
-            }
-             wealSelf.showGridButton.enabled = YES;
-        }];
-    } else {
-        
-        self.userLocationString = @"Los Angeles";
-        [self didEnterZip: self.userLocationString];
-        self.allowLoadMore = YES;
-        [self reloadSearchResult:NO whithAdrress: self.userLocationString];
-        self.showGridButton.enabled = YES;
+    if ([_searchBar.text isEqualToString:@""]) {
+    
+        if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+            __weak typeof(self) wealSelf = self;
+            
+            [self.geoCoder cancelGeocode];
+            [self.geoCoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+                if (!error && [placemarks count]) {
+                    CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                    wealSelf.enteredAddressInSearchbar = [[MKPlacemark alloc] initWithPlacemark:placemark];
+                    [wealSelf showEnteredInSearchBarLocationWhithDelta:100000];
+                    _allowReloadData = YES;
+                    wealSelf.userLocationString = placemark.locality;
+                    [wealSelf reloadSearchResult:NO whithAdrress:placemark.locality];
+                }
+                 wealSelf.showGridButton.enabled = YES;
+            }];
+        } else {
+            
+            self.userLocationString = @"Los Angeles";
+            [self didEnterZip: self.userLocationString];
+            self.allowLoadMore = YES;
+            [self reloadSearchResult:NO whithAdrress: self.userLocationString];
+            self.showGridButton.enabled = YES;
+        }
     }
 }
 
@@ -497,14 +493,18 @@ BOOL needToHide = YES;
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     
-    _clusterDidSelected = NO;
-    self.searchViewController.searchResultChanged = YES;
-//    [self didEnterZip:searchBar.text];
-    [self reloadSearchResult:NO whithAdrress:searchBar.text];
-    [self mapView:self.mapView regionDidChangeAnimated:NO];
-
+    
+    [self reloadSearchResultWithAddress:searchBar.text];
     [searchBar resignFirstResponder];
     
+}
+
+- (void)reloadSearchResultWithAddress:(NSString *)pAddress {
+    
+    _clusterDidSelected = NO;
+    self.searchViewController.searchResultChanged = YES;
+    [self reloadSearchResult:NO whithAdrress:pAddress];
+    [self mapView:self.mapView regionDidChangeAnimated:NO];
 }
 
 #pragma mark - Navigation

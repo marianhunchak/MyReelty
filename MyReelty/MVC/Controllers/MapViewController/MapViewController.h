@@ -23,5 +23,6 @@
 @property (nonatomic, strong) SearchFilter *searchFilter;
 
 - (void)didEnterZip:(NSString*)zip;
+- (void)reloadSearchResultWithAddress:(NSString *)pAddress;
 
 @end
