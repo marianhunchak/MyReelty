@@ -22,8 +22,6 @@
 		5645C41C1C9AF92D000840E4 /* kr-video-player-fullscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5645C40A1C9AF92D000840E4 /* kr-video-player-fullscreen@3x.png */; };
 		5645C41D1C9AF92D000840E4 /* kr-video-player-pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5645C40B1C9AF92D000840E4 /* kr-video-player-pause@2x.png */; };
 		5645C41E1C9AF92D000840E4 /* kr-video-player-pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5645C40C1C9AF92D000840E4 /* kr-video-player-pause@3x.png */; };
-		5645C41F1C9AF92D000840E4 /* kr-video-player-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5645C40D1C9AF92D000840E4 /* kr-video-player-play@2x.png */; };
-		5645C4201C9AF92D000840E4 /* kr-video-player-play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5645C40E1C9AF92D000840E4 /* kr-video-player-play@3x.png */; };
 		5645C4211C9AF92D000840E4 /* kr-video-player-point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5645C40F1C9AF92D000840E4 /* kr-video-player-point@2x.png */; };
 		5645C4221C9AF92D000840E4 /* kr-video-player-point@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5645C4101C9AF92D000840E4 /* kr-video-player-point@3x.png */; };
 		5645C4231C9AF92D000840E4 /* kr-video-player-shrinkscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5645C4111C9AF92D000840E4 /* kr-video-player-shrinkscreen@2x.png */; };
@@ -94,6 +92,8 @@
 		844E659F1C7F193600CFD186 /* ProfileCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844E659D1C7F193600CFD186 /* ProfileCellTableViewCell.xib */; };
 		844E65A21C7F323900CFD186 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E65A11C7F323900CFD186 /* Profile.m */; };
 		844E65A61C7F381A00CFD186 /* CellFabric.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E65A51C7F381A00CFD186 /* CellFabric.m */; };
+		8454564E1D75BEB000AEF11E /* kr-video-player-play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8454564D1D75BEB000AEF11E /* kr-video-player-play@3x.png */; };
+		845456501D75C22200AEF11E /* kr-video-player-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8454564F1D75C22200AEF11E /* kr-video-player-play@2x.png */; };
 		8473E6DD1D6EF38F00DDF60C /* PremiumReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473E6DC1D6EF38F00DDF60C /* PremiumReview.m */; };
 		8473E6E61D6F15DE00DDF60C /* PremiumVideoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473E6E51D6F15DE00DDF60C /* PremiumVideoCollectionView.m */; };
 		8473E6E91D6F161B00DDF60C /* PremiumVideoCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8473E6E81D6F161B00DDF60C /* PremiumVideoCollectionView.xib */; };
@@ -116,12 +116,10 @@
 		C32E0AC91C89ABA5001E4203 /* MRDoubleSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32E0AC81C89ABA5001E4203 /* MRDoubleSlider.xib */; };
 		C32E0ACD1C89ECE9001E4203 /* MRSetSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = C32E0ACC1C89ECE9001E4203 /* MRSetSelection.m */; };
 		C32E0ACF1C89ECF6001E4203 /* MRSetSelection.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32E0ACE1C89ECF6001E4203 /* MRSetSelection.xib */; };
-		D2F07A7532882607AA3B1083 /* libPods-MyReelty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B0558354C2D0A683FE461A /* libPods-MyReelty.a */; };
+		FF95C9813E2CD7C11F8C5CEC /* libPods-MyReelty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452747FBD17528C26DF32D7 /* libPods-MyReelty.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0BA20A1E4181FB87988F5487 /* Pods-MyReelty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyReelty.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyReelty/Pods-MyReelty.release.xcconfig"; sourceTree = "<group>"; };
-		54B0558354C2D0A683FE461A /* libPods-MyReelty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyReelty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5602283A1CB6ACD300AE7050 /* MKMapView+Clustering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Clustering.h"; sourceTree = "<group>"; };
 		5602283B1CB6ACD300AE7050 /* MKMapView+Clustering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Clustering.m"; sourceTree = "<group>"; };
 		5602283E1CB6B77E00AE7050 /* HCMapAnnotation+Cluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCMapAnnotation+Cluster.h"; sourceTree = "<group>"; };
@@ -143,8 +141,6 @@
 		5645C40A1C9AF92D000840E4 /* kr-video-player-fullscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@3x.png"; sourceTree = "<group>"; };
 		5645C40B1C9AF92D000840E4 /* kr-video-player-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@2x.png"; sourceTree = "<group>"; };
 		5645C40C1C9AF92D000840E4 /* kr-video-player-pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@3x.png"; sourceTree = "<group>"; };
-		5645C40D1C9AF92D000840E4 /* kr-video-player-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@2x.png"; sourceTree = "<group>"; };
-		5645C40E1C9AF92D000840E4 /* kr-video-player-play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@3x.png"; sourceTree = "<group>"; };
 		5645C40F1C9AF92D000840E4 /* kr-video-player-point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@2x.png"; sourceTree = "<group>"; };
 		5645C4101C9AF92D000840E4 /* kr-video-player-point@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@3x.png"; sourceTree = "<group>"; };
 		5645C4111C9AF92D000840E4 /* kr-video-player-shrinkscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-shrinkscreen@2x.png"; sourceTree = "<group>"; };
@@ -264,7 +260,6 @@
 		58FA8C911C73E90A00591F5A /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
 		58FA8C921C73E90A00591F5A /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
 		58FA8C931C73E90A00591F5A /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
-		7B1D3B9F3BF1CDBD0AA2CEB8 /* Pods-MyReelty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyReelty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyReelty/Pods-MyReelty.debug.xcconfig"; sourceTree = "<group>"; };
 		8438C7881D42209800FBB97F /* FlaggingVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlaggingVideo.h; sourceTree = "<group>"; };
 		8438C7891D42209800FBB97F /* FlaggingVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlaggingVideo.m; sourceTree = "<group>"; };
 		844E659B1C7F193600CFD186 /* ProfileCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileCellTableViewCell.h; path = ../Controllers/ProfileViewController/ProfileCellTableViewCell.h; sourceTree = "<group>"; };
@@ -274,6 +269,9 @@
 		844E65A11C7F323900CFD186 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Profile.m; path = Profile/Profile.m; sourceTree = "<group>"; };
 		844E65A41C7F381A00CFD186 /* CellFabric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellFabric.h; sourceTree = "<group>"; };
 		844E65A51C7F381A00CFD186 /* CellFabric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellFabric.m; sourceTree = "<group>"; };
+		8452747FBD17528C26DF32D7 /* libPods-MyReelty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyReelty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8454564D1D75BEB000AEF11E /* kr-video-player-play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@3x.png"; sourceTree = "<group>"; };
+		8454564F1D75C22200AEF11E /* kr-video-player-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@2x.png"; sourceTree = "<group>"; };
 		8473E6DB1D6EF38F00DDF60C /* PremiumReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PremiumReview.h; sourceTree = "<group>"; };
 		8473E6DC1D6EF38F00DDF60C /* PremiumReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PremiumReview.m; sourceTree = "<group>"; };
 		8473E6E41D6F15DE00DDF60C /* PremiumVideoCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PremiumVideoCollectionView.h; sourceTree = "<group>"; };
@@ -297,6 +295,8 @@
 		84F4A6C41D708A5F000B89BA /* SearchTileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTileCell.h; sourceTree = "<group>"; };
 		84F4A6C51D708A5F000B89BA /* SearchTileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTileCell.m; sourceTree = "<group>"; };
 		84F4A6C61D708A5F000B89BA /* SearchTileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTileCell.xib; sourceTree = "<group>"; };
+		8DD61C794F9696CCC7B52F8C /* Pods-MyReelty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyReelty.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyReelty/Pods-MyReelty.release.xcconfig"; sourceTree = "<group>"; };
+		B1A5DE38FA6BB4D289939779 /* Pods-MyReelty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyReelty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyReelty/Pods-MyReelty.debug.xcconfig"; sourceTree = "<group>"; };
 		C32E0AB91C8881E1001E4203 /* SearchFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFilter.h; sourceTree = "<group>"; };
 		C32E0ABA1C8881E1001E4203 /* SearchFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFilter.m; sourceTree = "<group>"; };
 		C32E0ABC1C889B51001E4203 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -320,13 +320,22 @@
 				560456401CCA770300E46F23 /* FBSDKCoreKit.framework in Frameworks */,
 				560456411CCA770300E46F23 /* FBSDKLoginKit.framework in Frameworks */,
 				84E75AB61C60EF050082B01E /* MapKit.framework in Frameworks */,
-				D2F07A7532882607AA3B1083 /* libPods-MyReelty.a in Frameworks */,
+				FF95C9813E2CD7C11F8C5CEC /* libPods-MyReelty.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D9EF39AED0903DEF6470E7F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1A5DE38FA6BB4D289939779 /* Pods-MyReelty.debug.xcconfig */,
+				8DD61C794F9696CCC7B52F8C /* Pods-MyReelty.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		560228391CB6A57600AE7050 /* ErrorHandler */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,8 +402,8 @@
 				5645C40A1C9AF92D000840E4 /* kr-video-player-fullscreen@3x.png */,
 				5645C40B1C9AF92D000840E4 /* kr-video-player-pause@2x.png */,
 				5645C40C1C9AF92D000840E4 /* kr-video-player-pause@3x.png */,
-				5645C40D1C9AF92D000840E4 /* kr-video-player-play@2x.png */,
-				5645C40E1C9AF92D000840E4 /* kr-video-player-play@3x.png */,
+				8454564F1D75C22200AEF11E /* kr-video-player-play@2x.png */,
+				8454564D1D75BEB000AEF11E /* kr-video-player-play@3x.png */,
 				5645C40F1C9AF92D000840E4 /* kr-video-player-point@2x.png */,
 				5645C4101C9AF92D000840E4 /* kr-video-player-point@3x.png */,
 				5645C4111C9AF92D000840E4 /* kr-video-player-shrinkscreen@2x.png */,
@@ -1032,8 +1041,8 @@
 			children = (
 				84A755791C5A09D5000DD719 /* MyReelty */,
 				84A755781C5A09D5000DD719 /* Products */,
-				87E7D4A17313FDA2F99CC71B /* Pods */,
 				CFEB7AE70F5FFAA7F2A2161A /* Frameworks */,
+				4D9EF39AED0903DEF6470E7F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1086,15 +1095,6 @@
 			name = SearchTileCell;
 			sourceTree = "<group>";
 		};
-		87E7D4A17313FDA2F99CC71B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7B1D3B9F3BF1CDBD0AA2CEB8 /* Pods-MyReelty.debug.xcconfig */,
-				0BA20A1E4181FB87988F5487 /* Pods-MyReelty.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		C32E0AB81C888100001E4203 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
@@ -1142,7 +1142,7 @@
 				56599A1C1CB2CF970055A693 /* Social.framework */,
 				C32E0ABC1C889B51001E4203 /* QuartzCore.framework */,
 				84E75AB51C60EF050082B01E /* MapKit.framework */,
-				54B0558354C2D0A683FE461A /* libPods-MyReelty.a */,
+				8452747FBD17528C26DF32D7 /* libPods-MyReelty.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1154,12 +1154,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84A755A41C5A09D6000DD719 /* Build configuration list for PBXNativeTarget "MyReelty" */;
 			buildPhases = (
-				B818C5EA27FD41A2F62CEE63 /* Check Pods Manifest.lock */,
+				D5C9BD40F2C2E0A71D057834 /* [CP] Check Pods Manifest.lock */,
 				84A755731C5A09D5000DD719 /* Sources */,
 				84A755741C5A09D5000DD719 /* Frameworks */,
 				84A755751C5A09D5000DD719 /* Resources */,
-				C0D899E20D1C3A7567DC501D /* Embed Pods Frameworks */,
-				6D0BB651524CBA3D5C50BD8C /* Copy Pods Resources */,
+				65D2FE5238C3ECC1159D6B43 /* [CP] Embed Pods Frameworks */,
+				B4017DCE6A8F1A175CD32BCD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1209,7 +1209,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58FA8BDB1C73D86C00591F5A /* Info.plist in Resources */,
-				5645C4201C9AF92D000840E4 /* kr-video-player-play@3x.png in Resources */,
 				8473E6E91D6F161B00DDF60C /* PremiumVideoCollectionView.xib in Resources */,
 				5645C41B1C9AF92D000840E4 /* kr-video-player-fullscreen@2x.png in Resources */,
 				56BBD9441CA14472000961E0 /* .gitkeep in Resources */,
@@ -1225,13 +1224,14 @@
 				5645C4211C9AF92D000840E4 /* kr-video-player-point@2x.png in Resources */,
 				58FA8BE41C73DA6100591F5A /* Assets.xcassets in Resources */,
 				58FA8CA11C73E90A00591F5A /* VideoCell.xib in Resources */,
-				5645C41F1C9AF92D000840E4 /* kr-video-player-play@2x.png in Resources */,
 				5645C4221C9AF92D000840E4 /* kr-video-player-point@3x.png in Resources */,
 				560A0C1E1C8F06610080E3C8 /* PinReviewInfoView.xib in Resources */,
 				5645C4231C9AF92D000840E4 /* kr-video-player-shrinkscreen@2x.png in Resources */,
 				8473E6F31D6F467300DDF60C /* main_logo.png in Resources */,
 				C32E0AC31C897AF3001E4203 /* MRDropMenu.xib in Resources */,
 				84F4A6C81D708A5F000B89BA /* SearchTileCell.xib in Resources */,
+				8454564E1D75BEB000AEF11E /* kr-video-player-play@3x.png in Resources */,
+				845456501D75C22200AEF11E /* kr-video-player-play@2x.png in Resources */,
 				56BBD9491CA14472000961E0 /* Info.plist in Resources */,
 				56C32D731C89B6B900F2D45B /* CustomFooterView.xib in Resources */,
 				5645C41A1C9AF92D000840E4 /* kr-video-player-close@3x.png in Resources */,
@@ -1247,14 +1247,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6D0BB651524CBA3D5C50BD8C /* Copy Pods Resources */ = {
+		65D2FE5238C3ECC1159D6B43 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyReelty/Pods-MyReelty-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4017DCE6A8F1A175CD32BCD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1262,34 +1277,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyReelty/Pods-MyReelty-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B818C5EA27FD41A2F62CEE63 /* Check Pods Manifest.lock */ = {
+		D5C9BD40F2C2E0A71D057834 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C0D899E20D1C3A7567DC501D /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyReelty/Pods-MyReelty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1476,7 +1476,7 @@
 		};
 		84A755A51C5A09D6000DD719 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B1D3B9F3BF1CDBD0AA2CEB8 /* Pods-MyReelty.debug.xcconfig */;
+			baseConfigurationReference = B1A5DE38FA6BB4D289939779 /* Pods-MyReelty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1497,7 +1497,7 @@
 		};
 		84A755A61C5A09D6000DD719 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BA20A1E4181FB87988F5487 /* Pods-MyReelty.release.xcconfig */;
+			baseConfigurationReference = 8DD61C794F9696CCC7B52F8C /* Pods-MyReelty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

@@ -140,7 +140,7 @@
         return;
     }
     
-    NSString *requestString = [NSString stringWithFormat:@"api/reviews/nearest?address=%@%@", address, [Network getUrlParametersWhithFilters:filter]];
+    NSString *requestString = [NSString stringWithFormat:@"api/reviews/nearest?address=%@%@%@", address, [Network getUrlParametersWhithFilters:filter], requestType];
     
     [[Network manager] GET:requestString parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         

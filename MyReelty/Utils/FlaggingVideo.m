@@ -38,12 +38,12 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"XXX-rated",
-                                                                      @"Not playing nice",
-                                                                      @"Moneymaker",
-                                                                      @"Uploader did not make this",
-                                                                      @"Incorrect rating",
-                                                                      @"Spam", nil];
+                                                    otherButtonTitles:@"Sexual Content",
+                                                                      @"Hateful & Abusive",
+                                                                      @"Depicting Violence",
+                                                                      @"Spam/Misleading Content",
+                                                                      @"Quality Issues",
+                                                                      @"Copyright Issues", nil];
     
     actionSheet.tag = revievID;
     

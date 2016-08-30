@@ -27,6 +27,8 @@ typedef NS_ENUM(NSInteger, ListType) {
     ListTypeBookmarks = 1
 };
 
+static CGFloat sectionHeaderHeight = 40.f;
+
 @interface ProfileViewController () <UITabBarDelegate, TableCellDelegate> {
     CellFabric *_cellFabric;
 }
@@ -76,6 +78,7 @@ typedef NS_ENUM(NSInteger, ListType) {
     self.allowLoadData = YES;
     [self reloadTableData];
     self.allowLoadMore = YES;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,12 +94,13 @@ typedef NS_ENUM(NSInteger, ListType) {
         self.profile = [DBProfile main];
         
         self.tabBarController.tabBar.hidden = NO;
-        [self.navigationItem setHidesBackButton:YES animated:NO];        
-        UIBarButtonItem *optionsBtn = [[UIBarButtonItem alloc] initWithTitle:@"Options"
-                                                                   style:(UIBarButtonItemStylePlain)
-                                                                  target:self
-                                                                  action:@selector(showOptions)];
-        self.navigationItem.rightBarButtonItem = optionsBtn;
+        [self.navigationItem setHidesBackButton:YES animated:NO];
+        UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"options"]
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(showOptions)];
+        self.navigationItem.rightBarButtonItem = optionsButton;
+        
     } else {
         
         __weak typeof(self) weakSelf = self;
@@ -160,13 +164,8 @@ typedef NS_ENUM(NSInteger, ListType) {
             } else {
                 
                 UITableViewCell *cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-                
-                
-                
                 weakSelf.accountReviews = [lArray mutableCopy];
-                //[weakSelf.accountReviews count] > 0 ? weakSelf.noBookmarksView : nil;
                 [weakSelf.tableView reloadData];
-                
                 
                 if (weakSelf.tableView.contentOffset.y > cell.frame.size.height) {
                     
@@ -175,6 +174,7 @@ typedef NS_ENUM(NSInteger, ListType) {
                 }
 
             }
+            
             weakSelf.allowLoadMore = [weakSelf.accountReviews count] < ((Page *)[array objectForKey:@"page"]).total_entries;
         }
         [weakSelf.tableView reloadData];
@@ -192,7 +192,6 @@ typedef NS_ENUM(NSInteger, ListType) {
     
     if (self.showCurrentUserProfile) {
         
-        
         if (_listType == ListTypeUploads) {
             [Network accountReviewsLoadMore:more WithCompletion:^(NSDictionary *array, NSError *error) {
                 weakSelf.page = [array objectForKey:@"page"];
@@ -206,6 +205,7 @@ typedef NS_ENUM(NSInteger, ListType) {
         }
         
     } else {
+        
         [Network userReviewsForUserID:weakSelf.userID loadMore:more WithCompletion:^(NSDictionary *array, NSError *error) {
                weakSelf.page = [array objectForKey:@"page"];
                getReviews(array, error);
@@ -300,7 +300,7 @@ typedef NS_ENUM(NSInteger, ListType) {
 
     if (section == 1 && _showCurrentUserProfile) {
         
-        UIView *lBackView = [[UIView alloc] initWithFrame:CGRectMake(5.f, 0.f, tableView.frame.size.width - 10.f, 40.f)];
+        UIView *lBackView = [[UIView alloc] initWithFrame:CGRectMake(5.f, 0.f, tableView.frame.size.width - 10.f, sectionHeaderHeight)];
         lBackView.backgroundColor = [UIColor whiteColor];
         _segmentControl.frame = CGRectMake(lBackView.frame.origin.x,
                                            lBackView.frame.origin.y,
@@ -316,8 +316,9 @@ typedef NS_ENUM(NSInteger, ListType) {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
     if (section == 1 ) {
-        return 40.f;
+        return sectionHeaderHeight;
     }
     
     return 0.f;

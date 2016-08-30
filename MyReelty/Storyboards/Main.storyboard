@@ -947,7 +947,7 @@ They will be saved here.</string>
                             </tableViewSection>
                             <tableViewSection id="tMv-Jl-sA8">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="PdJ-Q6-o1f" style="IBUITableViewCellStyleDefault" id="8L0-Bl-uBs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="PdJ-Q6-o1f" style="IBUITableViewCellStyleDefault" id="8L0-Bl-uBs">
                                         <rect key="frame" x="0.0" y="269" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8L0-Bl-uBs" id="zwV-c3-ZCz">
