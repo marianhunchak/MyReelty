@@ -45,8 +45,9 @@
         NSArray *lArray = [[dict objectForKey:@"pictures"] objectForKey:@"sizes"];
         lReview.thumb_url = [[lArray lastObject] objectForKey:@"link"];
     }
-    if(![[dict objectForKey:@"thumb_url"] isKindOfClass:[NSNull class]]) {
-        lReview.thumb_url = [dict objectForKey:@"thumb_url"];
+    if(![[dict objectForKey:@"thumb_urls"] isKindOfClass:[NSNull class]]) {
+        NSArray *lArray = [dict objectForKey:@"thumb_urls"];
+        lReview.thumb_url = [[lArray lastObject] objectForKey:@"link"];
     }
     return lReview;
 }

@@ -141,7 +141,8 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
 {
     if (!_bottomBar) {
         _bottomBar = [UIView new];
-        _bottomBar.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+//        _bottomBar.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        _bottomBar.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.8];
     }
     return _bottomBar;
 }
@@ -191,7 +192,7 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
     if (!_progressSlider) {
         _progressSlider = [[UISlider alloc] init];
         [_progressSlider setThumbImage:[UIImage imageNamed:@"kr-video-player-point"] forState:UIControlStateNormal];
-        [_progressSlider setMinimumTrackTintColor:[UIColor whiteColor]];
+        [_progressSlider setMinimumTrackTintColor:navigationBarColor];
         [_progressSlider setMaximumTrackTintColor:[UIColor lightGrayColor]];
         _progressSlider.value = 0.f;
         _progressSlider.continuous = YES;
@@ -215,7 +216,7 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
         _timeLabel = [UILabel new];
         _timeLabel.backgroundColor = [UIColor clearColor];
         _timeLabel.font = [UIFont systemFontOfSize:kVideoControlTimeLabelFontSize];
-        _timeLabel.textColor = [UIColor whiteColor];
+        _timeLabel.textColor = navigationBarColor;
         _timeLabel.textAlignment = NSTextAlignmentRight;
         _timeLabel.bounds = CGRectMake(0, 0, kVideoControlTimeLabelFontSize, kVideoControlTimeLabelFontSize);
     }

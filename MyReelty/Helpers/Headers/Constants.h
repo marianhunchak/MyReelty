@@ -8,11 +8,11 @@
 #ifndef Constants_consts_h
 #define Constants_consts_h
 
-#ifdef DEBUG
+//#ifdef DEBUG
 static NSString *mainURL = @"http://staging.myreelty.com";
-#else 
-static NSString *mainURL = @"http://myreelty.com";
-#endif
+//#else 
+//static NSString *mainURL = @"http://myreelty.com";
+//#endif
 static CGFloat koeficientForCellHeight = 3.f / 4.f;
 
 #endif

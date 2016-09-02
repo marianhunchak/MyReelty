@@ -25,10 +25,12 @@
 }
 
 - (void)setPremiumReview:(PremiumReview *)premiumReview {
-    
+
     _premiumReview = premiumReview;
     self.backroundImageView.image = nil;
-    [self.backroundImageView setImageWithURL:premiumReview.imageURL placeholderImage:nil];
+    
+    NSURL *imageURL = [NSURL URLWithString:premiumReview.review.thumb_url];
+    [self.backroundImageView setImageWithURL:imageURL placeholderImage:nil];
 }
 
 - (IBAction)playButtonPressed:(UIButton *)sender {

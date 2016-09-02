@@ -23,17 +23,16 @@ NSUInteger prevSelectedTag;
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    [self twitterSplash];
+    [self addCustomSplash];
     
     self.delegate = self;
 }
 
-- (void) twitterSplash
+- (void)addCustomSplash
 {
-    //Twitter style splash
-    SKSplashIcon *twitterSplashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"main_logo.png"] animationType:SKIconAnimationTypeBounce];
-    UIColor *twitterColor = navigationBarColor;
-    _splashView = [[SKSplashView alloc] initWithSplashIcon:twitterSplashIcon backgroundColor:twitterColor animationType:SKSplashAnimationTypeBounce];
+    SKSplashIcon *splashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"main_logo.png"] animationType:SKIconAnimationTypeBounce];
+    splashIcon.iconSize = CGSizeMake(self.view.frame.size.width / 2.0, self.view.frame.size.width / 2.0);
+    _splashView = [[SKSplashView alloc] initWithSplashIcon:splashIcon backgroundColor:[UIColor whiteColor] animationType:SKSplashAnimationTypeNone];
     _splashView.animationDuration = 3.2; //Optional -> set animation duration. Default: 1s
     [self.view addSubview:_splashView];
     [_splashView startAnimation];
