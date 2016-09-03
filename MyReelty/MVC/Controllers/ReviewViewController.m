@@ -20,6 +20,8 @@
 #import "NSDictionary+Accessors.h"
 #import "NSString+ValidateValue.h"
 #import "FlaggingVideo.h"
+#import "NSDate+String.h"
+#import "NSDate+TimeAgo.h"
 
 static NSString *CellIdentifier = @"likeCell";
 static NSString *footerIdentifier = @"customFooter";
@@ -597,7 +599,7 @@ static NSString *footerIdentifier = @"customFooter";
         cell.commentLabel.hidden = YES;
         NSDictionary *lDictionary = [self.likesList objectAtIndex:indexPath.row];
         cell.profileNameLabel.text = [[lDictionary objectForKey:@"user"] objectForKey:@"name"];
-        cell.createdAtLabel.text = [[lDictionary objectForKey:@"created_at"] substringToIndex:10];
+        cell.createdAtLabel.text = [[NSDate getDateFromString:[lDictionary stringForKey:@"created_at"]] timeAgo];
         url1 = [[lDictionary objectForKey:@"user"] stringForKey:@"avatar_url"];
 
     } else if (self.tabCommentBtn.selected) {
@@ -606,7 +608,7 @@ static NSString *footerIdentifier = @"customFooter";
         NSDictionary *lDictionary = [self.commentsList objectAtIndex:indexPath.row];
         cell.commentLabel.text = [lDictionary objectForKey:@"content"];
         cell.profileNameLabel.text = [[lDictionary objectForKey:@"user"] objectForKey:@"name"];
-        cell.createdAtLabel.text = [[lDictionary objectForKey:@"created_at"] substringToIndex:10];
+        cell.createdAtLabel.text = [[NSDate getDateFromString:[lDictionary stringForKey:@"created_at"]] timeAgo];
         url1 = [[lDictionary objectForKey:@"user"] stringForKey:@"avatar_url"];
     }
 

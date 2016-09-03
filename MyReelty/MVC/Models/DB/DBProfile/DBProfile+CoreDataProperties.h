@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *avatarUrl;
 @property (nullable, nonatomic, retain) NSString *phone;
 @property (nullable, nonatomic, retain) NSNumber *autorized;
+@property (nullable, nonatomic, retain) NSString *roleName;
 
 @end
 

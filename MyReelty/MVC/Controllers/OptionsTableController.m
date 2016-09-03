@@ -10,9 +10,10 @@
 #import "DBProfile.h"
 #import "PrivacyPolicyController.h"
 #import "Network.h"
+#import <MessageUI/MessageUI.h>
 
 
-@interface OptionsTableController ()
+@interface OptionsTableController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -34,7 +35,14 @@
     switch (indexPath.section) {
         case 0: [Network updateUserProfile:nil];
             break;
-        case 1: [self showAboutViewControllerForRow:indexPath.row];
+        case 1:
+            
+            if (indexPath.row == 2) {
+                [self sendMail];
+                return;
+            }
+            
+            [self showAboutViewControllerForRow:indexPath.row];
             break;
         case 2: [self logOut];
             break;
@@ -74,6 +82,49 @@
         handler(action);
     }]];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)sendMail {
+    
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+        mail.mailComposeDelegate = self;
+        [mail setSubject:@"MyReelty support"];
+        [mail setMessageBody:@"" isHTML:NO];
+        [mail setToRecipients:@[@"info@myreelty.com"]];
+        
+        [self presentViewController:mail animated:YES completion:NULL];
+    }
+    else
+    {
+                DLog(@"This device cannot send email");
+    }
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result) {
+        case MFMailComposeResultSent:
+                        DLog(@"You sent the email.");
+            break;
+        case MFMailComposeResultSaved:
+                        DLog(@"You saved a draft of this email");
+            break;
+        case MFMailComposeResultCancelled:
+                        DLog(@"You cancelled sending this email.");
+            break;
+        case MFMailComposeResultFailed:
+                        DLog(@"Mail failed:  An error occurred when trying to compose this email");
+            break;
+        default:
+                        DLog(@"An error occurred when trying to compose this email");
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 /*
 #pragma mark - Navigation

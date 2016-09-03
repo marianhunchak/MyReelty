@@ -22,5 +22,6 @@
 @dynamic avatarUrl;
 @dynamic phone;
 @dynamic autorized;
+@dynamic roleName;
 
 @end

@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, copy) NSString *avatarUrl;
 @property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *roleName;
 
 + (instancetype)profileWithDict:(NSDictionary *)dict;
 

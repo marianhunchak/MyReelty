@@ -117,6 +117,7 @@
 		C32E0AC91C89ABA5001E4203 /* MRDoubleSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32E0AC81C89ABA5001E4203 /* MRDoubleSlider.xib */; };
 		C32E0ACD1C89ECE9001E4203 /* MRSetSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = C32E0ACC1C89ECE9001E4203 /* MRSetSelection.m */; };
 		C32E0ACF1C89ECF6001E4203 /* MRSetSelection.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32E0ACE1C89ECF6001E4203 /* MRSetSelection.xib */; };
+		C6F36DB61D7ACA0400C2CA07 /* NSDate+String.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F36DB51D7ACA0400C2CA07 /* NSDate+String.m */; };
 		FF95C9813E2CD7C11F8C5CEC /* libPods-MyReelty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452747FBD17528C26DF32D7 /* libPods-MyReelty.a */; };
 /* End PBXBuildFile section */
 
@@ -311,6 +312,8 @@
 		C32E0ACB1C89ECE9001E4203 /* MRSetSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRSetSelection.h; sourceTree = "<group>"; };
 		C32E0ACC1C89ECE9001E4203 /* MRSetSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRSetSelection.m; sourceTree = "<group>"; };
 		C32E0ACE1C89ECF6001E4203 /* MRSetSelection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MRSetSelection.xib; sourceTree = "<group>"; };
+		C6F36DB41D7ACA0400C2CA07 /* NSDate+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+String.h"; sourceTree = "<group>"; };
+		C6F36DB51D7ACA0400C2CA07 /* NSDate+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+String.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -837,6 +840,8 @@
 				58FA8C681C73E83100591F5A /* Network */,
 				58FA8C611C73E7F500591F5A /* NSCache */,
 				566D5CBD1C9D4E6600F1ADBA /* NSString+DivideNumber */,
+				C6F36DB41D7ACA0400C2CA07 /* NSDate+String.h */,
+				C6F36DB51D7ACA0400C2CA07 /* NSDate+String.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1335,6 +1340,7 @@
 				5645C4251C9AF92D000840E4 /* KrVideoPlayerController.m in Sources */,
 				58FA8C981C73E90A00591F5A /* ProfileViewController.m in Sources */,
 				560228401CB6B77E00AE7050 /* HCMapAnnotation+Cluster.m in Sources */,
+				C6F36DB61D7ACA0400C2CA07 /* NSDate+String.m in Sources */,
 				564591F01C9306D600C01A62 /* NSString+DivideNumber.m in Sources */,
 				564B64781C887086008060AC /* LikeTableCell.m in Sources */,
 				56586B0C1CBC06E900230BEA /* MKMapView+ZoomLevel.m in Sources */,

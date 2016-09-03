@@ -38,6 +38,8 @@ static CGFloat sectionHeaderHeight = 40.f;
 @property (strong, nonatomic) UISegmentedControl *segmentControl;
 @property (assign, nonatomic) ListType listType;
 @property (strong, nonatomic) IBOutlet UIView *noBookmarksView;
+@property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
+@property (weak, nonatomic) IBOutlet UITextView *footerTextView;
 @end
 
 @implementation ProfileViewController
@@ -83,6 +85,8 @@ static CGFloat sectionHeaderHeight = 40.f;
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    [super viewWillAppear:animated];
+    
     if (self.showCurrentUserProfile) {
         
         NSMutableArray *lArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
@@ -101,6 +105,8 @@ static CGFloat sectionHeaderHeight = 40.f;
                                                                          action:@selector(showOptions)];
         self.navigationItem.rightBarButtonItem = optionsButton;
         
+        [self configureFooterView];
+        
     } else {
         
         __weak typeof(self) weakSelf = self;
@@ -109,6 +115,7 @@ static CGFloat sectionHeaderHeight = 40.f;
             if (!error) {
                 weakSelf.profile = object;
                 [weakSelf.tableView reloadData];
+                [self configureFooterView];
             }
         }];
         
@@ -116,7 +123,7 @@ static CGFloat sectionHeaderHeight = 40.f;
         [self.navigationItem setTitle:@"Profile"];
         
     }
-    [super viewWillAppear:animated];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -214,7 +221,33 @@ static CGFloat sectionHeaderHeight = 40.f;
     
 }
 
-
+- (void)configureFooterView {
+    
+    NSString *imageName = _listType == ListTypeBookmarks ? @"bookmarksEmpty" : @"uploadsEmpty";
+    _footerImageView.image = [UIImage imageNamed:imageName];
+    
+    NSString *textViewContent = @"";
+    
+    if (_showCurrentUserProfile) {
+        
+        switch (_listType) {
+            case ListTypeUploads:
+                textViewContent = @"You don't have any videos uploaded. Please visit MyReelty (http://myreelty.com) to upload your first video.";
+                break;
+            case ListTypeBookmarks:
+                textViewContent = @"You have no bookmarks.\nThey will be saved here.";
+                break;
+                
+            default:
+                break;
+        }
+    } else {
+        
+        textViewContent = [NSString stringWithFormat:@"%@ don't have any videos uploaded.", _profile.name];
+    }
+    
+    _footerTextView.text = textViewContent;
+}
 
 #pragma mark - Actions
 
@@ -227,9 +260,7 @@ static CGFloat sectionHeaderHeight = 40.f;
     _listType = sender.selectedSegmentIndex;
     
     [self reloadTableData];
-    
-    
-    
+    [self configureFooterView];
 }
 
 #pragma mark - Table view data source

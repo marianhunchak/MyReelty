@@ -11,6 +11,8 @@
 #import "Profile.h"
 #import "Network+Processing.h"
 #import "NSString+ValidateValue.h"
+#import "NSDate+TimeAgo.h"
+#import "NSDate+String.h"
 
 #define BASE_CELL_HEIGHT 100.f
 
@@ -35,6 +37,9 @@
     self.avatarUser.image = nil;
     self.nameUser.text = profile.name;
     self.timeRegistration.text = [profile.created_at substringToIndex:10];
+    
+    [self configureTimeRegistrationLabelWithProfile:profile];
+    
     self.emailUser.text = [NSString validateValue:profile.email];
     self.infoUser.text = [NSString validateValue:profile.description_];
     self.phoneNumberUser.text = [NSString validateValue:profile.phone];
@@ -74,6 +79,26 @@
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Private methods
+
+- (void)configureTimeRegistrationLabelWithProfile:(DBProfile *) profile {
+    
+    NSDate *date = [NSDate getDateFromString:profile.created_at];
+    
+    NSString *roleName = profile.roleName ? profile.roleName : @"Regular User";
+    NSString *timeAgo = [date timeAgo] ? [date timeAgo] : @"";
+    
+    NSString *fullString = [[timeAgo stringByAppendingString:@"   "] stringByAppendingString:roleName];
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:fullString];
+    NSRange boldedRange = NSMakeRange(timeAgo.length + 3, roleName.length);
+    UIFont *fontText = [UIFont boldSystemFontOfSize:12];
+    NSDictionary *dictBoldText = [NSDictionary dictionaryWithObjectsAndKeys:fontText, NSFontAttributeName, nil];
+    [attrString setAttributes:dictBoldText range:boldedRange];
+    
+    self.timeRegistration.attributedText = attrString;
 }
 
 + (CGFloat)heightForInfoUser:(NSString *)infoUserLabel inTable:(UITableView *)tableView {

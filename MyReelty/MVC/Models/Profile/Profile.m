@@ -23,6 +23,7 @@
     }
     lProfile.created_at = [lAccountDict stringForKey:@"created_at"];
     lProfile.avatarUrl = [lAccountDict stringForKey:@"avatar_url"];
+    lProfile.roleName = [[lAccountDict dictionaryForKey:@"role"] stringForKey:@"name"];
 
     return lProfile;
 }

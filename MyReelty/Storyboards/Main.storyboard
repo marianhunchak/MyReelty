@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UAm-sR-mPz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UAm-sR-mPz">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -943,12 +943,29 @@ They will be saved here.</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="tn5-DB-eKV" style="IBUITableViewCellStyleDefault" id="p4x-8e-h4T">
+                                        <rect key="frame" x="0.0" y="233" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p4x-8e-h4T" id="NGT-JO-CUK">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Contact support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tn5-DB-eKV">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="tMv-Jl-sA8">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="PdJ-Q6-o1f" style="IBUITableViewCellStyleDefault" id="8L0-Bl-uBs">
-                                        <rect key="frame" x="0.0" y="269" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="313" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8L0-Bl-uBs" id="zwV-c3-ZCz">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -989,7 +1006,7 @@ They will be saved here.</string>
                             <rect key="frame" x="0.0" y="72" width="600" height="215"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-Ak-b5N">
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-Ak-b5N">
                                     <rect key="frame" x="206" y="160" width="188" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="188" id="j8z-wV-IT3"/>
@@ -1001,19 +1018,34 @@ They will be saved here.</string>
                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmarksEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="iBc-wE-FFG">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadsEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="iBc-wE-FFG">
                                     <rect key="frame" x="245" y="26" width="110" height="120"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="120" id="6J0-fv-oc6"/>
                                         <constraint firstAttribute="width" constant="110" id="Bf5-mW-bs2"/>
                                     </constraints>
                                 </imageView>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="You don't have any videos uploaded. Please visit MyReelty (http://myreelty.com) to upload your first video." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MvV-sd-k5K">
+                                    <rect key="frame" x="141" y="146" width="319" height="74"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" red="1" green="0.3529411764705882" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="319" id="cIJ-VQ-Rnd"/>
+                                        <constraint firstAttribute="height" constant="74" id="gi9-Lk-imj"/>
+                                    </constraints>
+                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                </textView>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="d3s-Ak-b5N" firstAttribute="centerY" secondItem="ZtX-kw-0gl" secondAttribute="centerY" constant="74.5" id="2Tc-Oh-rym"/>
+                                <constraint firstItem="MvV-sd-k5K" firstAttribute="centerX" secondItem="ZtX-kw-0gl" secondAttribute="centerX" id="4Of-jp-R8n"/>
                                 <constraint firstItem="d3s-Ak-b5N" firstAttribute="centerX" secondItem="ZtX-kw-0gl" secondAttribute="centerX" id="GLy-zO-a63"/>
                                 <constraint firstItem="d3s-Ak-b5N" firstAttribute="top" secondItem="iBc-wE-FFG" secondAttribute="bottom" constant="14" id="PT2-GE-I9T"/>
                                 <constraint firstItem="iBc-wE-FFG" firstAttribute="centerX" secondItem="ZtX-kw-0gl" secondAttribute="centerX" id="UxR-zT-AHa"/>
+                                <constraint firstItem="MvV-sd-k5K" firstAttribute="top" secondItem="iBc-wE-FFG" secondAttribute="bottom" id="q1q-hC-qct"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -1033,6 +1065,8 @@ They will be saved here.</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Profile" id="zmW-3p-5bo"/>
                     <connections>
+                        <outlet property="footerImageView" destination="iBc-wE-FFG" id="eQP-JH-qqv"/>
+                        <outlet property="footerTextView" destination="MvV-sd-k5K" id="Lbz-9A-Keg"/>
                         <outlet property="noBookmarksView" destination="ZtX-kw-0gl" id="nBI-f2-JYE"/>
                         <outlet property="view" destination="ZQw-Nr-k8G" id="ksi-Vc-tOc"/>
                         <segue destination="P9W-UW-S3n" kind="show" identifier="showOptions" id="MIp-xv-dM5"/>
@@ -1874,6 +1908,7 @@ to upload and comment videos</string>
         <image name="tabbarDescription" width="26" height="21"/>
         <image name="tabbarDescription(Active)" width="25" height="25"/>
         <image name="tabbarLike" width="25" height="21"/>
+        <image name="uploadsEmpty" width="200" height="108"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZIj-zs-cHy"/>
