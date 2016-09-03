@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, ListType) {
 
 static CGFloat sectionHeaderHeight = 40.f;
 
-@interface ProfileViewController () <UITabBarDelegate, TableCellDelegate> {
+@interface ProfileViewController () <UITabBarDelegate, TableCellDelegate, UITextViewDelegate> {
     CellFabric *_cellFabric;
 }
 @property (strong, nonatomic) NSMutableArray *accountReviews;
@@ -54,10 +54,12 @@ static CGFloat sectionHeaderHeight = 40.f;
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self action:@selector(reloadTableData) forControlEvents:UIControlEventValueChanged];
     
-//    [self.refreshControl beginRefreshing];
+    
     
     if (self.showCurrentUserProfile) {
         
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textTapped:)];
+        [_footerTextView addGestureRecognizer:tapGesture];
         
         _listType = ListTypeUploads;
         _segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Uploads", @"My Videobook"]];
@@ -121,6 +123,7 @@ static CGFloat sectionHeaderHeight = 40.f;
         
         [self.navigationController.tabBarController.tabBar setHidden:YES];
         [self.navigationItem setTitle:@"Profile"];
+        _footerTextView.textAlignment = NSTextAlignmentCenter;
         
     }
     
@@ -228,12 +231,18 @@ static CGFloat sectionHeaderHeight = 40.f;
     
     NSString *textViewContent = @"";
     
+    
+    
     if (_showCurrentUserProfile) {
         
         switch (_listType) {
             case ListTypeUploads:
-                textViewContent = @"You don't have any videos uploaded. Please visit MyReelty (http://myreelty.com) to upload your first video.";
-                break;
+                
+                textViewContent = @"You don't have any videos uploaded.Please visit MyReelty to upload your first video.";
+                
+                [self setAtributedStringWithText:textViewContent];
+                
+                return;
             case ListTypeBookmarks:
                 textViewContent = @"You have no bookmarks.\nThey will be saved here.";
                 break;
@@ -247,6 +256,29 @@ static CGFloat sectionHeaderHeight = 40.f;
     }
     
     _footerTextView.text = textViewContent;
+    _footerTextView.textAlignment = NSTextAlignmentCenter;
+}
+
+- (void)setAtributedStringWithText:(NSString *)text {
+    
+    NSMutableAttributedString *atributedString = [[NSMutableAttributedString alloc] initWithString:text];
+    
+    NSRange boldedRange = [text rangeOfString:@"MyReelty"];
+    UIFont *fontText = [UIFont boldSystemFontOfSize:12];
+    UIColor *color = navigationBarColor;
+    
+    NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
+    paragraphStyle.alignment                = NSTextAlignmentCenter;
+    
+    NSDictionary *dictBoldText = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  fontText,       NSFontAttributeName,
+                                  color,          NSForegroundColorAttributeName,
+                                  paragraphStyle, NSParagraphStyleAttributeName, nil];
+    [atributedString setAttributes:dictBoldText range:boldedRange];
+    
+    _footerTextView.attributedText = atributedString;
+    _footerTextView.textAlignment = NSTextAlignmentCenter;
+    
 }
 
 #pragma mark - Actions
@@ -261,6 +293,7 @@ static CGFloat sectionHeaderHeight = 40.f;
     
     [self reloadTableData];
     [self configureFooterView];
+    _footerTextView.textAlignment = NSTextAlignmentCenter;
 }
 
 #pragma mark - Table view data source
@@ -353,6 +386,44 @@ static CGFloat sectionHeaderHeight = 40.f;
     }
     
     return 0.f;
+}
+
+#pragma mark - UITextViewDelegate
+
+- (void)textTapped:(UITapGestureRecognizer *)recognizer {
+    
+    if (_showCurrentUserProfile && _listType == ListTypeUploads) {
+    
+        UITextView *textView = (UITextView *)recognizer.view;
+        
+        // Location of the tap in text-container coordinates
+        
+        NSLayoutManager *layoutManager = textView.layoutManager;
+        CGPoint location = [recognizer locationInView:textView];
+        location.x -= textView.textContainerInset.left;
+        location.y -= textView.textContainerInset.top;
+        
+        // Find the character that's been tapped on
+        
+        NSUInteger characterIndex;
+        characterIndex = [layoutManager characterIndexForPoint:location
+                                               inTextContainer:textView.textContainer
+                      fractionOfDistanceBetweenInsertionPoints:NULL];
+        
+        if (characterIndex < textView.textStorage.length) {
+            
+            NSRange range;
+            id value = [textView.attributedText attribute:@"myCustomTag" atIndex:characterIndex effectiveRange:&range];
+            
+            NSRange currentRange = NSMakeRange(characterIndex, 1);
+            NSRange myRange = [textView.text rangeOfString:@"MyReelty"];
+            
+            if (currentRange.location >= myRange.location && currentRange.location <= myRange.location + myRange.length) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.myreelty.com"]];
+            }
+            
+        }
+    }
 }
 
 #pragma mark - Notifications

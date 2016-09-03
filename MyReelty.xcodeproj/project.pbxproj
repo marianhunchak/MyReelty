@@ -118,6 +118,7 @@
 		C32E0ACD1C89ECE9001E4203 /* MRSetSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = C32E0ACC1C89ECE9001E4203 /* MRSetSelection.m */; };
 		C32E0ACF1C89ECF6001E4203 /* MRSetSelection.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32E0ACE1C89ECF6001E4203 /* MRSetSelection.xib */; };
 		C6F36DB61D7ACA0400C2CA07 /* NSDate+String.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F36DB51D7ACA0400C2CA07 /* NSDate+String.m */; };
+		C6F36DBB1D7AE8B400C2CA07 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F36DBA1D7AE8B400C2CA07 /* EditProfileController.m */; };
 		FF95C9813E2CD7C11F8C5CEC /* libPods-MyReelty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452747FBD17528C26DF32D7 /* libPods-MyReelty.a */; };
 /* End PBXBuildFile section */
 
@@ -314,6 +315,8 @@
 		C32E0ACE1C89ECF6001E4203 /* MRSetSelection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MRSetSelection.xib; sourceTree = "<group>"; };
 		C6F36DB41D7ACA0400C2CA07 /* NSDate+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+String.h"; sourceTree = "<group>"; };
 		C6F36DB51D7ACA0400C2CA07 /* NSDate+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+String.m"; sourceTree = "<group>"; };
+		C6F36DB91D7AE8B400C2CA07 /* EditProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
+		C6F36DBA1D7AE8B400C2CA07 /* EditProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -889,6 +892,7 @@
 				58FA8C6E1C73E90A00591F5A /* BookmarksViewController */,
 				58FA8C7A1C73E90A00591F5A /* ProfileViewController */,
 				564912A41CDB7CE40094B4D0 /* OptionsTableController */,
+				C6F36DBC1D7AE8B900C2CA07 /* EditProfileController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1142,6 +1146,15 @@
 			path = SetSelection;
 			sourceTree = "<group>";
 		};
+		C6F36DBC1D7AE8B900C2CA07 /* EditProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				C6F36DB91D7AE8B400C2CA07 /* EditProfileController.h */,
+				C6F36DBA1D7AE8B400C2CA07 /* EditProfileController.m */,
+			);
+			name = EditProfileController;
+			sourceTree = "<group>";
+		};
 		CFEB7AE70F5FFAA7F2A2161A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1335,6 +1348,7 @@
 				5609D0051CD203D400DEF1BB /* UITabBarController+HideTabBar.m in Sources */,
 				5645C4261C9AF92D000840E4 /* KrVideoPlayerControlView.m in Sources */,
 				56BBD9451CA14472000961E0 /* FBAnnotationCluster.m in Sources */,
+				C6F36DBB1D7AE8B400C2CA07 /* EditProfileController.m in Sources */,
 				5645C4271C9AF92D000840E4 /* READEME.md in Sources */,
 				586751751C8466B500747269 /* DBReview.m in Sources */,
 				5645C4251C9AF92D000840E4 /* KrVideoPlayerController.m in Sources */,

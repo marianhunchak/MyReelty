@@ -11,6 +11,7 @@
 #import "PrivacyPolicyController.h"
 #import "Network.h"
 #import <MessageUI/MessageUI.h>
+#import "EditProfileController.h"
 
 
 @interface OptionsTableController () <MFMailComposeViewControllerDelegate>
@@ -33,7 +34,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     switch (indexPath.section) {
-        case 0: [Network updateUserProfile:nil];
+        case 0: [self showEditProfileController];
             break;
         case 1:
             
@@ -51,6 +52,13 @@
     }
 }
 #pragma mark - Private methods
+
+- (void)showEditProfileController {
+    
+    EditProfileController *controller = VIEW_CONTROLLER(@"EditProfileController");
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
 
 - (void) logOut {
     [self showAlertWitHandler:^(UIAlertAction *action) {
