@@ -61,4 +61,6 @@
 + (void)getSearchTilesWithCompletion:(ArrayCompletionBlock)completionBlock;
 + (void)getTotalReviesCountWithCompletion:(ObjectCompletionBlock)completionBlock;
 
++ (void)getRolesListWithCompletion:(ArrayCompletionBlock)completionBlock;
+
 @end

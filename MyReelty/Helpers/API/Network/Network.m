@@ -563,7 +563,7 @@
 }
 
 + (void) updateUserProfile:(NSDictionary *) pDictionary {
-    NSString *requestString = [NSString stringWithFormat:@"/api/account"];
+//    NSString *requestString = [NSString stringWithFormat:@"/api/account"];
     NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"avatar.jpg"], 0.5);
     [Network postToUrl:@"" data:imageData withFilename:@"avatar.jpg"];
 
@@ -619,6 +619,21 @@
         completionBlock(nil, error);
         
         NSLog(@"err: %@", [[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
+    }];
+    
+}
+
+#pragma mark - Roles
+
++ (void)getRolesListWithCompletion:(ArrayCompletionBlock)completionBlock {
+
+    [[Network manager] GET:@"api/roles" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        NSArray *profile = [Parser parseRoles:responseObject];
+        completionBlock(profile, nil);
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completionBlock(nil, error);
     }];
     
 }

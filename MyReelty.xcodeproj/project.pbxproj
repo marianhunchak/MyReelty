@@ -62,7 +62,6 @@
 		586751741C8466B500747269 /* DBReview+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5867516E1C8466B500747269 /* DBReview+CoreDataProperties.m */; };
 		586751751C8466B500747269 /* DBReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 586751701C8466B500747269 /* DBReview.m */; };
 		58FA8BDA1C73D86C00591F5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA8BD71C73D86C00591F5A /* AppDelegate.m */; };
-		58FA8BDB1C73D86C00591F5A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58FA8BD81C73D86C00591F5A /* Info.plist */; };
 		58FA8BDC1C73D86C00591F5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA8BD91C73D86C00591F5A /* main.m */; };
 		58FA8BE11C73DA5400591F5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FA8BDE1C73DA5400591F5A /* LaunchScreen.storyboard */; };
 		58FA8BE21C73DA5400591F5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FA8BE01C73DA5400591F5A /* Main.storyboard */; };
@@ -117,6 +116,7 @@
 		C32E0AC91C89ABA5001E4203 /* MRDoubleSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32E0AC81C89ABA5001E4203 /* MRDoubleSlider.xib */; };
 		C32E0ACD1C89ECE9001E4203 /* MRSetSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = C32E0ACC1C89ECE9001E4203 /* MRSetSelection.m */; };
 		C32E0ACF1C89ECF6001E4203 /* MRSetSelection.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32E0ACE1C89ECF6001E4203 /* MRSetSelection.xib */; };
+		C679B1B51D7EED02001AE301 /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = C679B1B41D7EED02001AE301 /* Role.m */; };
 		C6F36DB61D7ACA0400C2CA07 /* NSDate+String.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F36DB51D7ACA0400C2CA07 /* NSDate+String.m */; };
 		C6F36DBB1D7AE8B400C2CA07 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F36DBA1D7AE8B400C2CA07 /* EditProfileController.m */; };
 		FF95C9813E2CD7C11F8C5CEC /* libPods-MyReelty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452747FBD17528C26DF32D7 /* libPods-MyReelty.a */; };
@@ -313,6 +313,8 @@
 		C32E0ACB1C89ECE9001E4203 /* MRSetSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRSetSelection.h; sourceTree = "<group>"; };
 		C32E0ACC1C89ECE9001E4203 /* MRSetSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRSetSelection.m; sourceTree = "<group>"; };
 		C32E0ACE1C89ECF6001E4203 /* MRSetSelection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MRSetSelection.xib; sourceTree = "<group>"; };
+		C679B1B31D7EED02001AE301 /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
+		C679B1B41D7EED02001AE301 /* Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Role.m; sourceTree = "<group>"; };
 		C6F36DB41D7ACA0400C2CA07 /* NSDate+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+String.h"; sourceTree = "<group>"; };
 		C6F36DB51D7ACA0400C2CA07 /* NSDate+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+String.m"; sourceTree = "<group>"; };
 		C6F36DB91D7AE8B400C2CA07 /* EditProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
@@ -946,6 +948,7 @@
 		58FA8C7D1C73E90A00591F5A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C679B1B61D7EED08001AE301 /* Role */,
 				84F4A6C31D70731A000B89BA /* SearchTile */,
 				84F4A6BF1D706377000B89BA /* Category */,
 				8473E6DE1D6F0E9C00DDF60C /* PremiumReview */,
@@ -1146,6 +1149,15 @@
 			path = SetSelection;
 			sourceTree = "<group>";
 		};
+		C679B1B61D7EED08001AE301 /* Role */ = {
+			isa = PBXGroup;
+			children = (
+				C679B1B31D7EED02001AE301 /* Role.h */,
+				C679B1B41D7EED02001AE301 /* Role.m */,
+			);
+			name = Role;
+			sourceTree = "<group>";
+		};
 		C6F36DBC1D7AE8B900C2CA07 /* EditProfileController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1197,7 +1209,7 @@
 		84A7556F1C5A09D5000DD719 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Admin;
 				TargetAttributes = {
 					84A755761C5A09D5000DD719 = {
@@ -1229,7 +1241,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58FA8BDB1C73D86C00591F5A /* Info.plist in Resources */,
 				8473E6E91D6F161B00DDF60C /* PremiumVideoCollectionView.xib in Resources */,
 				56BBD9441CA14472000961E0 /* .gitkeep in Resources */,
 				564B64791C887086008060AC /* LikeTableCell.xib in Resources */,
@@ -1356,6 +1367,7 @@
 				560228401CB6B77E00AE7050 /* HCMapAnnotation+Cluster.m in Sources */,
 				C6F36DB61D7ACA0400C2CA07 /* NSDate+String.m in Sources */,
 				564591F01C9306D600C01A62 /* NSString+DivideNumber.m in Sources */,
+				C679B1B51D7EED02001AE301 /* Role.m in Sources */,
 				564B64781C887086008060AC /* LikeTableCell.m in Sources */,
 				56586B0C1CBC06E900230BEA /* MKMapView+ZoomLevel.m in Sources */,
 				58FA8C581C73E56D00591F5A /* NJKScrollFullScreen.m in Sources */,

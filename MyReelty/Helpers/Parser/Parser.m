@@ -15,6 +15,7 @@
 #import "Page.h"
 #import "Category.h"
 #import "SearchTile.h"
+#import "Role.h"
 #import <MagicalRecord/MagicalRecord.h>
 
 @implementation Parser
@@ -89,7 +90,8 @@
         lProfile.created_at = [lAccountDict stringForKey:@"created_at"];
         [Parser writeToFileImageWihtUrl:[lAccountDict stringForKey:@"avatar_url"]];
         lProfile.avatarUrl = [Parser documentsPathForFileName:@"image.png"];
-        lProfile.roleName = [[lAccountDict dictionaryForKey:@"role"] stringForKey:@"name"];
+        NSString *role = [[lAccountDict dictionaryForKey:@"role"] stringForKey:@"name"];
+        lProfile.roleName = [role isEqualToString:@""] ? @"Regular User" : role;
     } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
         [[NSNotificationCenter defaultCenter] postNotificationName:PROFILE_AVATAR_DID_LOADED object:lProfile.avatarUrl];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
@@ -104,6 +106,16 @@
         [lMutablePins addObject:lPin];
     }
     return [NSArray arrayWithArray:lMutablePins];
+}
+
++ (NSArray *)parseRoles:(NSDictionary *)dict {
+    NSMutableArray *lMutableRoles = [NSMutableArray new];
+    NSArray *lRoles = [dict arrayForKey:@"roles"];
+    for (NSDictionary *roleDict in lRoles) {
+        Role *lRole = [Role roleWithDict:roleDict];
+        [lMutableRoles addObject:lRole];
+    }
+    return [NSArray arrayWithArray:lMutableRoles];
 }
 
 + (NSDictionary *)parseReviewsWhithPagination:(NSDictionary *)dict {

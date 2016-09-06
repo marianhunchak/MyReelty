@@ -18,5 +18,6 @@
 + (NSArray *)parseReviews:(NSDictionary *)dict withKey:(NSString *)key;
 + (NSArray *)parseCategories:(NSDictionary *)dict withKey:(NSString *)key;
 + (NSArray *)parseSearchTiles:(NSDictionary *)dict;
++ (NSArray *)parseRoles:(NSDictionary *)dict;
 
 @end

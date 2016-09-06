@@ -20,7 +20,7 @@ NSUInteger prevSelectedTag;
 
 @implementation TabBarController
 
--(void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     [self addCustomSplash];
@@ -28,11 +28,13 @@ NSUInteger prevSelectedTag;
     self.delegate = self;
 }
 
-- (void)addCustomSplash
-{
-    SKSplashIcon *splashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"main_logo.png"] animationType:SKIconAnimationTypeBounce];
-    splashIcon.iconSize = CGSizeMake(self.view.frame.size.width / 2.0, self.view.frame.size.width / 2.0);
-    _splashView = [[SKSplashView alloc] initWithSplashIcon:splashIcon backgroundColor:[UIColor whiteColor] animationType:SKSplashAnimationTypeNone];
+- (void)addCustomSplash {
+    SKSplashIcon *splashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"main_logo.png"]
+                                                     animationType:SKIconAnimationTypeBounce];
+    splashIcon.iconSize = CGSizeMake(self.view.frame.size.width / 2.0,
+                                     self.view.frame.size.width / 2.0);
+    _splashView = [[SKSplashView alloc] initWithSplashIcon:splashIcon backgroundColor:[UIColor whiteColor]
+                                             animationType:SKSplashAnimationTypeNone];
     _splashView.animationDuration = 3.2; //Optional -> set animation duration. Default: 1s
     [self.view addSubview:_splashView];
     [_splashView startAnimation];
