@@ -15,6 +15,7 @@ static CGFloat pickerCellHeight = 100.f;
 
 @interface EditProfileController() <UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
     CGFloat currentPickerCellHeight;
+    NSInteger selectedRoleIndex;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -58,6 +59,8 @@ static CGFloat pickerCellHeight = 100.f;
     _phoneTF.text = profile.phone;
     _descriptionTV.text = profile.description_;
     _roleLabel.text = @"Regular";
+    
+    selectedRoleIndex = -1;
 
 }
 
@@ -78,6 +81,24 @@ static CGFloat pickerCellHeight = 100.f;
 }
 
 - (void)saveButtonPressed {
+    
+    
+    NSData *imageData = UIImageJPEGRepresentation(_profileImageView.image, 0.5);
+    
+    NSInteger selectedRoleID = -1;
+    
+    if (selectedRoleIndex != -1) {
+       selectedRoleID = ((Role *)[_rolesArray objectAtIndex:selectedRoleIndex]).id_;
+    }
+    
+    [Network updateUserProfileWithImageData:imageData
+                                phoneNumber:_phoneTF.text
+                                 userRoleID:selectedRoleID
+                                description:_descriptionTV.text
+    withCompletion:^(id object, NSError *error) {
+        
+        
+    }];
     
 }
 
@@ -146,6 +167,7 @@ static CGFloat pickerCellHeight = 100.f;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
     _roleLabel.text = ((Role *)_rolesArray[row]).name;
+    selectedRoleIndex = row;
 }
 
 #pragma mark - UIActionSheetDelegate

@@ -51,6 +51,34 @@
             break;
     }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return 0.f;
+    }
+    
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        return 0.f;
+    }
+    
+    return [super tableView:tableView heightForHeaderInSection:section];
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        return 0.f;
+    }
+    
+    return [super tableView:tableView heightForFooterInSection:section];
+}
+
 #pragma mark - Private methods
 
 - (void)showEditProfileController {
@@ -62,7 +90,7 @@
 
 - (void) logOut {
     [self showAlertWitHandler:^(UIAlertAction *action) {
-        [DBProfile main].autorized = [NSNumber numberWithBool:NO];
+        [[DBProfile main] MR_deleteEntity];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:ACCESS_TOKEN_DICT_KEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -134,14 +162,5 @@
     
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

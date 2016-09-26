@@ -40,6 +40,9 @@
 
 @end
 
+static CGFloat applyFilterBtnHeight = 35.f;
+
+
 @implementation FiltersViewController
 
 #pragma mark Life circle
@@ -50,7 +53,7 @@
     
     UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStylePlain target:self action:@selector(resetBtnPressed:)];
     self.navigationItem.rightBarButtonItem = resetButton;
-    _applyFiltersButton.layer.cornerRadius = _applyFiltersButton.frame.size.height / 2.f;
+    _applyFiltersButton.layer.cornerRadius = applyFilterBtnHeight / 2.f;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

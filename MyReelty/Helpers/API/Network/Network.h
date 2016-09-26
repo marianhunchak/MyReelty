@@ -52,7 +52,11 @@
 + (void)sendMessageWithEmail:(NSString *) email WithCompletion: (DictCompletionBlock)completionBlock;
 
 
-+ (void)updateUserProfile:(NSDictionary *) pDictionary;
++ (void) updateUserProfileWithImageData:(NSData *)imageData
+                            phoneNumber:(NSString *)phone
+                             userRoleID:(NSInteger)roleID
+                            description:(NSString *)description
+                         withCompletion:(ObjectCompletionBlock)completionBlock;
 
 + (void)reportVideoWithRevievID:(NSInteger) reviewID reasonString:(NSString *) reason WithCompletion: (DictCompletionBlock)completionBlock;
 
@@ -62,5 +66,12 @@
 + (void)getTotalReviesCountWithCompletion:(ObjectCompletionBlock)completionBlock;
 
 + (void)getRolesListWithCompletion:(ArrayCompletionBlock)completionBlock;
++ (void)claimUserWithName:(NSString *)name
+                    phone:(NSString *)phone
+                    email:(NSString *)email
+                  message:(NSString *)message
+            claimedUserID:(NSInteger)userID
+           WithCompletion:(DictCompletionBlock)completionBlock;
++ (void)updateProfileWithImage:(UIImage *)image withCompletion:(DictCompletionBlock)completionBlock;
 
 @end

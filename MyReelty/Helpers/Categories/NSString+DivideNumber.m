@@ -10,14 +10,14 @@
 
 @implementation NSString (DivideNumber)
 
-- (NSString *)divideNumber{
+- (NSString *)divideNumber {
     NSMutableString *newNumber = [NSMutableString stringWithString:self];
     
     for(NSInteger i = [self length] - 3; i > 0; i-=3) {
         if(i <= 0) {
             break;
         }
-        [newNumber insertString:@"." atIndex:i];
+        [newNumber insertString:@"," atIndex:i];
     }
     
     return [NSString stringWithFormat:@"%@",newNumber];

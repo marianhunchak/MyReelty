@@ -562,40 +562,62 @@
    
 }
 
-+ (void) updateUserProfile:(NSDictionary *) pDictionary {
-//    NSString *requestString = [NSString stringWithFormat:@"/api/account"];
-    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"avatar.jpg"], 0.5);
-    [Network postToUrl:@"" data:imageData withFilename:@"avatar.jpg"];
++ (void) updateUserProfileWithImageData:(NSData *)imageData
+                            phoneNumber:(NSString *)phone
+                             userRoleID:(NSInteger)roleID
+                            description:(NSString *)description
+                         withCompletion:(ObjectCompletionBlock)completionBlock {
+
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    NSString *URLString = [NSString stringWithFormat:@"%@/api/account",mainURL];
+    [request setURL:[NSURL URLWithString:URLString]];
+    [request setHTTPMethod:@"PUT"];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN_DICT_KEY];
+    [request setValue:token forHTTPHeaderField:@"Authentication-Token"];
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    NSMutableData *postbody = [NSMutableData data];
+    
+    NSString *fileName = @"avatar.jpg";
+    
+    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"account[avatar]\"; filename=\"%@\"\r\n", fileName] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postbody appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [postbody appendData:[NSData dataWithData:imageData]];
+    
+    
+    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"account[phone]\"\r\n\r\n%@", phone] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    if (roleID != -1) {
+    
+        [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"account[role_id]\"\r\n\r\n%ld",(long)roleID] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+    }
+    
+    
+    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"account[description]\"\r\n\r\n%@", description] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:postbody];
+    
+    NSError* error;
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if (returnData) {
+
+        NSString *response = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+        completionBlock(response, nil);
+    }
+    else {
+        completionBlock(nil, error);
+    }
 
 }
-
-+ (NSString*) postToUrl:(NSString*)urlString data:(NSData*)dataToSend withFilename:(NSString*)filename
-    {
-        NSMutableURLRequest *request= [[NSMutableURLRequest alloc] init];
-        [request setURL:[NSURL URLWithString:@"http://myreelty.com/api/account"]];
-        [request setHTTPMethod:@"PUT"];
-        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN_DICT_KEY];
-        [request setValue:token forHTTPHeaderField:@"Authentication-Token"];
-        NSString *boundary = @"---------------------------14737809831466499882746641449";
-        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-        [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-        NSMutableData *postbody = [NSMutableData data];
-        [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"account[avatar]\"; filename=\"%@\"\r\n", filename] dataUsingEncoding:NSUTF8StringEncoding]];
-        [postbody appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [postbody appendData:[NSData dataWithData:dataToSend]];
-        [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [request setHTTPBody:postbody];
-        
-        NSError* error;
-        NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-        if (returnData) {
-            return [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-        }
-        else {
-            return nil;
-        }
-    }
 
 #pragma mark - Flag Video
 
@@ -634,6 +656,59 @@
         
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         completionBlock(nil, error);
+    }];
+    
+}
+
+#pragma mark - Claim User
+
++ (void)claimUserWithName:(NSString *)name
+                    phone:(NSString *)phone
+                    email:(NSString *)email
+                  message:(NSString *)message
+            claimedUserID:(NSInteger)userID
+           WithCompletion:(DictCompletionBlock)completionBlock {
+    
+    NSDictionary *params = @{
+                                 @"user_claim": @{
+                                     @"name":               name,
+                                     @"phone":              phone,
+                                     @"email":              email,
+                                     @"message":            message,
+                                     @"claimed_user_id":    @(userID)
+                                 }
+                             };
+    
+    [[Network manager] POST:@"/api/user_claims" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        completionBlock(responseObject, nil);
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completionBlock(nil, error);
+        
+        NSLog(@"err: %@", [[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
+    }];
+    
+}
+
++ (void)updateProfileWithImage:(UIImage *)image withCompletion:(DictCompletionBlock)completionBlock {
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
+    
+    [[Network manager] POST:@"/api/account" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        [formData appendPartWithFileData:imageData
+                                    name:@"account[avatar]"
+                                fileName:@"ava.jpg" mimeType:@"image/jpeg"];
+        
+    } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        completionBlock(responseObject, nil);
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        
+        NSLog(@"err: %@", [[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
+        
     }];
     
 }

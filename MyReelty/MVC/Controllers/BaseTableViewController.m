@@ -33,6 +33,8 @@ static NSString * const reuseIdentifier = @"reviewCell";
     self.navigationController.navigationBar.barTintColor = navigationBarColor;
     [self.tableView registerNib:[UINib nibWithNibName:@"VideoCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
     
+    self.tableView.canCancelContentTouches = YES;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(bookmarkBtnPressedOnReviewController:)
                                                  name:BOOKMARK_PRESSED_ON_REVIEW_CONTROLLER
@@ -195,19 +197,25 @@ static NSString * const reuseIdentifier = @"reviewCell";
     
     if (_previousIndexPath) {
         VideoCell *cell = [self.tableView cellForRowAtIndexPath:_previousIndexPath];
-        cell.poupMenu.hidden = YES;
+        [UIView animateWithDuration:0.5 animations:^{
+            cell.poupMenu.alpha = 0;
+        }];
         if (_previousIndexPath == [self.tableView indexPathForCell:pCell]) {
             _previousIndexPath = nil;
             return;
         }
     }
-    if (pCell.poupMenu.hidden) {
+    if (pCell.poupMenu.alpha == 0) {
         
-        pCell.poupMenu.hidden = NO;
-        
+        [UIView animateWithDuration:0.5 animations:^{
+            pCell.poupMenu.alpha = 0.8;
+            pCell.poupMenu.hidden = NO;
+        }];
     } else {
         
-        pCell.poupMenu.hidden = YES;
+        [UIView animateWithDuration:0.5 animations:^{
+            pCell.poupMenu.alpha = 0;
+        }];
     }
     _previousIndexPath = [self.tableView indexPathForCell:pCell];
     

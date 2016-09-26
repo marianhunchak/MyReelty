@@ -17,6 +17,7 @@
 #import "SearchTile.h"
 #import "Role.h"
 #import <MagicalRecord/MagicalRecord.h>
+#import "NSString+ValidateValue.h"
 
 @implementation Parser
 
@@ -82,11 +83,11 @@
     
     NSDictionary *lAccountDict = [dict dictionaryForKey:@"account"];
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
-        lProfile.phone = [lAccountDict stringForKey:@"phone"];
-        lProfile.name = [lAccountDict stringForKey:@"name"];
+        lProfile.phone = [NSString validateValue:[lAccountDict stringForKey:@"phone"]];
+        lProfile.name = [NSString validateValue: [lAccountDict stringForKey:@"name"]];
         lProfile.id_ = [lAccountDict stringForKey:@"id"];
-        lProfile.email = [lAccountDict stringForKey:@"email"];
-        lProfile.description_ = [lAccountDict stringForKey:@"description"];
+        lProfile.email = [NSString validateValue:[lAccountDict stringForKey:@"email"]];
+        lProfile.description_ = [NSString validateValue:[lAccountDict stringForKey:@"description"]];
         lProfile.created_at = [lAccountDict stringForKey:@"created_at"];
         [Parser writeToFileImageWihtUrl:[lAccountDict stringForKey:@"avatar_url"]];
         lProfile.avatarUrl = [Parser documentsPathForFileName:@"image.png"];

@@ -26,18 +26,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-     self.navigationItem.title = @"Join MyReelty";
+     self.navigationItem.title = @"Sign Up";
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backButton"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed)];
+    self.navigationItem.leftBarButtonItem = backButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationItem setHidesBackButton:NO];
-    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Private methods
@@ -150,6 +151,12 @@
 }
 
 #pragma mark - Actions
+
+- (void)backButtonPressed {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 
 - (IBAction)logInBtnPressed:(UIButton *)sender {
     [self.view endEditing:YES];

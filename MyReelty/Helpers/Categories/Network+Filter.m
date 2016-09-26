@@ -88,7 +88,7 @@
         requestType = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@",propertyType, beds, baths, availability, price_from, price_to, size_from, size_to];
     }
     
-    NSString *requestString = [[NSString stringWithFormat:@"&range=50"] stringByAppendingString:requestType];
+//    NSString *requestString = [[NSString stringWithFormat:@"&range=50"] stringByAppendingString:requestType];
     
     return requestType;
     

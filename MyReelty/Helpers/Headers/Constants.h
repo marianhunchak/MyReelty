@@ -9,10 +9,10 @@
 #define Constants_consts_h
 
 //#ifdef DEBUG
-static NSString *mainURL = @"http://staging.myreelty.com";
-//#else 
-//static NSString *mainURL = @"http://myreelty.com";
+//static NSString *mainURL = @"http://staging.myreelty.com";
+//#else
+static NSString *mainURL = @"http://myreelty.com";
 //#endif
-static CGFloat koeficientForCellHeight = 3.f / 4.f;
+static CGFloat koeficientForCellHeight = 9.f / 16.f;
 
 #endif

@@ -8,6 +8,7 @@
 
 #import "SignInViewController.h"
 #import "ResetPasswordController.h"
+#import "SignUpViewController.h"
 
 
 @interface SignInViewController () <UITextFieldDelegate>
@@ -24,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Log In";
+    self.navigationItem.title = @"Sign In";
     self.emailTF.layer.borderColor = navigationBarColor.CGColor;
     self.passwordTF.layer.borderColor = navigationBarColor.CGColor;
 }
@@ -32,7 +33,16 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationItem setHidesBackButton:NO];
-    self.tabBarController.tabBar.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN_DICT_KEY]) {
+        if (self.navigationController.tabBarItem.tag == 3) {
+            [self.navigationController pushViewController:self.bookmarksViewController animated:NO];
+        } else if (self.navigationController.tabBarItem.tag == 4) {
+            self.profileViewController.showCurrentUserProfile = YES;
+            [self.navigationController pushViewController:self.profileViewController animated:NO];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,4 +139,11 @@
 - (IBAction)forgotPassBtnPressed:(UIButton *)sender {
     [self.navigationController pushViewController:self.resetPasswordVC animated:YES];
 }
+
+- (IBAction)signUpBtnPressed:(UIButton *)sender {
+    
+    SignUpViewController *signUpVC = VIEW_CONTROLLER(@"SignUpViewController");
+    [self.navigationController pushViewController:signUpVC animated:YES];
+}
+
 @end

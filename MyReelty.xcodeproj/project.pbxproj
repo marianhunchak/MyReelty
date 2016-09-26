@@ -116,6 +116,9 @@
 		C32E0AC91C89ABA5001E4203 /* MRDoubleSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32E0AC81C89ABA5001E4203 /* MRDoubleSlider.xib */; };
 		C32E0ACD1C89ECE9001E4203 /* MRSetSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = C32E0ACC1C89ECE9001E4203 /* MRSetSelection.m */; };
 		C32E0ACF1C89ECF6001E4203 /* MRSetSelection.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32E0ACE1C89ECF6001E4203 /* MRSetSelection.xib */; };
+		C604863D1D9421F500CCEF97 /* playButtonSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = C604863C1D9421F500CCEF97 /* playButtonSmall.png */; };
+		C61570B31D82DE8500CD4B51 /* ClaimUserTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = C61570B21D82DE8500CD4B51 /* ClaimUserTableController.m */; };
+		C61570B81D82FB5E00CD4B51 /* UIAlertDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = C61570B61D82FB5E00CD4B51 /* UIAlertDialog.m */; };
 		C679B1B51D7EED02001AE301 /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = C679B1B41D7EED02001AE301 /* Role.m */; };
 		C6F36DB61D7ACA0400C2CA07 /* NSDate+String.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F36DB51D7ACA0400C2CA07 /* NSDate+String.m */; };
 		C6F36DBB1D7AE8B400C2CA07 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F36DBA1D7AE8B400C2CA07 /* EditProfileController.m */; };
@@ -313,6 +316,11 @@
 		C32E0ACB1C89ECE9001E4203 /* MRSetSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRSetSelection.h; sourceTree = "<group>"; };
 		C32E0ACC1C89ECE9001E4203 /* MRSetSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRSetSelection.m; sourceTree = "<group>"; };
 		C32E0ACE1C89ECF6001E4203 /* MRSetSelection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MRSetSelection.xib; sourceTree = "<group>"; };
+		C604863C1D9421F500CCEF97 /* playButtonSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButtonSmall.png; sourceTree = "<group>"; };
+		C61570B11D82DE8500CD4B51 /* ClaimUserTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimUserTableController.h; sourceTree = "<group>"; };
+		C61570B21D82DE8500CD4B51 /* ClaimUserTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimUserTableController.m; sourceTree = "<group>"; };
+		C61570B51D82FB5E00CD4B51 /* UIAlertDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAlertDialog.h; sourceTree = "<group>"; };
+		C61570B61D82FB5E00CD4B51 /* UIAlertDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIAlertDialog.m; sourceTree = "<group>"; };
 		C679B1B31D7EED02001AE301 /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
 		C679B1B41D7EED02001AE301 /* Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Role.m; sourceTree = "<group>"; };
 		C6F36DB41D7ACA0400C2CA07 /* NSDate+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+String.h"; sourceTree = "<group>"; };
@@ -678,6 +686,7 @@
 			children = (
 				843965FC1D76E954006E401E /* main_logo.png */,
 				8473E6F01D6F467300DDF60C /* play_button.png */,
+				C604863C1D9421F500CCEF97 /* playButtonSmall.png */,
 				8473E6F11D6F467300DDF60C /* main_logo_small.png */,
 				564912A51CDB9CD50094B4D0 /* avatar.jpg */,
 				58FA8BE31C73DA6100591F5A /* Assets.xcassets */,
@@ -764,6 +773,7 @@
 		58FA8C411C73E56D00591F5A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C61570B71D82FB5E00CD4B51 /* UIAlertDialog */,
 				560228391CB6A57600AE7050 /* ErrorHandler */,
 				56BBD9381CA14472000961E0 /* FBAnnotationClustering */,
 				5645C4051C9AF92D000840E4 /* KrVideoPlayer */,
@@ -895,6 +905,7 @@
 				58FA8C7A1C73E90A00591F5A /* ProfileViewController */,
 				564912A41CDB7CE40094B4D0 /* OptionsTableController */,
 				C6F36DBC1D7AE8B900C2CA07 /* EditProfileController */,
+				C61570B41D82DE8900CD4B51 /* ClaimUserTableController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1149,6 +1160,25 @@
 			path = SetSelection;
 			sourceTree = "<group>";
 		};
+		C61570B41D82DE8900CD4B51 /* ClaimUserTableController */ = {
+			isa = PBXGroup;
+			children = (
+				C61570B11D82DE8500CD4B51 /* ClaimUserTableController.h */,
+				C61570B21D82DE8500CD4B51 /* ClaimUserTableController.m */,
+			);
+			name = ClaimUserTableController;
+			sourceTree = "<group>";
+		};
+		C61570B71D82FB5E00CD4B51 /* UIAlertDialog */ = {
+			isa = PBXGroup;
+			children = (
+				C61570B51D82FB5E00CD4B51 /* UIAlertDialog.h */,
+				C61570B61D82FB5E00CD4B51 /* UIAlertDialog.m */,
+			);
+			name = UIAlertDialog;
+			path = ../../../Blinkr/Blinkr;
+			sourceTree = "<group>";
+		};
 		C679B1B61D7EED08001AE301 /* Role */ = {
 			isa = PBXGroup;
 			children = (
@@ -1214,7 +1244,8 @@
 				TargetAttributes = {
 					84A755761C5A09D5000DD719 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 327RWWLVED;
+						DevelopmentTeam = 97RFSZF92Z;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1253,6 +1284,7 @@
 				8473E6EF1D6F16C000DDF60C /* PremiumVideoCell.xib in Resources */,
 				58FA8BE11C73DA5400591F5A /* LaunchScreen.storyboard in Resources */,
 				843966021D770F0D006E401E /* kr-video-player-shrinkscreen@2x.png in Resources */,
+				C604863D1D9421F500CCEF97 /* playButtonSmall.png in Resources */,
 				5645C4191C9AF92D000840E4 /* kr-video-player-close@2x.png in Resources */,
 				5645C4211C9AF92D000840E4 /* kr-video-player-point@2x.png in Resources */,
 				58FA8BE41C73DA6100591F5A /* Assets.xcassets in Resources */,
@@ -1338,6 +1370,7 @@
 				581BB0171C746B0A005CA38A /* Parser.m in Sources */,
 				568906841CDA2C5E003A81A7 /* PrivacyPolicyController.m in Sources */,
 				58FA8C591C73E56D00591F5A /* UIViewController+NJKFullScreenSupport.m in Sources */,
+				C61570B31D82DE8500CD4B51 /* ClaimUserTableController.m in Sources */,
 				566605371CB29175001F9AFB /* Pin.m in Sources */,
 				84F4A6BE1D706182000B89BA /* Category.m in Sources */,
 				58FA8CA01C73E90A00591F5A /* VideoCell.m in Sources */,
@@ -1345,6 +1378,7 @@
 				58FA8C941C73E90A00591F5A /* BookmarksViewController.m in Sources */,
 				C32E0ABB1C8881E1001E4203 /* SearchFilter.m in Sources */,
 				8494ED8C1C83D53200106069 /* FiltersViewController.m in Sources */,
+				C61570B81D82FB5E00CD4B51 /* UIAlertDialog.m in Sources */,
 				8473E6DD1D6EF38F00DDF60C /* PremiumReview.m in Sources */,
 				564B5B181C8594D40013E8B1 /* MyReelty.xcdatamodeld in Sources */,
 				844E65A61C7F381A00CFD186 /* CellFabric.m in Sources */,
@@ -1461,7 +1495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
@@ -1501,7 +1535,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1516,15 +1550,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "MyReelty/Application/MyReelty-Prefix.pch";
 				INFOPLIST_FILE = MyReelty/Application/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.midgets.myreelty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.my.reelty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1536,16 +1571,17 @@
 			baseConfigurationReference = 8DD61C794F9696CCC7B52F8C /* Pods-MyReelty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Starkid Inc. (97RFSZF92Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "MyReelty/Application/MyReelty-Prefix.pch";
 				INFOPLIST_FILE = MyReelty/Application/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.midgets.myreelty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.my.reelty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

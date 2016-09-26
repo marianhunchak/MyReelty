@@ -28,8 +28,8 @@
     }
     self.emailButton.layer.borderWidth = 0.8;
     self.emailButton.layer.borderColor = navigationBarColor.CGColor;
-    self.emailButton.layer.cornerRadius = 18.f;
-    self.facebookButton.layer.cornerRadius = 18.f;
+    self.emailButton.layer.cornerRadius = 3.f;
+    self.facebookButton.layer.cornerRadius = 3.f;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
 }
@@ -39,14 +39,7 @@
     
     self.tabBarController.tabBar.hidden = NO;
     
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN_DICT_KEY]) {
-        if (self.navigationController.tabBarItem.tag == 3) {
-            [self.navigationController pushViewController:self.bookmarksViewController animated:NO];
-        } else if (self.navigationController.tabBarItem.tag == 4) {
-            self.profileViewController.showCurrentUserProfile = YES;
-            [self.navigationController pushViewController:self.profileViewController animated:NO];
-        }
-    }
+   
     
     [self.navigationItem setHidesBackButton:YES];
     UITapGestureRecognizer *gestutre = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
@@ -170,13 +163,10 @@
                      [[NSUserDefaults standardUserDefaults] setObject:dict[@"content"] forKey:ACCESS_TOKEN_DICT_KEY];
                      [[NSUserDefaults standardUserDefaults] synchronize];
                      
-                     if (self.navigationController.tabBarItem.tag == 3) {
-                         [self.navigationController pushViewController:self.bookmarksViewController animated:NO];
-                     } else {
-                         self.profileViewController.showCurrentUserProfile = YES;
-                         [self.navigationController pushViewController:self.profileViewController animated:NO];
-                     }
-                     
+                     self.profileViewController.showCurrentUserProfile = YES;
+                     [self.navigationController pushViewController:self.profileViewController
+                                                          animated:NO];
+
                      [DBProfile main].autorized = [NSNumber numberWithBool:YES];
                      [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
                      

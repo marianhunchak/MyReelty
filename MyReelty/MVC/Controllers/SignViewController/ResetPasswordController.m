@@ -22,7 +22,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController.navigationItem setHidesBackButton:NO];
+    self.tabBarController.tabBar.hidden = YES;
     self.emailTF.text = @"";
 }
 
@@ -36,6 +36,9 @@
 
     UITapGestureRecognizer *gestutre = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.view addGestureRecognizer:gestutre];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backButton"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed)];
+    self.navigationItem.leftBarButtonItem = backButton;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +78,14 @@
         return NO;
     }
     return YES;
+}
+
+#pragma mark - Actions
+
+- (void)backButtonPressed {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 @end

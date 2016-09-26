@@ -128,6 +128,8 @@ static NSString *footerIdentifier = @"customFooter";
             [self.tableView reloadData];
         }
     }];
+    
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
 
 }
 

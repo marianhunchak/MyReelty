@@ -22,6 +22,7 @@
 #import "Page.h"
 #import "SearchTileCell.h"
 #import "MapViewController.h"
+#import "NSString+DivideNumber.h"
 
 static NSString *videoCellIdentifier = @"Cell";
 static NSString *premiumCellIdentifier = @"premiumCell";
@@ -59,6 +60,15 @@ static NSString * const reuseIdentifier = @"reviewCell";
     _premiumVideoCollectionView = [PremiumVideoCollectionView newView];
     
     [self reloadTableData];
+    
+    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_logo_small.png"]];
+    titleImageView.clipsToBounds = YES;
+    titleImageView.contentMode = UIViewContentModeScaleAspectFit;
+    titleImageView.frame = CGRectMake(0, 0, 40, 20);
+    self.navigationItem.titleView = titleImageView;
+    
+//    self.tabBarController.navigationItem.titleView.center = CGPointMake(self.view.center.x,
+//                                                                        self.tabBarController.navigationItem.titleView.center.y);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,9 +107,13 @@ static NSString * const reuseIdentifier = @"reviewCell";
     __weak typeof(self) weakSelf = self;
     
     [Network getCategoriesWithCompletion:^(NSArray *array, NSError *error) {
+
+        NSSortDescriptor *sortDescriptor;
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id_"
+                                                     ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+        weakSelf.categories = [array sortedArrayUsingDescriptors:sortDescriptors];
         
-        weakSelf.categories = array;
-        weakSelf.reviews = ((Category *)[_categories firstObject]).reviews;
         [weakSelf.tableView reloadData];
         
         
@@ -127,7 +141,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
     
     [Network getTotalReviesCountWithCompletion:^(id object, NSError *error) {
        
-        weakSelf.totalVideoCountLabel.text = [NSString stringWithFormat:@"%lu", ((Page *)object).total_entries];
+        weakSelf.totalVideoCountLabel.text = [[NSString stringWithFormat:@"%lu", ((Page *)object).total_entries] divideNumber];
         
     }];
 }
@@ -136,7 +150,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -144,7 +158,9 @@ static NSString * const reuseIdentifier = @"reviewCell";
     if (section == 0) {
         return 1;
     } else if (section == 1) {
-        return _reviews.count;
+        return [((Category *)_categories[0]).reviews count];
+    } else if (section == 2) {
+        return [((Category *)_categories[1]).reviews count];
     }
     
     return _searchTiles.count;
@@ -166,7 +182,17 @@ static NSString * const reuseIdentifier = @"reviewCell";
         VideoCell *cell = (VideoCell *)[tableView dequeueReusableCellWithIdentifier:videoCellIdentifier];
 
         cell.rowHeight = self.view.bounds.size.width * koeficientForCellHeight;
-        cell.review = [self.reviews objectAtIndex:indexPath.row];;
+        cell.review = [((Category *)_categories[0]).reviews objectAtIndex:indexPath.row];
+        cell.delegate = self;
+        
+        return cell;
+        
+    } else if (indexPath.section == 2) {
+        
+        VideoCell *cell = (VideoCell *)[tableView dequeueReusableCellWithIdentifier:videoCellIdentifier];
+        
+        cell.rowHeight = self.view.bounds.size.width * koeficientForCellHeight;
+        cell.review = [((Category *)_categories[1]).reviews objectAtIndex:indexPath.row];
         cell.delegate = self;
         
         return cell;
@@ -200,7 +226,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
         
         return fistCellHeight;
         
-    } else if (indexPath.section == 1) {
+    } else if (indexPath.section == 1 || indexPath.section == 2) {
         
         return (int)(self.view.bounds.size.width * koeficientForCellHeight);
     }
@@ -213,7 +239,7 @@ static NSString * const reuseIdentifier = @"reviewCell";
     
     if (indexPath.section == 0) {
         return;
-    } else if (indexPath.section == 2) {
+    } else if (indexPath.section == 3) {
         
         if ([[[self.tabBarController viewControllers] objectAtIndex:1] isKindOfClass:[UINavigationController class]]) {
             
@@ -239,12 +265,17 @@ static NSString * const reuseIdentifier = @"reviewCell";
     
     if (self.previousIndexPath) {
         VideoCell *cell = [tableView cellForRowAtIndexPath:self.previousIndexPath];
-        cell.poupMenu.hidden = YES;
+        [UIView animateWithDuration:0.5 animations:^{
+            cell.poupMenu.alpha = 0;
+        }];
         self.previousIndexPath = nil;
     } else {
         
         ReviewViewController *videoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ReviewViewController"];
-        Review *review = [self.reviews objectAtIndex:indexPath.row];
+        
+        NSInteger index = indexPath.section == 1 ? 0 : 1;
+        
+        Review *review = [((Category *)_categories[index]).reviews objectAtIndex:indexPath.row];
         videoVC.reiew = review;
         self.selectedRowIndex = [tableView indexPathForSelectedRow];
         [self.navigationController pushViewController:videoVC animated:YES];
@@ -266,7 +297,9 @@ static NSString * const reuseIdentifier = @"reviewCell";
         return nil;
         
     } else if (section == 1) {
-        return ((Category *)_categories.firstObject).name;
+        return ((Category *)_categories[0]).name;
+    } else if (section == 2) {
+        return ((Category *)_categories[1]).name;
     }
     
     return @"Suggestions";

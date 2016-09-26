@@ -21,6 +21,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *showMenuButton;
 @property (weak, nonatomic) IBOutlet UIButton *flagVideoButton;
+@property (weak, nonatomic) IBOutlet UILabel *bedsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bathsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *squareLabel;
 
 - (IBAction)showMenuBtnPressed:(UIButton *)sender;
 
@@ -32,8 +35,7 @@
 }
 
 - (void)awakeFromNib {
-    // Initialization code
-    
+    [super awakeFromNib];
 }
 
 - (void)prepareForReuse {
@@ -46,9 +48,18 @@
     _review = review;
     NSString *url1 = review.thumb_url;
     [self.videoView setImageWithURL:[NSURL URLWithString:url1] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    self.zipLabel.text = [NSString stringWithFormat:@"%@, %@",review.address, review.city];
-    self.addressLabel.text = [NSString stringWithFormat:@"%@, %@",review.state ,review.zipcode];
-    self.priceLabel.text = [[ NSString stringWithFormat:@"%lu" ,(long) review.price] divideNumber];
+    self.zipLabel.text =  [NSString stringWithFormat:@"%@, %@, %@", review.city, review.state ,review.zipcode];
+    self.addressLabel.text = [NSString stringWithFormat:@"%@",review.address];
+    
+    NSString *priceString = [[NSString stringWithFormat:@"%lu" ,(long) review.price] divideNumber];
+    
+    self.priceLabel.text = [NSString stringWithFormat:@"$ %@", priceString];
+    self.bedsLabel.text = [NSString stringWithFormat:@"%ld", review.beds];
+    self.bathsLabel.text = [NSString stringWithFormat:@"%ld", review.baths];
+    self.squareLabel.text = [[NSString stringWithFormat:@"%lu",(long) review.square] divideNumber];
+    
+    
+    
     if (review.liked) {
         [self.likeButton setSelected:YES];
     } else {
@@ -128,6 +139,10 @@
         [[FlaggingVideo sharedInstance] flagVideoWithReviewID:[_review.id_ integerValue]];
     
     }
+}
+
+- (IBAction)playButtonPressed:(UIButton *)sender {
+    
 }
 
 @end

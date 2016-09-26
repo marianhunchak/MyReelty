@@ -18,6 +18,7 @@
 #import "Page.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "ClaimUserTableController.h"
 
 #define SBSI_GO_TO_OPTIONS @"showOptions"
 
@@ -82,6 +83,8 @@ static CGFloat sectionHeaderHeight = 40.f;
     self.allowLoadData = YES;
     [self reloadTableData];
     self.allowLoadMore = YES;
+    
+    self.tableView.estimatedRowHeight = 100.f;
 
 }
 
@@ -124,6 +127,13 @@ static CGFloat sectionHeaderHeight = 40.f;
         [self.navigationController.tabBarController.tabBar setHidden:YES];
         [self.navigationItem setTitle:@"Profile"];
         _footerTextView.textAlignment = NSTextAlignmentCenter;
+        
+        UIBarButtonItem *claimAccountButton = [[UIBarButtonItem alloc] initWithTitle:@"Claim Account"
+                                                                               style:UIBarButtonItemStylePlain
+                                                                              target:self
+                                                                              action:@selector(claimAccountBtnPressed)];
+        self.navigationItem.rightBarButtonItem = claimAccountButton;
+
         
     }
     
@@ -287,6 +297,14 @@ static CGFloat sectionHeaderHeight = 40.f;
     [self performSegueWithIdentifier:SBSI_GO_TO_OPTIONS sender:self];
 }
 
+- (void)claimAccountBtnPressed {
+    
+    ClaimUserTableController *claimUserVC = VIEW_CONTROLLER(@"ClaimUserTableController");
+    claimUserVC.selectedUserID = [_profile.id_ integerValue];
+    [self.navigationController pushViewController:claimUserVC animated:YES];
+    
+}
+
 - (void)segmentControlValueChanged:(UISegmentedControl *)sender {
     
     _listType = sender.selectedSegmentIndex;
@@ -319,7 +337,7 @@ static CGFloat sectionHeaderHeight = 40.f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return [ProfileCellTableViewCell heightForInfoUser:self.profile.description_ inTable:self.tableView];
+        return UITableViewAutomaticDimension;
     } else {
         return (int)(self.view.bounds.size.width * koeficientForCellHeight);
     }
